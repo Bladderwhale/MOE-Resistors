@@ -35,6 +35,9 @@ demo.state1.prototype = {
         this.txtLearn.position.setTo(this.addLearnBtn.x, this.addLearnBtn.y);
         this.txtPractice.position.setTo(this.addPracticeBtn.x,this.addPracticeBtn.y);
         
+        //Events
+        this.addLearnBtn.events.onInputDown.add(function(){game.state.start('state2');},this);
+        
         
     },
     update: function(){
