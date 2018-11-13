@@ -30,6 +30,14 @@ function loadAssets() {
     game.load.image('board', 'assets/board.png');
     game.load.image('table', 'assets/table.png');
     game.load.image('home', 'assets/home.png');
+    game.load.image('r0', 'assets/Resistor_01.png');
+    game.load.image('r1', 'assets/Resistor_02.png');
+    game.load.image('r2', 'assets/Resistor_03.png');
+    game.load.image('r3', 'assets/Resistor_04.png');
+    game.load.image('r4', 'assets/Resistor_05.png');
+    game.load.image('r5', 'assets/Resistor_06.png');
+    game.load.image('arrow0','assets/arrow0.png');
+    game.load.image('arrow1','assets/arrow1.png')
 };
 
 function coorindates(state) {
@@ -50,6 +58,16 @@ function addBtn(state) {
     state.txtPractice.fontSize = 65;
 };
 
+function addBtnNext(state) {
+    state.addbtnNext = game.add.button(0,0,'button');
+    state.addbtnNext2 = game.add.text(0,0, "Next");
+    state.addbtnNext.scale.setTo(0.5,0.5);
+    state.addbtnNext.anchor.setTo(0.5,0.5);
+    state.addbtnNext.position.setTo(game.world.centerX*1.75,game.world.centerY*1.75);
+    state.addbtnNext2.position.setTo(game.world.centerX*1.71,game.world.centerY*1.72)
+
+}
+
 function background(state) {
     state.background = game.add.sprite(0,0,'board');
     state.background.position.setTo(game.world.centerX,game.world.centerY);
@@ -58,5 +76,8 @@ function background(state) {
 }
 
 function home(state){
-    state.home = game.add.sprite(500,100,'home');
+    state.home = game.add.button(1300,100,'home');
+    state.home.inputEnabled = true;
+    state.home.events.onInputDown.add(function(){game.state.start("state1");},this)
+   
 }

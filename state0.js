@@ -5,6 +5,7 @@ demo.state0.prototype = { //Add in 3 property as a function in the demo.state0
     init: function()
     {
         console.log(1500, 1000, game)
+        game.add.plugin(PhaserInput.Plugin);
        // scalingCanvasWindow(1500, 1000, this);
     },
     preload: function(){

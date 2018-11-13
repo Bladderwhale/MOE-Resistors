@@ -2,6 +2,7 @@ demo.state1 = function() {}
 demo.state1.prototype = { 
     preload: function(){
         loadAssets();
+        
     },
     create: function(){
         game.stage.backgroundColor = '#DDDDDD';
@@ -38,6 +39,11 @@ demo.state1.prototype = {
         //Events
         this.addLearnBtn.events.onInputDown.add(function(){game.state.start('state2');},this);
         
+        //Resistors 
+        this.r0 = game.add.sprite(0,0,'r0');
+        this.r0.scale.setTo(0.3,0.3);
+        this.r0.anchor.setTo(0.5,0.5);
+        this.r0.position.setTo(game.world.centerX,game.world.centerY*1.25);
         
     },
     update: function(){
