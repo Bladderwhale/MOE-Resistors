@@ -37,7 +37,11 @@ function loadAssets() {
     game.load.image('r4', 'assets/Resistor_05.png');
     game.load.image('r5', 'assets/Resistor_06.png');
     game.load.image('arrow0','assets/arrow0.png');
-    game.load.image('arrow1','assets/arrow1.png')
+    game.load.image('arrow1','assets/arrow1.png');
+    game.load.image('arrow2','assets/arrow2.png');
+    game.load.image('t0','assets/table0.png');
+    game.load.image('t1','assets/table1.png');
+    game.load.image('t2','assets/table2.png');
 };
 
 function coorindates(state) {
