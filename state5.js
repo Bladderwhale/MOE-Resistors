@@ -31,7 +31,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         btnCheck.events.onInputDown.add(function(){
             console.log(input);
             console.log("This is working");
-            if (input == 1) {
+            if (input.value == 1) {
                 game.add.text(game.world.centerX,game.world.centerY,"This is testing");
             }
         },this);
