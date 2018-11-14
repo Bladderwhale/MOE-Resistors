@@ -42,6 +42,7 @@ function loadAssets() {
     game.load.image('t0','assets/table0.png');
     game.load.image('t1','assets/table1.png');
     game.load.image('t2','assets/table2.png');
+    game.load.image('box0','assets/box0.png');
 };
 
 function coorindates(state) {

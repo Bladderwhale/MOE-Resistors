@@ -20,13 +20,26 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             width:30,
             height:30,
             font: '23px Arial',
-            max:'2'
-          
-            
+            max:'2' 
         });
         
         
-          //Grouping (Addchild)
+        //btnCheck
+        btnCheck = game.add.button(game.world.centerX+100,game.world.centerY,'box0');   
+        game.add.text(game.world.centerX+110,game.world.centerY+5,"Check");
+        
+        btnCheck.events.onInputDown.add(function(){
+            console.log(input);
+            console.log("This is working");
+            if (input == 1) {
+                game.add.text(game.world.centerX,game.world.centerY,"This is testing");
+            }
+        },this);
+        
+        
+        
+        
+        //Grouping (Addchild)
         this.t0 = game.add.sprite(0,0,'t0'); //Add table sprite
         this.t0.position.setTo(game.world.centerX-200, game.world.centerY+200); //Setting the position according the world
         this.t0.anchor.setTo(0.5,0.5); //Make it center.
