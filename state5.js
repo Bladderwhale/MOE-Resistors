@@ -248,7 +248,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         
     },
     update: function(){
-    // console.log("What is value of input: " + input.value);
+    //console.log("What is value of input: " + input.value);
     //console.log("What is value of qns: " + qns);
     }
 };
