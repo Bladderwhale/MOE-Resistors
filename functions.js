@@ -43,6 +43,10 @@ function loadAssets() {
     game.load.image('t1','assets/table1.png');
     game.load.image('t2','assets/table2.png');
     game.load.image('box0','assets/box0.png');
+    game.load.image('dial0', 'assets/dialogbox0.png');
+    game.load.image('tick0', 'assets/tick0.png');
+    game.load.image('cross0','assets/cross0.png');
+    game.load.image('circle','assets/circle.png');
 };
 
 function coorindates(state) {
@@ -83,6 +87,9 @@ function background(state) {
 function home(state){
     state.home = game.add.button(1300,100,'home');
     state.home.inputEnabled = true;
-    state.home.events.onInputDown.add(function(){game.state.start("state1");},this)
+    state.home.events.onInputDown.add(function(){
+        check = 0;
+        game.state.start("state1");
+    },this)
    
 }
