@@ -1,4 +1,5 @@
 var check = 0;
+var qns = 0;
 demo.state5 = function(){};
 demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable:{}, forthTable:{},
     preload: function(){loadAssets(this); },
@@ -39,10 +40,10 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         txtCheck = game.add.text(game.world.centerX+110,game.world.centerY+5,"Check");
         
         //btnCheck2
-        btnCheck2 = game.add.button(game.world.centerX+100,game.world.centerY,'box0');   
+        /*btnCheck2 = game.add.button(game.world.centerX+100,game.world.centerY,'box0');   
         txtCheck2 = game.add.text(game.world.centerX+110,game.world.centerY+5,"Check");
         btnCheck2.visible = false;
-        txtCheck2.visible = false;
+        txtCheck2.visible = false;*/
         
         btnCheck.events.onInputDown.add(function(){
             console.log(input);
@@ -142,10 +143,11 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.addbtnNext2.visible = false;
             this.circle.alpha = 0;
             
-            
+            btnCheck.visible = true;
+            txtCheck.visible = true;
             //Create another btnCheck 
-            btnCheck2.visible = true;
-            txtCheck2.visible = true;
+            /*btnCheck2.visible = true;
+            txtCheck2.visible = true;*/
            
         },this);        
         
@@ -246,7 +248,8 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         
     },
     update: function(){
-        console.log("What is value of input: " + input.value);
+    // console.log("What is value of input: " + input.value);
+    //console.log("What is value of qns: " + qns);
     }
 };
 
@@ -266,7 +269,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
     //Phaser.tween
     //tween = game.add.tween(this.dial0).to({alpha:0},2000,Phaser.Easing.Linear.None);
     
-    if (input.value == 1)
+    if (qns == 0 && input.value == 1)
     {
         console.log("n: " + this.n);
         this.dial0.alpha = 1;
@@ -283,9 +286,11 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         this.addbtnNext.visible = true;
         this.addbtnNext2.visible = true;
         
+        
         check+=20;
+        qns = 1;
         }
-    else if (input.value == 2)
+    else if (qns == 0 && input.value == 2)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -296,7 +301,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 3)
+    else if (qns == 0 && input.value == 3)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -308,7 +313,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 4)
+    else if (qns == 0 && input.value == 4)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -321,7 +326,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 5)
+    else if (qns == 0 && input.value == 5)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -335,7 +340,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 6)
+    else if (qns == 0 && input.value == 6)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -350,7 +355,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 7)
+    else if (qns == 0 && input.value == 7)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -366,7 +371,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 8)
+    else if (qns == 0 && input.value == 8)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -383,7 +388,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 9)
+    else if (qns == 0 && input.value == 9)
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -401,7 +406,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == 0 && input.value != "")
+    else if (qns == 0 && input.value == 0 && input.value != "")
     {
         this.dial0.alpha = 1;
         this.tick0.alpha = 0;
@@ -420,7 +425,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         }
         check++;
     }
-    else if (input.value == "") {
+    else if (qns == 0 && input.value == "") {
             btnTryAgain.visible = false;
             txtTryAgain.visible = false;
             linegraphics.alpha = 1;
