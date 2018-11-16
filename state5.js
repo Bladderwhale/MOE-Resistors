@@ -24,14 +24,17 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             width:30,
             height:30,
             font: '23px Arial',
-            max:'1'
+            max:'1',
+            type: PhaserInput.InputType.number;
+             
         });
         
           input2 = game.add.inputField(690, 336,{
             width:30,
             height:30,
             font: '23px Arial',
-            max:'1'
+            max:'1',
+            type: PhaserInput.InputType.number
         });
         input2.visible = false;
         
@@ -48,6 +51,8 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         btnCheck.events.onInputDown.add(function(){
             console.log(input);
             console.log("Step 1 upon clicking btnCheck");
+            if (qns == 0) {
+            console.log("if question == 0");
             linegraphics.alpha = 0;
             this.tick0 = game.add.sprite(-25,-60,'tick0');
             this.cross0 = game.add.sprite(-25,-60,'cross0');
@@ -77,7 +82,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial0.addChild(this.tick0);
             this.dial0.addChild(this.cross0);
             
-            this.n = new answers(input.value,this.tick0,this.cross0,this.dial0, this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2);
+            this.n = new answers(input.value,this.tick0,this.cross0,this.dial0, this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2,this.questionTitle); }
             //btnCheck
             if (check == 1) 
             {
@@ -111,20 +116,22 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         btnShowAnswer.visible = false;
         txtShowAnswer.visible = false;
         
+        //Create the question title
+        this.questionTitle = game.add.text(game.world.centerX,game.world.centerY-350,"lalalaland"); 
+    
         btnShowAnswer.events.onInputDown.add(function(){
-            for (var i = 0; i<this.txtAnswers.length; i++)
-            {
-                this.gameAnswers[i].alpha = 0;
-            }
-            this.gameAnswers[0].alpha = 1;
+            if (qns == 0) {
+            this.n = new answers(1,this.tick0,this.cross0,this.dial0, this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2,this.questionTitle);
+            
+            this.gameAnswers[0].alpha = 1; //Answer is 1 brown.
             this.circle.alpha = 1
             this.cross0.alpha = 0;
             
             btnShowAnswer.visible = false;
             txtShowAnswer.visible = false;
-            this.addbtnNext.visible = true;
-            this.addbtnNext2.visible = true;
-            
+            /*this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;*/
+             }
             
         },
             this);
@@ -249,13 +256,13 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
     },
     update: function(){
     //console.log("What is value of input: " + input.value);
-    //console.log("What is value of qns: " + qns);
+    console.log("What is value of qns: " + qns);
     }
 };
 
-function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,addbtnNext2)
+function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,addbtnNext2,questionTitle)
 {
-    this.n = n; //Redundant
+    this.n = n; 
     this.tick0 = tick0;
     this.cross0 = cross0;
     this.gameAnswers = gameAnswers;
@@ -264,12 +271,12 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
     this.t0 = t0;
     this.addbtnNext = addbtnNext;
     this.addbtnNext2 = addbtnNext2;
-    
+    this.questionTitle = questionTitle;
     //Start your tween here
     //Phaser.tween
     //tween = game.add.tween(this.dial0).to({alpha:0},2000,Phaser.Easing.Linear.None);
     
-    if (qns == 0 && input.value == 1)
+    if (qns == 0 && this.n == 1)
     {
         console.log("n: " + this.n);
         this.dial0.alpha = 1;
@@ -289,7 +296,16 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         
         check+=20;
         qns = 1;
-        }
+        
+        input.setText("1");
+        input.endFocus();
+       
+        
+        if (qns = 1)
+        {
+            this.questionTitle.text="Question2";
+        }   
+    }
     else if (qns == 0 && input.value == 2)
     {
         this.dial0.alpha = 1;
