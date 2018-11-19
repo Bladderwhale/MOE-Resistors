@@ -25,8 +25,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             height:30,
             font: '23px Arial',
             max:'1',
-            type: PhaserInput.InputType.number;
-             
+            type: PhaserInput.InputType.number
         });
         
           input2 = game.add.inputField(690, 336,{
