@@ -24,7 +24,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             width:30,
             height:30,
             font: '23px Arial',
-            max:'1',
+            max:'9',
             type: PhaserInput.InputType.number
         });
         
@@ -32,7 +32,7 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             width:30,
             height:30,
             font: '23px Arial',
-            max:'1',
+            max:'9',
             type: PhaserInput.InputType.number
         });
         input2.visible = false;
@@ -151,6 +151,13 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             
             btnCheck.visible = true;
             txtCheck.visible = true;
+            
+               
+        if (qns == 1)
+        {
+            this.questionTitle.text="Question2";
+        }  
+            
             //Create another btnCheck 
             /*btnCheck2.visible = true;
             txtCheck2.visible = true;*/
@@ -299,11 +306,7 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         input.setText("1");
         input.endFocus();
        
-        
-        if (qns = 1)
-        {
-            this.questionTitle.text="Question2";
-        }   
+      
     }
     else if (qns == 0 && input.value == 2)
     {
