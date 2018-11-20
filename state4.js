@@ -15,7 +15,7 @@ demo.state4.prototype = {
         
         //Arrow
         game.add.sprite(360,642,'arrow2');
-        this.txt= game.add.text(130,600,"Each band \nhas a value \nbased on the \nresistor colour codes.");
+        this.txt= game.add.text(130,600,"Each band \nhas a value \nbased on the \nresistor colour \ncodes.");
         this.txt.fontWeight = 'normal';
         
       

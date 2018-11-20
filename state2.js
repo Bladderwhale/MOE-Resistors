@@ -36,7 +36,9 @@ demo.state2.prototype = {
         this.txtDesc1.align = 'left';
         this.txtDesc2.align = 'left';
         this.txtDesc3.align = 'left';
-        
+        this.txtDesc1.fontSize = 30;
+        this.txtDesc2.fontSize = 30;
+        this.txtDesc3.fontSize = 30;
         //Home
         home(this);
         
