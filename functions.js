@@ -44,9 +44,13 @@ function loadAssets() {
     game.load.image('t2','assets/table2.png');
     game.load.image('box0','assets/box0.png');
     game.load.image('dial0', 'assets/dialogbox0.png');
+    game.load.image('dial1', 'assets/dialogbox1.png');
+    game.load.image('dial2', 'assets/dialogbox2.png');
+    game.load.image('dial3', 'assets/dialogbox3.png');
     game.load.image('tick0', 'assets/tick0.png');
     game.load.image('cross0','assets/cross0.png');
     game.load.image('circle','assets/circle.png');
+    game.load.image('final','assets/final.png');
 };
 
 function coorindates(state) {

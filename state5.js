@@ -1,7 +1,7 @@
 var check = 0;
 var qns = 0;
 demo.state5 = function(){};
-demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable:{}, forthTable:{}, bandNum: "1st", bandColor: "brown.",
+demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable:{}, forthTable:{}, bandNum: "1st", bandColor: "brown.", word1: null, word2: null,
     preload: function(){loadAssets(this);},
     create: function(){
         game.stage.backgroundColor = '#DDDDDD';
@@ -39,9 +39,28 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             width:40,
             height:30,
             font: '23px Arial',
-            max:'3'
+            max:'4'
         });
         input3.visible = false;
+        
+        
+        input4 = game.add.inputField(780, 336,{
+            width:50,
+            height:30,
+            font: '23px Arial',
+            max:'2',
+            
+            
+        });
+        input4.visible = false;
+        input4.setText("\xB1");
+        //Answers for the third color code onwards
+        this.word1 = game.add.text(game.world.centerX+100, game.world.centerY-50, "The resistance of this \nresistor is:");
+        this.word1.fontWeight = 'normal';
+        this.word2 = game.add.text(game.world.centerX+100, game.world.centerY+50, "15 x 100 \n\n= 1500 \u2126 \n= 1.5 k\u2126");
+        this.word1.alpha = 0;
+        this.word2.alpha = 0;
+        
         
          this.txtAnswers = ["This is the "+ this.bandNum +" digit of the \nresistance value.","qwe" ,"Colour code for '2' is red. \nThis band is " + this.bandColor, "Colour code for '3' is orange. \nThis band is " + this.bandColor, "Colour code for '4' is yellow. \nThis band is " + this.bandColor, "Colour code for '5' is green. \nThis band is " + this.bandColor, "Colour code for '6' is blue.\n This band is " + this.bandColor, "Colour code for '7' is purple.\n This band is " + this.bandColor, "Colour code for '8' is grey.\n This band is " + this.bandColor, "Colour code for '9' is white.\n This band is " + this.bandColor,"Colour code for '0' is black.\n This band is " + this.bandColor];
             
@@ -55,9 +74,29 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             console.log("btnCheck event triggered.");
             linegraphics.alpha = 0;
             linegraphics1.alpha = 0;
+            linegraphics2.alpha = 0;
             this.tick0 = game.add.sprite(-25,-60,'tick0');
             this.cross0 = game.add.sprite(-25,-60,'cross0');
+            this.tick1 = game.add.sprite(160,-80,'tick0');
+            this.cross1 = game.add.sprite(160,-80,'cross0');
             
+            //
+            this.dial2 = game.add.sprite(game.world.centerX-80,game.world.centerY-100,'dial2');
+            this.gameAnswersUpdated2 = game.add.text(115,70,"This is the 1st digit of the \nresistance value.");
+            this.gameAnswersUpdated2.fontWeight = 'normal';
+            this.dial2.addChild(this.gameAnswersUpdated2);
+            this.dial2.alpha = 0;
+            //
+            this.dial3 = game.add.sprite(game.world.centerX-400,game.world.centerY-90,'dial3');
+            this.tick3 = game.add.sprite(470,0,'tick0');
+            this.cross3 = game.add.sprite(470,0,'cross0');
+            this.gameAnswersUpdated3 = game.add.text(55,70,"This band represents the tolerance of the resistor. When \nresistors are made, the actual resistance value may vary \nfrom its expected value. \nThe tolerance value of 5% indicates that the resistance can \nvary by 5% and is included in the resistance value.");
+            this.gameAnswersUpdated3.fontWeight = 'normal';
+            this.dial3.addChild(this.gameAnswersUpdated3);
+            this.dial3.addChild(this.tick3);
+            this.dial3.addChild(this.cross3);
+            this.dial3.alpha = 0;
+            //First two color bands
             this.dial0 = game.add.sprite(0,0,'dial0');
             this.dial0.anchor.setTo(0.5,0.5);
             this.dial0.position.setTo(game.world.centerX-50,game.world.centerY-30);
@@ -79,7 +118,20 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
               
             this.dial0.addChild(this.tick0);
             this.dial0.addChild(this.cross0);
-            
+            //End
+            //After first two color bands
+            this.dial1 = game.add.sprite(0,0,'dial1');
+            this.dial1.anchor.setTo(0.5,0.5);
+            this.dial1.position.setTo(game.world.centerX-160,game.world.centerY-10);
+            this.dial1.alpha = 0;
+            this.gameAnswersUpdated = game.add.text(-180,-12,"This band represents the multiplier value. \nThat is, the first 2 digits of the resistance \nvalue should be multiplied by 100."); 
+            this.dial1.addChild(this.gameAnswersUpdated);
+            this.gameAnswersUpdated.fontSize = 20;
+            this.gameAnswersUpdated.fontWeight = 'normal'
+            this.cross1.alpha = 0;  
+            this.dial1.addChild(this.tick1);
+            this.dial1.addChild(this.cross1);
+            //End
             //Depending on the questions, the value will differ.
             if (qns == 0) {
                 console.log("Dont go here");
@@ -92,7 +144,10 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             else if (qns == 2) {
                 this.value = input3.value;
             }
-            this.nn = new answers(this.value,this.tick0,this.cross0,this.dial0,this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2, this); 
+            else if (qns == 3) {
+                this.value = input4.value;
+            }
+            this.nn = new answers(this.value,this.tick0,this.cross0,this.dial0,this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2, this.dial1,this.gameAnswersUpdated, this.t1,this.word1,this.word2,this.dial2,this.t3,this.dial3,this.cross3,this.tick3); 
             
             //btnCheck
             if (check == 1) 
@@ -125,8 +180,9 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         txtShowAnswer.visible = false;
         
         //Create the question title
-        this.questionTitle = game.add.text(game.world.centerX,game.world.centerY-350,"Question 1"); 
-    
+        this.questionTitle = game.add.text(game.world.centerX-300,game.world.centerY-350,"What is the value of the 1st band?"); 
+        this.questionTitle.fontSize = 40;
+        this.questionTitle.fontWeight = 'normal';
         btnShowAnswer.events.onInputDown.add(function(){
             console.log("Did anyone wanted to showanswer?");
             btnShowAnswer.visible = false;
@@ -138,17 +194,50 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             }
             if (qns == 0){
             answers(1, this.tick0, this.cross0, this.dial0, this.gameAnswers, this.txtAnswers,this.t0,this.addbtnNext, this.addbtnNext2);
-            input.setText("1");
+            this.t0.alpha = 1;
+            this.dial0.alpha = 0;
+            this.dial2.alpha = 1;
+            linegraphics.alpha = 1;
+            input.setText(" 1");
             input.endFocus();
             }
-            if (qns == 1){
+            else if (qns == 1){
             this.cross0.alpha = 0;
             var bandColor = "green."
             var bandNum = "2nd";
             var answer = getAnswers(bandNum, bandColor).answer;
             this.gameAnswers[0].setText(answer);
-            this.gameAnswers[0].alpha = 1; 
-             qns = 2;
+            this.gameAnswers[0].alpha = 0; 
+            this.dial0.alpha = 0;
+            this.dial2.position.setTo(game.world.centerX-50,game.world.centerY-100);
+            this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
+            this.dial2.alpha = 1;
+            input2.setText(" 5");
+            input2.endFocus();
+            qns = 2;
+            }
+            else if (qns == 2) {
+            this.dial0.alpha = 0;
+            this.dial1.alpha = 1;
+            this.tick1.alpha = 0;
+            this.t1.position.setTo(game.world.centerX+180, game.world.centerY+120); 
+            this.word1.position.setTo(game.world.centerX+300, game.world.centerY-40);
+            this.word2.position.setTo(game.world.centerX+300, game.world.centerY+50);
+            this.word1.alpha = 1;
+            this.word2.alpha = 1;
+            input3.setText("100");
+            input3.endFocus();
+            qns = 3;
+            }
+            else if (qns == 3) {
+        
+            this.dial0.alpha = 0;
+            this.dial3.alpha = 1;
+            this.cross3.alpha = 0;
+            this.tick3.alpha = 0;
+            qns = 4;
+            input4.setText("\xB1"+"5%"); 
+            input4.endFocus();
             }
         },this);
         
@@ -162,20 +251,29 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             qns = 1;
             this.dial0.alpha = 0;
             this.t0.alpha = 1;
+            this.dial2.alpha = 0;
+            linegraphics.alpha = 0
             btnCheck.visible = true;
             txtCheck.visible = true;
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
+            input.setText (" 1");
+            input.endFocus();
             }
             if (qns == 1) {
-                this.questionTitle.setText("Question 2");
+                this.questionTitle.setText("What is the value of the 2nd band?");
                 this.t0.position.setTo(game.world.centerX-70, game.world.centerY+200); 
                 linegraphics1.alpha = 1;
                 input2.visible = true;
                 check = 0;
+                
             }
-            if (qns == 2) {
-                this.questionTitle.setText("Question 3");
+            else if (qns == 2) {
+                input2.setText (" 5");
+                input2.endFocus()
+                
+                this.questionTitle.setText("What is the value of the 3rd band?");
+                this.dial2.alpha = 0;
                 input3.visible = true;
                 this.dial0.alpha = 0;
                 this.t0.alpha = 0;
@@ -185,7 +283,45 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 btnCheck.visible = true;
                 txtCheck.visible = true;
                 check = 0;
+                linegraphics2.alpha = 1;
+            }
+            else if (qns == 3) {
                 
+                this.questionTitle.setText("What is the value of the 4th band?");
+                check = 0;
+                this.t1.alpha = 0;
+                this.word1.alpha =0;
+                this.word2.alpha =0;
+                this.dial1.alpha = 0;
+                linegraphics2.alpha = 0;
+                input4.visible = true;
+                btnCheck.visible = true;
+                txtCheck.visible = true;
+                btnCheck.position.setTo(game.world.centerX+480,game.world.centerY+55);
+                txtCheck.position.setTo(game.world.centerX+490,game.world.centerY+60);
+                btnTryAgain.position.setTo(game.world.centerX+480,game.world.centerY+55);
+                txtTryAgain.position.setTo(game.world.centerX+490,game.world.centerY+60);
+                btnShowAnswer.position.setTo(game.world.centerX+480,game.world.centerY+55);
+                txtShowAnswer.position.setTo(game.world.centerX+490,game.world.centerY+60);
+                this.addbtnNext.visible = false;
+                this.addbtnNext2.visible = false;
+                this.t3.alpha =1;
+                linegraphics3.alpha = 1;
+               
+            }
+            else if (qns == 4) {
+           this.questionTitle.setText("What is the resistance of this resistor?");
+            this.dial3.alpha = 0;
+            this.finalanswer= game.add.text(game.world.centerX-260,game.world.centerY-50,"Resistance is 1.5k \xB1 \u2126 5% \n\nThis means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.")
+            this.finalanswer.addFontWeight("normal",0)
+            this.finalanswer.addFontWeight("bold",14)
+            this.finalanswer.addFontWeight("normal",25)
+            this.finalanswer1= game.add.text(game.world.centerX-500,game.world.centerY+200,"1.5 k\u2126");
+            this.finalanswer2= game.add.text(game.world.centerX-350,game.world.centerY+150,"-5%");
+            this.finalanswer3= game.add.text(game.world.centerX-350,game.world.centerY+250,"+5%");
+            this.finalanswer5= game.add.text(game.world.centerX-100,game.world.centerY+140,"0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
+            this.final = game.add.sprite(0,0,"final");
+            this.final.position.setTo(0,150);
             }
     
         },this);        
@@ -201,11 +337,22 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             btnTryAgain.visible = false;
             txtTryAgain.visible = false; 
             this.dial0.alpha = 0;
-            if (qns<2) {
-            this.t0.alpha = 1;}
-            if (qns == 2) {
-            this.t1.alpha = 1;}
+            if (qns == 0) {
+            linegraphics.alpha =1;
+            this.t0.alpha = 1;
             }
+            else if (qns == 1){
+            linegraphics1.alpha =1;
+            this.t0.alpha = 1;    
+            }
+            else if (qns == 2) {
+            this.t1.alpha = 1;
+            }
+            else if (qns == 3){
+            this.t3.alpha = 1;
+            linegraphics3.alpha = 1;
+            }
+        }
         
             ,this);
         
@@ -344,7 +491,25 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.t1.addChild(this.secondTable.white);
         this.t1.alpha = 0;
         //end
+        //Grouping for the 4rd table
+        this.t3 = game.add.sprite(0,0,'t2'); //Add table sprite
+        this.t3.position.setTo(game.world.centerX+360, game.world.centerY+75); //Setting the position according the world
+        this.t3.anchor.setTo(0.5,0.5); //Make it center.
         
+        this.forthTable.red = game.add.text(-80,-25,"\xB1 2% red");
+        this.forthTable.red.addColor('#ffffff', 0);
+        this.forthTable.red.fontSize = 20;
+        this.forthTable.red.fontWeight = 'normal';
+        
+        this.forthTable.gold = game.add.text(-80,5,"\xB1 5% gold");
+        this.forthTable.gold.addColor('#000000', 0);
+        this.forthTable.gold.fontSize = 20;
+        this.forthTable.gold.fontWeight = 'normal';
+        
+        this.t3.addChild(this.forthTable.red);
+        this.t3.addChild(this.forthTable.gold);
+        this.t3.alpha = 0;
+        //end
         //linegraphics for the first band.
         linegraphics = game.add.graphics(0,0);
         linegraphics.lineStyle(1,0x000000,1);
@@ -369,12 +534,19 @@ demo.state5.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         linegraphics2.endFill();
         linegraphics2.alpha = 0;
         
+        //linegraphics for the forth band.
+        linegraphics3 = game.add.graphics(0,0);
+        linegraphics3.lineStyle(1,0x000000,1);
+        linegraphics3.moveTo(1110,540);
+        linegraphics3.lineTo(810,410);
+        linegraphics3.endFill();
+        linegraphics3.alpha = 0;
         
         
     },
     update: function(){
     //console.log("What is value of input: " + input2.value);
-    //console.log("What is value of qns: " + qns);
+    console.log("What is value of qns: " + qns);
     //console.log("What is the value of check: " + check)
     //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
     }
@@ -384,18 +556,23 @@ function getAnswers(bandNum, bandColor)
 {
     var colors = ["black", "brown", "red", "orange", "yellow", "green", "blue", "purple", "grey", "white"];
     var answer = "This is the "+ bandNum +" digit of the \nresistance value.";
-    var hints = colors.map(function(x, index){ return "Color code for " + index + " is " + x + ". \n This band is " + bandColor}); //x takes in items, index take in number.
+    var hints = colors.map(function(x, index){ return "Color code for " + index + " is " + x + ". \nThis band is " + bandColor}); //x takes in items, index take in number.
     
     var colors2 = ["black", "brown", "red", "orange", "yellow", "green", "blue", "purple", "silver", "gold"];
-    var colorsNum = ["1", "10", "100", "1k", "10k", "100k", "1M", "10M", "0.01", "0.1"];
-    var hints2 = colors2.map(function(x, index){ return "Color code for " + colorsNum[index] +" is " + x + ". \n This band is " + bandColor + "\n"}); 
-    return {hints1: hints, answer: answer, hints2: hints2};
+    var colorsNum2 = ["1", "10", "100", "1k", "10k", "100k", "1M", "10M", "0.01", "0.1"];
+    var hints2 = colors2.map(function(x, index){ return "Color code for " + colorsNum2[index] +" is " + x + ". \nThis band is " + bandColor + "\n"}); 
+    
+    var colors3 = ["red","gold"];
+    var colorsNum3 = ["2%", "5%"];
+    var hints3 = colors3.map(function(x, index){ return "Color code for " + colorsNum3[index] +" is " + x + ". \nThis band is " + bandColor + "\n"}); 
+    
+    return {hints1: hints, answer: answer, hints2: hints2, hints3: hints3};
     
     
 }
 
 
-function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext, addbtnNext2)
+function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext, addbtnNext2,dial1,gameAnswersUpdated,t1,word1,word2, dial2,t3,dial3,cross3,tick3)
 {
     this.n = n;
     this.tick0 = tick0;
@@ -406,6 +583,16 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
     this.t0 = t0;
     this.addbtnNext = addbtnNext;
     this.addbtnNext2 = addbtnNext2;
+    this.dial1 = dial1;
+    this.gameAnswersUpdated = gameAnswersUpdated;
+    this.t1 = t1;
+    this.word1 = word1;
+    this.word2 = word2;
+    this.dial2 = dial2;
+    this.t3 = t3;
+    this.dial3 = dial3;
+    this.cross3 = cross3;
+    this.tick3 = tick3;
     console.log("Did anyone come here?");
     if (qns == 0) {
         if (this.n !=1 && this.n != "") {
@@ -501,9 +688,14 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
             check++; 
             this.dial0.alpha = 1;
             this.tick0.alpha = 0;
+            
+              
             for (var i = 0; i < this.txtAnswers; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
+                this.gameAnswers[1].setText("Invalid number"); //Answers not from the table
+                this.gameAnswers[1].alpha = 1;
+              
                 if (this.n == 1) {
                 var hints2 = getAnswers(bandNum, bandColor).hints2;
                 this.gameAnswers[1].setText(hints2[0]);
@@ -559,22 +751,75 @@ function answers(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext,
         //Correct answers.
         else if (this.n == 100) {
             console.log("Did anyone come here?");
-            this.dial0.alpha = 1;
+            this.dial0.alpha = 0;
             this.cross0.alpha = 0;
-            for (var i = 0; i < this.txtAnswers; i++) {
-                this.gameAnswers[i].alpha = 0;
-            }
+            this.dial1.alpha = 1;
             var answer = getAnswers(bandNum, bandColor).answer;
-            this.gameAnswers[0].setText(answer);
-            this.gameAnswers[0].alpha = 1;
+            this.gameAnswersUpdated.setText("This band represents the multiplier value. \nThat is, the first 2 digits of the resistance  \nvalue should be multiplied by 100.");
+            this.gameAnswersUpdated.addFontWeight("bold",24);
+            this.gameAnswersUpdated.addFontWeight('normal',35);
+            this.gameAnswersUpdated.alpha = 1;
             this.t0.alpha = 0;
+            this.t1.alpha = 0;
             this.addbtnNext.visible = true;
             this.addbtnNext2.visible = true;
             btnCheck.visible = false;
             txtCheck.visible = false;
-            qns = 2;
+            qns = 3;
             check = 20;
+            
+            this.word1.alpha=1;
+            this.word2.alpha=1;
+            
+
+            
         }
+    }
+    else if (qns == 3) {
+        var bandColor = "gold";
+        var bandNum = "4";
+        this.t3.alpha = 0;
+        linegraphics3.alpha = 0;
+        this.tick0.alpha = 0;
+        if (this.n == "\xB1" + 2) {
+            var hint3 = getAnswers(bandNum,bandColor).hints3
+            this.dial0.alpha = 1;
+            
+            this.dial0.position.setTo(game.world.centerX+70,game.world.centerY-30);
+            for (var i =0; i<this.txtAnswers; i++){
+                this.gameAnswers[i].alpha = 0;
+            }
+            this.gameAnswers[1].setText(hint3[0]);
+                            this.gameAnswers[1].alpha = 1;
+            check++;
+            
+        }
+        else if (this.n == "\xB1" + 5) {
+            this.dial3.alpha =1;
+            this.cross3.alpha =0;
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+            btnCheck.visible = false;
+            txtCheck.visible = false;
+            qns =4;
+            
+        }
+        else if (this.n != 2) {
+            var hint3 = getAnswers(bandNum,bandColor).hints3
+            this.dial0.alpha = 1;
+            
+            this.dial0.position.setTo(game.world.centerX+70,game.world.centerY-30);
+            for (var i =0; i<this.txtAnswers; i++){
+                this.gameAnswers[i].alpha = 0;
+            }
+            this.gameAnswers[1].setText("Invalid Number");
+            this.gameAnswers[1].alpha = 1;
+            check++; 
+       
+        }
+                 
+    
+       
     }
         
 };
