@@ -78,7 +78,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         //Answers for the third color code onwards
         this.word1 = GameInstance.add.text(GameInstance.world.centerX+100, GameInstance.world.centerY-50, "The resistance of this \nresistor is:");
         this.word1.fontWeight = 'normal';
-        this.word2 = GameInstance.add.text(GameInstance.world.centerX+100, GameInstance.world.centerY+50, "15 x 100 \n\n= 1500 \u2126 \n= 1.5 k\u2126");
+        this.word2 = GameInstance.add.text(GameInstance.world.centerX+100, GameInstance.world.centerY+50, "22 x 1000 \n\n= 22000 \u2126 \n= 2.2 k\u2126");
         this.word1.alpha = 0;
         this.word2.alpha = 0;
         
@@ -145,7 +145,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial1.anchor.setTo(0.5,0.5);
             this.dial1.position.setTo(GameInstance.world.centerX-160,GameInstance.world.centerY-10);
             this.dial1.alpha = 0;
-            this.gameAnswersUpdated = GameInstance.add.text(-180,-12,"This band represents the multiplier value. \nThat is, the first 2 digits of the resistance \nvalue should be multiplied by 100."); 
+            this.gameAnswersUpdated = GameInstance.add.text(-180,-12,"This band represents the multiplier value. \nThat is, the first 2 digits of the resistance \nvalue should be multiplied by 1000."); 
             this.dial1.addChild(this.gameAnswersUpdated);
             this.gameAnswersUpdated.fontSize = 20;
             this.gameAnswersUpdated.fontWeight = 'normal'
@@ -219,7 +219,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial0.alpha = 0;
             this.dial2.alpha = 1;
             linegraphics.alpha = 1;
-            input.setText(" 1");
+            input.setText(" 2");
             input.endFocus();
             }
             else if (qns == 1){
@@ -233,7 +233,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial2.position.setTo(GameInstance.world.centerX-50,GameInstance.world.centerY-100);
             this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
             this.dial2.alpha = 1;
-            input2.setText(" 5");
+            input2.setText(" 2");
             input2.endFocus();
             qns = 2;
             }
@@ -246,7 +246,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.word2.position.setTo(GameInstance.world.centerX+300, GameInstance.world.centerY+50);
             this.word1.alpha = 1;
             this.word2.alpha = 1;
-            input3.setText("100");
+            input3.setText(" 1k");
             input3.endFocus();
             qns = 3;
             }
@@ -278,7 +278,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             txtCheck.visible = true;
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
-            input.setText (" 1");
+            input.setText (" 2");
             input.endFocus();
             }
             if (qns == 1) {
@@ -290,7 +290,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 
             }
             else if (qns == 2) {
-                input2.setText (" 5");
+                input2.setText (" 2");
                 input2.endFocus()
                 
                 this.questionTitle.setText("What is the value of the 3rd band?");
@@ -333,11 +333,11 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             else if (qns == 4) {
            this.questionTitle.setText("What is the resistance of this resistor?");
             this.dial3.alpha = 0;
-            this.finalanswer= GameInstance.add.text(GameInstance.world.centerX-260,GameInstance.world.centerY-50,"Resistance is 1.5k \xB1 \u2126 5% \n\nThis means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.")
+            this.finalanswer= GameInstance.add.text(GameInstance.world.centerX-260,GameInstance.world.centerY-50,"Resistance is 2.2k \xB1 \u2126 5% \n\nThis means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.")
             this.finalanswer.addFontWeight("normal",0)
             this.finalanswer.addFontWeight("bold",14)
             this.finalanswer.addFontWeight("normal",25)
-            this.finalanswer1= GameInstance.add.text(GameInstance.world.centerX-500,GameInstance.world.centerY+200,"1.5 k\u2126");
+            this.finalanswer1= GameInstance.add.text(GameInstance.world.centerX-500,GameInstance.world.centerY+200,"2.2 k\u2126");
             this.finalanswer2= GameInstance.add.text(GameInstance.world.centerX-350,GameInstance.world.centerY+150,"-5%");
             this.finalanswer3= GameInstance.add.text(GameInstance.world.centerX-350,GameInstance.world.centerY+250,"+5%");
             this.finalanswer5= GameInstance.add.text(GameInstance.world.centerX-100,GameInstance.world.centerY+140,"0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
@@ -660,7 +660,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
     }
     else if (qns == 1) {
         console.log("This is the green band");
-        var bandColor = "green."
+        var bandColor = "red."
         var bandNum = "2nd";
         this.dial0.position.setTo(GameInstance.world.centerX-15,GameInstance.world.centerY-30);
         btnCheck.position.setTo(GameInstance.world.centerX+180,GameInstance.world.centerY);
@@ -669,7 +669,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
         txtTryAgain.position.setTo(GameInstance.world.centerX+190,GameInstance.world.centerY+5);
         btnShowAnswer.position.setTo(GameInstance.world.centerX+180,GameInstance.world.centerY);
         txtShowAnswer.position.setTo(GameInstance.world.centerX+190,GameInstance.world.centerY+5);
-          if (this.n !=5 && this.n != "") {
+          if (this.n !=2 && this.n != "") {
             check++; 
             this.dial0.alpha = 1;
             this.tick0.alpha = 0;
@@ -686,7 +686,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
                 console.log("What is the value of check: " + check);
         }
         //Correct answers.
-        else if (this.n == 5) {
+        else if (this.n == 2) {
             console.log("Did anyone come here?");
             this.dial0.alpha = 1;
             this.cross0.alpha = 0;
@@ -706,8 +706,8 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
         }
     }
       else if (qns == 2) {
-        console.log("This is the red band");
-        var bandColor = "red."
+        console.log("This is the orange band");
+        var bandColor = "orange."
         var bandNum = "3rd";
         this.dial0.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY-30);
         btnCheck.position.setTo(GameInstance.world.centerX+210,GameInstance.world.centerY);
@@ -717,7 +717,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
         btnShowAnswer.position.setTo(GameInstance.world.centerX+210,GameInstance.world.centerY);
         txtShowAnswer.position.setTo(GameInstance.world.centerX+220,GameInstance.world.centerY+5);
         
-          if (this.n !=100 && this.n != "") {
+          if (this.n !="1k" && this.n != "") {
             check++; 
             this.dial0.alpha = 1;
             this.tick0.alpha = 0;
@@ -782,13 +782,13 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
        
         }
         //Correct answers.
-        else if (this.n == 100) {
+        else if (this.n == "1k") {
             console.log("Did anyone come here?");
             this.dial0.alpha = 0;
             this.cross0.alpha = 0;
             this.dial1.alpha = 1;
             var answer = getAnswers(bandNum, bandColor).answer;
-            this.gameAnswersUpdated.setText("This band represents the multiplier value. \nThat is, the first 2 digits of the resistance  \nvalue should be multiplied by 100.");
+            this.gameAnswersUpdated.setText("This band represents the multiplier value. \nThat is, the first 2 digits of the resistance  \nvalue should be multiplied by 1k.");
             this.gameAnswersUpdated.addFontWeight("bold",24);
             this.gameAnswersUpdated.addFontWeight('normal',35);
             this.gameAnswersUpdated.alpha = 1;
@@ -800,7 +800,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
             txtCheck.visible = false;
             qns = 3;
             check = 20;
-            
+           
             this.word1.alpha=1;
             this.word2.alpha=1;
             

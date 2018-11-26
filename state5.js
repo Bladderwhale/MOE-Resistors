@@ -1,5 +1,6 @@
 var check = 0;
 var qns = 0;
+var asd = 0xA0522D
 demo.state5 = function () { };
 /**
  * @type {Phaser.State}
@@ -220,6 +221,7 @@ demo.state5.prototype = {
                 this.dial2.alpha = 1;
                 linegraphics.alpha = 1;
                 input.setText(" 1");
+                ellipsegraphics.alpha = 1;
                 input.endFocus();
             }
             else if (qns == 1) {
@@ -233,6 +235,10 @@ demo.state5.prototype = {
                 this.dial2.position.setTo(GameInstance.world.centerX - 50, GameInstance.world.centerY - 100);
                 this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
                 this.dial2.alpha = 1;
+                ellipsegraphics.lineStyle(5, 0x32CD32);
+                ellipsegraphics.drawEllipse(100,100,100,30);
+                ellipsegraphics.position.setTo(580,610);
+                ellipsegraphics.alpha = 1;
                 input2.setText(" 5");
                 input2.endFocus();
                 qns = 2;
@@ -246,6 +252,10 @@ demo.state5.prototype = {
                 this.word2.position.setTo(GameInstance.world.centerX + 300, GameInstance.world.centerY + 50);
                 this.word1.alpha = 1;
                 this.word2.alpha = 1;
+                ellipsegraphics.lineStyle(5, 0xFF0000);
+                ellipsegraphics.drawEllipse(100,100,100,30);
+                ellipsegraphics.position.setTo(830,440);
+                ellipsegraphics.alpha = 1;
                 input3.setText("100");
                 input3.endFocus();
                 qns = 3;
@@ -269,6 +279,7 @@ demo.state5.prototype = {
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function () {
             console.log(this);
+            ellipsegraphics.alpha = 0;
             if (qns == 0) {
                 qns = 1;
                 this.dial0.alpha = 0;
@@ -570,6 +581,14 @@ demo.state5.prototype = {
         linegraphics3.lineTo(810, 410);
         linegraphics3.endFill();
         linegraphics3.alpha = 0;
+        
+        //ellipsegraphics
+        ellipsegraphics = GameInstance.add.graphics(0,0);
+        ellipsegraphics.lineStyle(5, asd);
+        ellipsegraphics.drawEllipse(100,100,100,30);
+        ellipsegraphics.endFill();
+        ellipsegraphics.position.setTo(450,490);
+        ellipsegraphics.alpha = 0;
 
 
     },
@@ -581,7 +600,7 @@ demo.state5.prototype = {
     },
     randomNumbers: function () {
         console.log("Did randomNumbers come here?");
-        return Math.floor(Math.random() * 3) + 6;
+        return Math.floor(Math.random() * 1) + 6;
     },
    
 }
