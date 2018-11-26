@@ -121,7 +121,7 @@ demo.state4.prototype = {
         this.firstTable.orange.fontWeight = 'normal';
         
         this.firstTable.yellow = GameInstance.add.text(-80,-30,"4 yellow");
-        this.firstTable.yellow.addColor('#ffffff', 0);
+        this.firstTable.yellow.addColor('#000000', 0);
         this.firstTable.yellow.fontSize = 20;
         this.firstTable.yellow.fontWeight = 'normal';
         

@@ -19,7 +19,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.resistors.r2.scale.setTo(0.35,0.35);
         this.resistors.r2.anchor.setTo(0.5,0.5);
         this.resistors.r2.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);
-        this.bandNum = 1;
+        this.bandNum = "1st";
         this.bandColor = "red."
         //Create the btnLearnExample and btnPractice
         this.btnLearnExample = GameInstance.add.button(GameInstance.world.centerX+250,GameInstance.world.centerY+350, 'button');
@@ -104,7 +104,9 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             //
             this.dial2 = GameInstance.add.sprite(GameInstance.world.centerX-80,GameInstance.world.centerY-100,'dial2');
             this.gameAnswersUpdated2 = GameInstance.add.text(115,70,"This is the 1st digit of the \nresistance value.");
-            this.gameAnswersUpdated2.fontWeight = 'normal';
+            this.gameAnswersUpdated2.addFontWeight ('normal',0);
+            this.gameAnswersUpdated2.addFontWeight('bold',11);
+            this.gameAnswersUpdated2.addFontWeight('normal',21);
             this.dial2.addChild(this.gameAnswersUpdated2);
             this.dial2.alpha = 0;
             //
@@ -131,7 +133,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 if (i  ==  0) {
                       this.gameAnswers[i].addFontWeight('normal',0);
                       this.gameAnswers[i].addFontWeight('bold', 12);
-                      this.gameAnswers[i].addFontWeight('normal',20);
+                      this.gameAnswers[i].addFontWeight('normal',21);
                 }
               //  this.dial0.addChild(this.gameAnswers[i]);
                 this.dial0.addChild(this.gameAnswers[i]);
@@ -421,7 +423,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.firstTable.orange.fontWeight = 'normal';
         
         this.firstTable.yellow = GameInstance.add.text(-80,-30,"4 yellow");
-        this.firstTable.yellow.addColor('#ffffff', 0);
+        this.firstTable.yellow.addColor('#000000', 0);
         this.firstTable.yellow.fontSize = 20;
         this.firstTable.yellow.fontWeight = 'normal';
         
@@ -596,6 +598,29 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
     console.log("What is value of qns: " + qns);
     //console.log("What is the value of check: " + check)
     //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
+    
+       
+        var d = /\d/;
+        if (qns == 0 && d.test(input.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;
+        }
+        else if  (qns == 1  && d.test(input2.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else if  (qns == 2 && d.test(input3.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else if  (qns == 3 && d.test('\xB1'+ input4.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else {
+            btnCheck.alpha = 0.5;
+            txtCheck.alpha = 0.5;
+        }
     },
     randomNumbers: function() {
         console.log("Did randomNumbers come here?");
@@ -746,7 +771,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
             for (var i = 0; i < this.txtAnswers; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
-                this.gameAnswers[1].setText("Invalid number"); //Answers not from the table
+                this.gameAnswers[1].setText("Invalid value."); //Answers not from the table
                 this.gameAnswers[1].alpha = 1;
               
                 if (this.n == 1) {
@@ -865,7 +890,7 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
             for (var i =0; i<this.txtAnswers; i++){
                 this.gameAnswers[i].alpha = 0;
             }
-            this.gameAnswers[1].setText("Invalid Number");
+            this.gameAnswers[1].setText("Invalid value.");
             this.gameAnswers[1].alpha = 1;
             check++; 
        

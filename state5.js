@@ -5,6 +5,7 @@ demo.state5 = function () { };
 /**
  * @type {Phaser.State}
  */
+
 demo.state5.prototype = {
     resistors: {}, firstTable: {}, secondTable: {}, thirdTable: {}, forthTable: {}, bandNum: "1st", bandColor: "brown.", word1: null, word2: null, btnLearnExample: null, btnPractice: null,
     preload: function () { loadAssets(this); },
@@ -21,7 +22,7 @@ demo.state5.prototype = {
         this.resistors.r2.scale.setTo(0.35, 0.35);
         this.resistors.r2.anchor.setTo(0.5, 0.5);
         this.resistors.r2.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY / 1.4);
-        this.bandNum = 1;
+        this.bandNum = "1st";
         this.bandColor = "brown."
         //Create the btnLearnExample and btnPractice
         this.btnLearnExample = GameInstance.add.button(GameInstance.world.centerX + 250, GameInstance.world.centerY + 350, 'button');
@@ -41,6 +42,12 @@ demo.state5.prototype = {
         this.btnPractice.visible = false;
         this.txtPractice.visible = false;
         this.btnLearnExample.events.onInputDown.add(function () { qns = 0; check = 0; GameInstance.state.start('state' + this.randomNumbers()); }, this);
+        
+        
+        
+        /**
+         * @type {PhaserInput.InputField}
+         */
         //Input
         input = GameInstance.add.inputField(655, 336, {
             width: 30,
@@ -49,6 +56,7 @@ demo.state5.prototype = {
             max: '9',
             type: PhaserInput.InputType.number
         });
+        
         input2 = GameInstance.add.inputField(690, 336, {
             width: 30,
             height: 30,
@@ -91,10 +99,13 @@ demo.state5.prototype = {
         //btnCheck
         btnCheck = GameInstance.add.button(GameInstance.world.centerX + 100, GameInstance.world.centerY, 'box0');
         txtCheck = GameInstance.add.text(GameInstance.world.centerX + 110, GameInstance.world.centerY + 5, "Check");
+        btnCheck.alpha = 0.5;
+        txtCheck.alpha = 0.5
 
         btnCheck.events.onInputDown.add(function () {
             console.log(input);
             console.log("btnCheck event triggered.");
+            this.tempbool = false;
             linegraphics.alpha = 0;
             linegraphics1.alpha = 0;
             linegraphics2.alpha = 0;
@@ -106,7 +117,9 @@ demo.state5.prototype = {
             //
             this.dial2 = GameInstance.add.sprite(GameInstance.world.centerX - 80, GameInstance.world.centerY - 100, 'dial2');
             this.gameAnswersUpdated2 = GameInstance.add.text(115, 70, "This is the 1st digit of the \nresistance value.");
-            this.gameAnswersUpdated2.fontWeight = 'normal';
+            this.gameAnswersUpdated2.addFontWeight ('normal',0);
+            this.gameAnswersUpdated2.addFontWeight('bold',11);
+            this.gameAnswersUpdated2.addFontWeight('normal',21);
             this.dial2.addChild(this.gameAnswersUpdated2);
             this.dial2.alpha = 0;
             //
@@ -132,8 +145,8 @@ demo.state5.prototype = {
                 this.gameAnswers[i].fontWeight = 'normal'
                 if (i == 0) {
                     this.gameAnswers[i].addFontWeight('normal', 0);
-                    this.gameAnswers[i].addFontWeight('bold', 12);
-                    this.gameAnswers[i].addFontWeight('normal', 20);
+                    this.gameAnswers[i].addFontWeight('bold', 11);
+                    this.gameAnswers[i].addFontWeight('normal', 21);
                 }
                 //  this.dial0.addChild(this.gameAnswers[i]);
                 this.dial0.addChild(this.gameAnswers[i]);
@@ -220,7 +233,9 @@ demo.state5.prototype = {
                 this.dial0.alpha = 0;
                 this.dial2.alpha = 1;
                 linegraphics.alpha = 1;
-                input.setText(" 1");
+                input.setText("");
+                tween00.start();
+                //
                 ellipsegraphics.alpha = 1;
                 input.endFocus();
             }
@@ -290,7 +305,7 @@ demo.state5.prototype = {
                 txtCheck.visible = true;
                 this.addbtnNext.visible = false;
                 this.addbtnNext2.visible = false;
-                input.setText(" 1");
+                input.setText(" ");
                 input.endFocus();
             }
             if (qns == 1) {
@@ -423,7 +438,7 @@ demo.state5.prototype = {
         this.firstTable.orange.fontWeight = 'normal';
 
         this.firstTable.yellow = GameInstance.add.text(-80, -30, "4 yellow");
-        this.firstTable.yellow.addColor('#ffffff', 0);
+        this.firstTable.yellow.addColor('#000000', 0);
         this.firstTable.yellow.fontSize = 20;
         this.firstTable.yellow.fontWeight = 'normal';
 
@@ -564,7 +579,7 @@ demo.state5.prototype = {
         linegraphics1.lineTo(720, 410);
         linegraphics1.endFill();
         linegraphics1.alpha = 0;
-        coorindates(this);
+      
 
         //linegraphics for the third band.
         linegraphics2 = GameInstance.add.graphics(0, 0);
@@ -590,13 +605,56 @@ demo.state5.prototype = {
         ellipsegraphics.position.setTo(450,490);
         ellipsegraphics.alpha = 0;
 
-
+        coorindates(this);
+        //Adding the numbers for tweening
+        this.answers00 = GameInstance.add.text(470,579,'1');
+        this.answers00.addColor("#000000",0);
+        this.answers00.fontSize = 22;
+        this.answers00.fontWeight = "normal";
+        tween00 = GameInstance.add.tween(this.answers00).to({x:665, y:338},1500,Phaser.Easing.Linear.None);
     },
     update: function () {
         //console.log("What is value of input: " + input2.value);
-        console.log("What is value of qns: " + qns);
+        //console.log("What is value of qns: " + qns);
         //console.log("What is the value of check: " + check)
         //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
+        console.log("X: " + this.dots.x + " Y: " + this.dots.y);
+       
+        var d = /\d/;
+        if (qns == 0 && d.test(input.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;
+        }
+        else if  (qns == 1  && d.test(input2.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else if  (qns == 2 && d.test(input3.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else if  (qns == 3 && d.test('\xB1'+ input4.value)){
+            btnCheck.alpha = 1;
+            txtCheck.alpha = 1;    
+            }
+        else {
+            btnCheck.alpha = 0.5;
+            txtCheck.alpha = 0.5;
+        }
+     
+
+       
+        
+      
+        
+        
+       
+        
+       
+  
+       
+        
+
     },
     randomNumbers: function () {
         console.log("Did randomNumbers come here?");
@@ -725,7 +783,7 @@ demo.state5.answers = function (n, tick0, cross0, dial0, gameAnswers, txtAnswers
             for (var i = 0; i < this.txtAnswers; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
-            this.gameAnswers[1].setText("Invalid number"); //Answers not from the table
+            this.gameAnswers[1].setText("Invalid value."); //Answers not from the table
             this.gameAnswers[1].alpha = 1;
 
             if (this.n == 1) {
@@ -844,7 +902,7 @@ demo.state5.answers = function (n, tick0, cross0, dial0, gameAnswers, txtAnswers
             for (var i = 0; i < this.txtAnswers; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
-            this.gameAnswers[1].setText("Invalid Number");
+            this.gameAnswers[1].setText("Invalid value.");
             this.gameAnswers[1].alpha = 1;
             check++;
 

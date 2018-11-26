@@ -61,6 +61,7 @@ demo.state0.prototype = {
         if (this.total > 2) {
             GameInstance.state.start('state1');
         }
+    
     },
 
     updateCounter: function() {

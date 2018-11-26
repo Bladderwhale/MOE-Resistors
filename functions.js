@@ -54,6 +54,8 @@ function loadAssets() {
     GameInstance.load.image('cross0','assets/cross0.png');
     GameInstance.load.image('circle','assets/circle.png');
     GameInstance.load.image('final','assets/final.png');
+    GameInstance.load.image('btnradiochecked', 'assets/btnradiochecked.png');
+    GameInstance.load.image('btnradiounchecked', 'assets/btnradiounchecked.png');
 };
 
 function coorindates(state) {
@@ -100,4 +102,11 @@ function home(state){
         GameInstance.state.start("state1");
     },this)
    
+};
+
+function drawMiniRect() {
+    var miniRect = GameInstance.add.graphics(0,0);
+    miniRect.lineStyle(1, 0x614126, 1); 
+    miniRect.beginFill(0x614126,0.3);
+    miniRect.drawRect(150,150,240,90);
 }
