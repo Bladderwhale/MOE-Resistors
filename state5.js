@@ -258,6 +258,7 @@ demo.state5.prototype = {
                 ellipsegraphics.alpha = 1;
                 input2.setText(" 5");
                 input2.endFocus();
+                tween11.start();
                 qns = 2;
             }
             else if (qns == 2) {
@@ -275,6 +276,7 @@ demo.state5.prototype = {
                 ellipsegraphics.alpha = 1;
                 input3.setText("100");
                 input3.endFocus();
+                tween22.start();
                 qns = 3;
             }
             else if (qns == 3) {
