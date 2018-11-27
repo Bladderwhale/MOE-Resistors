@@ -99,6 +99,7 @@ function home(state){
     state.home.events.onInputDown.add(function(){
         check = 0;
         qns = 0;
+        total = 0;
         GameInstance.state.start("state1");
     },this)
    
