@@ -269,7 +269,9 @@ demo.state5.prototype = {
                 ellipsegraphics.alpha = 1;
                 input2.setText(" ");
                 input2.endFocus();
+                input2.width = 1;
                 tween11.start();
+                timer.start();
                 timer.resume();
                 total = 0;
                 
@@ -288,10 +290,13 @@ demo.state5.prototype = {
                 ellipsegraphics.drawEllipse(100,100,100,30);
                 ellipsegraphics.position.setTo(830,440);
                 ellipsegraphics.alpha = 1;
-                input3.setText("100");
+                input3.setText("");
                 input3.endFocus();
                 tween22.start();
-                qns = 3
+                input3.width = 1;
+                timer.start();
+                timer.resume();
+                total = 0;
             }
             else if (qns == 3) {
 
@@ -307,6 +312,8 @@ demo.state5.prototype = {
 
 
         //Adding the next question for the color banks.
+        boolEllipse1 = false;
+        boolEllipse2 = false;
         addBtnNext(this);
         this.addbtnNext.visible = false;
         this.addbtnNext2.visible = false;
@@ -329,17 +336,18 @@ demo.state5.prototype = {
                 boolTimer = false;
             }
             if (qns == 1) {
-                ellipsegraphics.alpha = 0;
+                if (boolEllipse1 == true) {
+                ellipsegraphics.alpha = 0;}
                 
                 this.questionTitle.setText("What is the value of the 2nd band?");
                 this.t0.position.setTo(GameInstance.world.centerX - 70, GameInstance.world.centerY + 200);
-                linegraphics1.alpha = 0;
+                linegraphics1.alpha = 1;
                 input2.visible = true;
                 check = 0;
             }
             else if (qns == 2) {
                 ellipsegraphics.alpha = 0;
-                //input2.setText(" ");
+                input2.setText(" 5");
                 input2.endFocus()
 
                 this.questionTitle.setText("What is the value of the 3rd band?");
@@ -356,7 +364,8 @@ demo.state5.prototype = {
                 linegraphics2.alpha = 1;
             }
             else if (qns == 3) {
-                ellipsegraphics.alpha = 0;
+                if (boolEllipse2 == true) {
+                ellipsegraphics.alpha = 0;}
                 this.questionTitle.setText("What is the value of the 4th band?");
                 check = 0;
                 this.t1.alpha = 0;
@@ -377,7 +386,7 @@ demo.state5.prototype = {
                 this.addbtnNext2.visible = false;
                 this.t3.alpha = 1;
                 linegraphics3.alpha = 1;
-
+                
             }
             else if (qns == 4) {
                 ellipsegraphics.alpha = 0;
@@ -659,7 +668,7 @@ demo.state5.prototype = {
         //console.log("What is the value of check: " + check)
         //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
         console.log("Update counter for timer: "+ total);
-        console.log("X: " + this.dots.x + " Y: " + this.dots.y);
+        //console.log("X: " + this.dots.x + " Y: " + this.dots.y);
         var d = /\d/;
         if (qns == 0 && d.test(input.value)){
             btnCheck.alpha = 1;
@@ -689,9 +698,35 @@ demo.state5.prototype = {
                 timer.pause();
             }
          }
+         if (qns == 0 && tween00._hasStarted == true && total < 2) {
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+         }
+         else if (qns == 0 && tween00._hasStarted == true && total >= 2){
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+         }
          if (qns == 1 &&  tween11._hasStarted == true && total >= 2){
+             boolEllipse1 = true;
              qns = 2;
-         }     
+             this.addbtnNext.visible = true;
+             this.addbtnNext2.visible = true;
+         }   
+         else if (qns == 1 &&  tween11._hasStarted == true && total < 2){
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+         }
+         if (qns == 2 &&  tween22._hasStarted == true && total < 2){
+            
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+        }    
+        else if (qns == 2 &&  tween22._hasStarted == true && total >= 2){
+            boolEllipse2 = true;
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+            qns = 3;
+        }
 
        
         
