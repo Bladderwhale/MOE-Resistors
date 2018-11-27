@@ -215,7 +215,7 @@ demo.state5.prototype = {
 
         //Creating timer for animation
         boolTimer = false;
-        GameInstance.time.events.add(Phaser.Timer.SECOND * 8, function(){
+        GameInstance.time.events.add(Phaser.Timer.SECOND * 5, function(){
             if (tween00._hasStarted == true){
                boolTimer = true;
             }
@@ -306,9 +306,10 @@ demo.state5.prototype = {
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function () {
             console.log(tween00);
-            ellipsegraphics.alpha = 0;
+           
     
-            if (qns == 0) {
+            if (qns == 0 && boolTimer == true) {
+                ellipsegraphics.alpha = 0;
                 qns = 1;
                 this.dial0.alpha = 0;
                 this.t0.alpha = 1;
@@ -318,7 +319,7 @@ demo.state5.prototype = {
                 txtCheck.visible = true;
                 this.addbtnNext.visible = false;
                 this.addbtnNext2.visible = false;
-                input.setText(" ");
+                //input.setText(" ");
                 input.endFocus();
             }
             if (qns == 1) {
@@ -743,6 +744,8 @@ demo.state5.answers = function (n, tick0, cross0, dial0, gameAnswers, txtAnswers
             btnCheck.visible = false;
             txtCheck.visible = false;
             check = 20;
+            input.setText(" 1");
+            boolTimer = true;
         }
     }
     else if (qns == 1) {
