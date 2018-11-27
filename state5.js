@@ -228,7 +228,7 @@ demo.state5.prototype = {
                 this.gameAnswers[i].alpha = 0;
             }
             if (qns == 0) {
-                demo.state5.answers(1, this.tick0, this.cross0, this.dial0, this.gameAnswers, this.txtAnswers, this.t0, this.addbtnNext, this.addbtnNext2);
+                //demo.state5.answers(1, this.tick0, this.cross0, this.dial0, this.gameAnswers, this.txtAnswers, this.t0, this.addbtnNext, this.addbtnNext2);
                 this.t0.alpha = 1;
                 this.dial0.alpha = 0;
                 this.dial2.alpha = 1;
@@ -238,6 +238,8 @@ demo.state5.prototype = {
                 //
                 ellipsegraphics.alpha = 1;
                 input.endFocus();
+
+
             }
             else if (qns == 1) {
                 this.cross0.alpha = 0;
@@ -611,7 +613,24 @@ demo.state5.prototype = {
         this.answers00.addColor("#000000",0);
         this.answers00.fontSize = 22;
         this.answers00.fontWeight = "normal";
-        tween00 = GameInstance.add.tween(this.answers00).to({x:665, y:338},1500,Phaser.Easing.Linear.None);
+        this.answers00.alpha = 0;
+        tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:665, y:338},1500,Phaser.Easing.Linear.None);
+
+        this.answers11 = GameInstance.add.text(600,699,'5');
+        this.answers11.addColor("#000000",0);
+        this.answers11.fontSize = 22;
+        this.answers11.fontWeight = "normal";
+        this.answers11.alpha = 0;
+        tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:698, y:338},1500,Phaser.Easing.Linear.None);
+
+        this.answers22 = GameInstance.add.text(851,528,'100');
+        this.answers22.addColor("#000000",0);
+        this.answers22.fontSize = 22;
+        this.answers22.fontWeight = "normal";
+        this.answers22.alpha = 0;
+        tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:725, y:338},1500,Phaser.Easing.Linear.None);
+
+        
     },
     update: function () {
         //console.log("What is value of input: " + input2.value);
