@@ -213,6 +213,14 @@ demo.state5.prototype = {
         btnShowAnswer.visible = false;
         txtShowAnswer.visible = false;
 
+        //Creating timer for animation
+        boolTimer = false;
+        GameInstance.time.events.add(Phaser.Timer.SECOND * 8, function(){
+            if (tween00._hasStarted == true){
+               boolTimer = true;
+            }
+        },this);
+
         //Create the question title
         this.questionTitle = GameInstance.add.text(GameInstance.world.centerX - 300, GameInstance.world.centerY - 350, "What is the value of the 1st band?");
         this.questionTitle.fontSize = 40;
@@ -297,8 +305,9 @@ demo.state5.prototype = {
         this.addbtnNext.visible = false;
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function () {
-            console.log(this);
+            console.log(tween00);
             ellipsegraphics.alpha = 0;
+    
             if (qns == 0) {
                 qns = 1;
                 this.dial0.alpha = 0;
@@ -639,8 +648,8 @@ demo.state5.prototype = {
         //console.log("What is value of qns: " + qns);
         //console.log("What is the value of check: " + check)
         //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
+        console.log("What is the value of boolTimer: " + boolTimer);
         console.log("X: " + this.dots.x + " Y: " + this.dots.y);
-       
         var d = /\d/;
         if (qns == 0 && d.test(input.value)){
             btnCheck.alpha = 1;
