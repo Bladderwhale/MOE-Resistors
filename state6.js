@@ -38,7 +38,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.txtLearnExample.visible = false;
         this.btnPractice.visible = false;
         this.txtPractice.visible = false;
-        this.btnLearnExample.events.onInputDown.add(function(){qns = 0; check = 0;GameInstance.state.start('state' +   this.randomNumbers());},this);
+        this.btnLearnExample.events.onInputDown.add(function(){qns = 0; check = 0; total =0;GameInstance.state.start('state' +   this.randomNumbers());},this);
         //Input
         input = GameInstance.add.inputField(655, 336,{
             width:30,
@@ -201,6 +201,12 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         txtShowAnswer = GameInstance.add.text(GameInstance.world.centerX+110,GameInstance.world.centerY+5,"Show Answer");
         btnShowAnswer.visible = false;
         txtShowAnswer.visible = false;
+
+        //Creating timer for tweening
+        boolTimer = false;        
+        timer = GameInstance.time.create(false);
+        timer.loop(2000,function(){total++},this);
+        //timer.start();
         
         //Create the question title
         this.questionTitle = GameInstance.add.text(GameInstance.world.centerX-300,GameInstance.world.centerY-350,"What is the value of the 1st band?"); 
@@ -221,8 +227,13 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial0.alpha = 0;
             this.dial2.alpha = 1;
             linegraphics.alpha = 1;
-             ellipsegraphics.alpha = 1;
-            input.setText(" 2");
+            input.setText("");
+            //Start the timing and tweening
+            tween00.start();
+            timer.start();
+            //
+            ellipsegraphics.alpha = 1;
+            total = 0;
             input.endFocus();
             }
             else if (qns == 1){
@@ -240,9 +251,13 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 ellipsegraphics.drawEllipse(100,100,100,30);
                 ellipsegraphics.position.setTo(580,520);
                 ellipsegraphics.alpha = 1;
-            input2.setText(" 2");
+            input2.setText(" ");
             input2.endFocus();
-            qns = 2;
+            tween11.start();
+            timer.start();
+            timer.resume();
+            total = 0;
+            //qns = 2;
             }
             else if (qns == 2) {
             this.dial0.alpha = 0;
@@ -253,12 +268,17 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.word2.position.setTo(GameInstance.world.centerX+300, GameInstance.world.centerY+50);
             this.word1.alpha = 1;
             this.word2.alpha = 1;
-                 ellipsegraphics.lineStyle(5, 0XFF4500);
-                ellipsegraphics.drawEllipse(100,100,100,30);
-                ellipsegraphics.position.setTo(830,470);
-                ellipsegraphics.alpha = 1;
+            ellipsegraphics.lineStyle(5, 0XFF4500);
+            ellipsegraphics.drawEllipse(100,100,100,30);
+            ellipsegraphics.position.setTo(830,470);
+            ellipsegraphics.alpha = 1;
             input3.setText(" 1k");
             input3.endFocus();
+            tween22.start();
+            input3.width = 1;
+            timer.start();
+            timer.resume();
+            total = 0;
             qns = 3;
             }
             else if (qns == 3) {
@@ -275,12 +295,15 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         
    
         //Adding the next question for the color banks.
+        boolEllipse1 = false;
+        boolEllipse2 = false;
         addBtnNext(this);
         this.addbtnNext.visible = false;
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function(){
-             ellipsegraphics.alpha = 0;
-            if (qns == 0) {
+             
+            if (qns == 0 && boolTimer == true) {
+            ellipsegraphics.alpha = 0;
             qns = 1;
             this.dial0.alpha = 0;
             this.t0.alpha = 1;
@@ -290,10 +313,13 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             txtCheck.visible = true;
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
-            input.setText (" 2");
+            //input.setText (" 2");
+            boolTimer = false;
             input.endFocus();
             }
             if (qns == 1) {
+                if (boolEllipse1 == true) {
+                    ellipsegraphics.alpha = 0;}
                 this.questionTitle.setText("What is the value of the 2nd band?");
                 this.t0.position.setTo(GameInstance.world.centerX-70, GameInstance.world.centerY+200); 
                 linegraphics1.alpha = 1;
@@ -302,7 +328,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 
             }
             else if (qns == 2) {
-                input2.setText (" 2");
+                ellipsegraphics.alpha = 0;
+                //input2.setText (" 2");
                 input2.endFocus()
                 
                 this.questionTitle.setText("What is the value of the 3rd band?");
@@ -320,6 +347,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             }
             else if (qns == 3) {
                 
+                ellipsegraphics.alpha = 0;
                 this.questionTitle.setText("What is the value of the 4th band?");
                 check = 0;
                 this.t1.alpha = 0;
@@ -343,7 +371,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                
             }
             else if (qns == 4) {
-           this.questionTitle.setText("What is the resistance of this resistor?");
+            ellipsegraphics.alpha = 0;
+            this.questionTitle.setText("What is the resistance of this resistor?");
             this.dial3.alpha = 0;
             this.finalanswer= GameInstance.add.text(GameInstance.world.centerX-260,GameInstance.world.centerY-50,"Resistance is 2.2k \xB1 \u2126 5% \n\nThis means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.")
             this.finalanswer.addFontWeight("normal",0)
@@ -590,15 +619,37 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         ellipsegraphics.endFill();
         ellipsegraphics.position.setTo(450,520);
         ellipsegraphics.alpha = 0;
+
+         //Adding the numbers for tweening
+         this.answers00 = GameInstance.add.text(470,610,'2');
+         this.answers00.addColor("#000000",0);
+         this.answers00.fontSize = 22;
+         this.answers00.fontWeight = "normal";
+         this.answers00.alpha = 0;
+         tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:665, y:338},1500,Phaser.Easing.Linear.None);
+ 
+         this.answers11 = GameInstance.add.text(600,610,'2');
+         this.answers11.addColor("#000000",0);
+         this.answers11.fontSize = 22;
+         this.answers11.fontWeight = "normal";
+         this.answers11.alpha = 0;
+         tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:698, y:338},1500,Phaser.Easing.Linear.None);
+ 
+         this.answers22 = GameInstance.add.text(851,528,'1k');
+         this.answers22.addColor("#000000",0);
+         this.answers22.fontSize = 22;
+         this.answers22.fontWeight = "normal";
+         this.answers22.alpha = 0;
+         tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:725, y:338},1500,Phaser.Easing.Linear.None);
         
         
     },
     update: function(){
     //console.log("What is value of input: " + input2.value);
-    console.log("What is value of qns: " + qns);
+    //console.log("What is value of qns: " + qns);
     //console.log("What is the value of check: " + check)
     //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
-    
+    console.log("What is the value of timer: " + total)
        
         var d = /\d/;
         if (qns == 0 && d.test(input.value)){
@@ -621,6 +672,46 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             btnCheck.alpha = 0.5;
             txtCheck.alpha = 0.5;
         }
+
+        
+        //Creating timer and tweening
+        if (total >= 2){
+            boolTimer = true;
+            if(total >3){
+                timer.pause();
+            }
+         }
+         if (qns == 0 && tween00._hasStarted == true && total < 2) {
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+         }
+         else if (qns == 0 && tween00._hasStarted == true && total >= 2){
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+         }
+         if (qns == 1 &&  tween11._hasStarted == true && total < 2){
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+         }   
+         else if (qns == 1 &&  tween11._hasStarted == true && total >= 2){
+            boolEllipse1 = true;
+            qns = 2;
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+         }
+         if (qns == 3 &&  tween22._hasStarted == true && total < 2){
+            
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+        }    
+        else if (qns == 3 &&  tween22._hasStarted == true && total >= 2){
+            boolEllipse2 = true;
+            this.addbtnNext.visible = true;
+            this.addbtnNext2.visible = true;
+            qns = 3;
+        }
+        console.log("qns: " + qns)
+
     },
     randomNumbers: function() {
         console.log("Did randomNumbers come here?");
@@ -701,6 +792,8 @@ function answers2(n, tick0, cross0, dial0, gameAnswers, txtAnswers,t0,addbtnNext
             btnCheck.visible = false;
             txtCheck.visible = false;
             check = 20;
+            input.setText(" 2");
+            boolTimer = true;
         }
     }
     else if (qns == 1) {
