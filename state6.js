@@ -715,7 +715,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
     },
     randomNumbers: function() {
         console.log("Did randomNumbers come here?");
-        return Math.floor(Math.random()*3)+6;
+        return Math.floor(Math.random()*1)+5;
     },
     
 };
