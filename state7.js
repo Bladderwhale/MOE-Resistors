@@ -79,6 +79,16 @@ function newQuestions(state, height0, height1, height2, height3){
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 3) {
+    state.resistors.r = GameInstance.add.sprite(0,0,"r4");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 4) {
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
 
     //Input
     state.input0 = GameInstance.add.inputField(-300,-60,{
@@ -122,7 +132,7 @@ function newQuestions(state, height0, height1, height2, height3){
     state.resistors.r.addChild(state.input1);
     state.resistors.r.addChild(state.input2);
     state.resistors.r.addChild(state.input3);
-
+    
     //Add the radiobuttons
     state.btnradio0 = GameInstance.add.button(607,height0,'btnradiounchecked'); //500
     state.btnradio1 = GameInstance.add.button(607,height1,'btnradiounchecked'); //580
@@ -174,6 +184,10 @@ function newQuestions(state, height0, height1, height2, height3){
         }
     },this);
 
+    //Add the ticks and cross
+    GameInstance.add.sprite(0,0,'tick0');
+    GameInstance.add.sprite(0,0,'cross0');
+    
     if (mcq == 0) {
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().setA[0]);

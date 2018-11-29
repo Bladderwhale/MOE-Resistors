@@ -19,7 +19,12 @@ demo.state0.prototype = {
     {
         console.log(1500, 1000, GameInstance)
         GameInstance.add.plugin(PhaserInput.Plugin);
-       // scalingCanvasWindow(1500, 1000, this);
+                
+        //Testing purposes for frameAPI
+        GameInstance.canvas.id = "mainCanvas";
+        scalingCanvasWindow(1500, 1000, this);
+        cursorUpdate(this.dots, 2, 2, this);
+        //updateInputBoxPosition(11,"mainCanvas",0,0,800,600,true,this);
     },
     preload: function(){
         loadAssets();
@@ -29,7 +34,7 @@ demo.state0.prototype = {
         console.log('state0');
         addChangeStateEventListers(); //Local - First step@
         //windowScaling();
-        GameInstance.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+        //GameInstance.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
         //Creation of timer
         var timer = GameInstance.time.create(false);
         timer.loop(2000, this.updateCounter, this);
