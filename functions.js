@@ -104,7 +104,7 @@ function home(state){
         total = 0;
         maxCheck = 0;
         maxQns = 0;
-        demo.randomMCQ = [0,1,2];
+        demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
         GameInstance.state.start("state1");
     },this)
    

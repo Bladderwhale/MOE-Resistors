@@ -1,9 +1,10 @@
 var mcq;
 var maxCheck = 0 ;
 var maxQns = 0;
-demo.randomMCQ = [0,1,2];
+demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var boolNext = false;
 demo.state7 = function(){};
-demo.state7.prototype = {resistors:{r2:null}, n: 0,
+demo.state7.prototype = {resistors:{r2:null}, n: 0, btnNext: null, txtNext: null,
     preload: function(){loadAssets();},
     create: function(){
         GameInstance.stage.backgroundColor = '#DDDDDD';
@@ -21,18 +22,62 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
         this.randomHeight = [500,580,660,740]; //Shuffling of elements in an array.
         this.shuffleArray(this.randomHeight);
 
-        demo.randomMCQ
         this.shuffleArray(demo.randomMCQ);
         mcq = demo.randomMCQ[0];
         demo.randomMCQ.splice(0,1);
-        
+        //Add restart and end
+        this.btnRestart = GameInstance.add.button(950+100,820,'button');
+        this.btnRestart.scale.setTo(0.5,0.5);
+        this.txtRestart = GameInstance.add.text(970+110,830, 'Restart');
+        this.btnEnd = GameInstance.add.button(1100+100,820,'button');
+        this.btnEnd.scale.setTo(0.5,0.5);
+        this.txtEnd = GameInstance.add.text(1120+125,830, 'End');
+        this.btnNext = GameInstance.add.button(1100+50,820, 'button');
+        this.btnNext.scale.setTo(0.7,0.55);
+        this.txtNext = GameInstance.add.text(1115+50,830,"Next Question");
+        this.btnRestart.visible = false;
+        this.txtRestart.visible = false;
+        this.btnEnd.visible = false;
+        this.txtEnd.visible = false;
+        this.btnNext.visible = false;
+        this.txtNext.visible = false;
+        //Events next qns
+        this.btnNext.events.onInputDown.add(function(){
+            maxCheck = 0;
+            GameInstance.state.start('state7');
+            maxQns++;},
+            this);
         //Center
-        if (mcq == 0 && maxQns<3) {
-        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]); maxQns++;}
-        else if (mcq == 1 && maxQns<3) {
-        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]); maxQns++;}
-        else if (mcq == 2 && maxQns<3) {
-        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]); maxQns++;}
+        if (mcq == 0 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);} 
+        else if (mcq == 1 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 2 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 3 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 4 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 5 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 6 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 7 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 8 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 9 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 10 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 11 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 12 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 13 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
+        else if (mcq == 14 && maxQns<5) {
+        new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);}
         /*var newQns3 = new newQuestions(this, "r4");
         var newQns4 = new newQuestions(this, "r5");*/
         //500
@@ -52,15 +97,86 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
         this.btnCheck.events.onInputDown.add(function(){
             if (this.n == 0) 
             {
+                boolNext = true;
                 maxCheck = 4
                 this.tick.alpha = 1;
                 this.dial4.alpha = 1;
                 this.correctAnswer.alpha = 1;
-
+                if (mcq == 0) {
                 this.input0.setText(" 4");
                 this.input1.setText(" 7");
                 this.input2.setText(" 1");
-                this.input3.setText(" 5");
+                this.input3.setText(" 5"); }
+                if (mcq == 1) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 2) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 3) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 4) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 5) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 6) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 7) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 8) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 9) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 10) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 11) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 12) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 13) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
+                if (mcq == 14) {
+                this.input0.setText(" 4");
+                this.input1.setText(" 7");
+                this.input2.setText(" 1");
+                this.input3.setText(" 5"); }
             }
             else if (this.n == 1 && maxCheck < 4) {
                 maxCheck++;
@@ -124,7 +240,18 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
         //console.log("X: " + this.dots.x + " Y: " + this.dots.y);
         //console.log("What is value of n: " + this.n);
         //console.log(this.boolCheck)
-        console.log("What is the value of maxCheck: " + maxCheck)
+        //console.log("What is the value of maxCheck: " + maxCheck);
+        console.log("What is the value of maxQns: " + maxQns);
+        
+        if (maxQns == 4 && maxCheck == 4) {
+            this.btnCheck.visible = false;
+            this.txtCheck.visible = false;
+            this.btnNext.visible = false;
+            this.txtNext.visible = false;
+            this.btnRestart.visible = true;
+            this.txtRestart.visible = true;
+        }
+        
         if (maxCheck == 1) {
             maxCheck++;
             //this.cross.alpha = 0;
@@ -156,18 +283,6 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
             btnradio3.inputEnabled = true;
         }
         else if (maxCheck == 4) {
-            if (btnradio0.input.pointerOver()) {
-                btnradio0.input.setDefaultCursor()
-            }
-            if (btnradio1.input.pointerOver()) {
-                btnradio1.input.setDefaultCursor()
-            }
-            if (btnradio2.input.pointerOver()) {
-                btnradio2.input.setDefaultCursor()
-            }
-            if (btnradio3.input.pointerOver()) {
-                btnradio3.input.setDefaultCursor()
-            }
             btnradio0.inputEnabled = false;
             btnradio1.inputEnabled = false;
             btnradio2.inputEnabled = false;
@@ -176,9 +291,98 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
             this.tween.start();
             this.tween2.start();
             this.tween3.start();
+
+            this.btnCheck.visible = false;
+            this.txtCheck.visible = false;
+            this.btnNext.visible = true;
+            this.txtNext.visible = true;
         }
        
         if (mcq == 0 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 1 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 2 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 3 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 4 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 5 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 6 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 7 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 8 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 9 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 10 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 11 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 12 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 13 && maxCheck == 4) {
+            this.input0.setText(" 4");
+            this.input1.setText(" 7");
+            this.input2.setText(" 1");
+            this.input3.setText(" 5");
+        }
+        if (mcq == 14 && maxCheck == 4) {
             this.input0.setText(" 4");
             this.input1.setText(" 7");
             this.input2.setText(" 1");
@@ -237,30 +441,90 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
 
 function newQuestions(state, height0, height1, height2, height3){
     if (mcq == 0) {
+    console.log("This is preset 0");
     state.resistors.r = GameInstance.add.sprite(0,0,"r1");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 1) {
+    console.log("This is preset 1");
     state.resistors.r = GameInstance.add.sprite(0,0,"r2");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 2) {
+    console.log("This is preset 2");
     state.resistors.r = GameInstance.add.sprite(0,0,"r3");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 3) {
+    console.log("This is preset 3");
     state.resistors.r = GameInstance.add.sprite(0,0,"r4");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
-    else if (mcq == 4) {
+    else if (mcq == 5) {
+    console.log("This is preset 5");
     state.resistors.r = GameInstance.add.sprite(0,0,"r5");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 6) {
+    console.log("This is preset 6");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 7) {
+    console.log("This is preset 7");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 8) {
+    console.log("This is preset 8");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 9) {
+    console.log("This is preset 9");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 10) {
+    console.log("This is preset 10");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 11) {
+    console.log("This is preset 11");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 12) {
+    console.log("This is preset 12");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 13) {
+    console.log("This is preset 13");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 14) {
+    console.log("This is preset 14");
+    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+
 
     //Input
     state.input0 = GameInstance.add.inputField(-300,-60,{
@@ -347,71 +611,324 @@ function newQuestions(state, height0, height1, height2, height3){
     state.txtTryAgain = GameInstance.add.text(1115+100,825,"Try again");
     state.txtTryAgain.visible = false;
     state.btnTryAgain.visible = false;
-    state.btnCheck.alpha = 0.3;
-    state.txtCheck.alpha = 0.3;
+    state.btnCheck.alpha = 0;
+    state.txtCheck.alpha = 0;
     
     if (mcq == 0) {
     //Add the texts
-    state.text0 = GameInstance.add.text(200,-20, setText().setA[0]);
+    state.text0 = GameInstance.add.text(200,-20, setText().set0[0]);
     btnradio0.addChild(state.text0);
     state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
 
-    state.text1 = GameInstance.add.text(200,-20, setText().setA[1]);
+    state.text1 = GameInstance.add.text(200,-20, setText().set0[1]);
     btnradio1.addChild(state.text1);
     state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
 
-    state.text2 = GameInstance.add.text(200,-20, setText().setA[2]);
+    state.text2 = GameInstance.add.text(200,-20, setText().set0[2]);
     btnradio2.addChild(state.text2);
     state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
 
-    state.text3 = GameInstance.add.text(200,-20, setText().setA[3]);
+    state.text3 = GameInstance.add.text(200,-20, setText().set0[3]);
     btnradio3.addChild(state.text3);
     state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 
     else if (mcq == 1) {
     //Add the texts
-    state.text0 = GameInstance.add.text(200,-20, setText().setB[0]);
+    state.text0 = GameInstance.add.text(200,-20, setText().set1[0]);
     btnradio0.addChild(state.text0);
     state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
 
-    state.text1 = GameInstance.add.text(200,-20, setText().setB[1]);
+    state.text1 = GameInstance.add.text(200,-20, setText().set1[1]);
     btnradio1.addChild(state.text1);
     state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
 
-    state.text2 = GameInstance.add.text(200,-20, setText().setB[2]);
+    state.text2 = GameInstance.add.text(200,-20, setText().set1[2]);
     btnradio2.addChild(state.text2);
     state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
 
-    state.text3 = GameInstance.add.text(200,-20, setText().setB[3]);
+    state.text3 = GameInstance.add.text(200,-20, setText().set1[3]);
     btnradio3.addChild(state.text3);
     state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 
     else if (mcq == 2) {
     //Add the texts
-    state.text0 = GameInstance.add.text(200,-20, setText().setC[0]);
+    state.text0 = GameInstance.add.text(200,-20, setText().set2[0]);
     btnradio0.addChild(state.text0);
     state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
-    state.text1 = GameInstance.add.text(200,-20, setText().setC[1]);
+    state.text1 = GameInstance.add.text(200,-20, setText().set2[1]);
     btnradio1.addChild(state.text1);
     state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
-    state.text2 = GameInstance.add.text(200,-20, setText().setC[2]);
+    state.text2 = GameInstance.add.text(200,-20, setText().set2[2]);
     btnradio2.addChild(state.text2);
     state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
-    state.text3 = GameInstance.add.text(200,-20, setText().setC[3]);
+    state.text3 = GameInstance.add.text(200,-20, setText().set2[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+
+     else if (mcq == 3) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set3[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set3[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set3[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set3[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 4) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set4[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set4[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set4[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set4[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 5) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set5[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set5[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set5[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set5[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 6) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set6[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set6[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set6[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set6[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 7) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set7[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set7[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set7[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set7[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 8) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set8[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set8[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set8[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set8[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 9) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set9[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set9[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set9[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set9[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 10) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set10[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set10[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set10[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set10[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 11) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set11[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set11[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set11[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set11[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 12) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set12[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set12[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set12[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set12[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 13) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set13[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set13[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set13[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set13[3]);
+    btnradio3.addChild(state.text3);
+    state.text3.fontSize = 100;
+    state.text3.fontWeight = 'normal'; }
+     else if (mcq == 14) {
+    //Add the texts
+    state.text0 = GameInstance.add.text(200,-20, setText().set14[0]);
+    btnradio0.addChild(state.text0);
+    state.text0.fontSize = 100;
+    state.text0.fontWeight = 'normal';
+    
+    state.text1 = GameInstance.add.text(200,-20, setText().set14[1]);
+    btnradio1.addChild(state.text1);
+    state.text1.fontSize = 100;
+    state.text1.fontWeight = 'normal';
+    
+    state.text2 = GameInstance.add.text(200,-20, setText().set14[2]);
+    btnradio2.addChild(state.text2);
+    state.text2.fontSize = 100;
+    state.text2.fontWeight = 'normal';
+    
+    state.text3 = GameInstance.add.text(200,-20, setText().set14[3]);
     btnradio3.addChild(state.text3);
     state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
@@ -423,9 +940,21 @@ function setText(){
     textBundle2 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
     textBundle3 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
     textBundle4 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle5 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle6 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle7 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle8 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle9 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle10 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle11 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle12 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle13 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle14 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
    
     
-    return {setA:textBundle0, setB:textBundle1, setC:textBundle2};
+    return {set0:textBundle0, set1:textBundle1, set2:textBundle2,set3:textBundle3, set4:textBundle4, 
+            set5:textBundle5, set6:textBundle6, set7:textBundle7, set8:textBundle8,set9:textBundle9, 
+            set10:textBundle10, set11:textBundle11,set12:textBundle12, set13:textBundle13, set14:textBundle14, };
 }
 
 
