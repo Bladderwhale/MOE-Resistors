@@ -138,7 +138,7 @@ function updateInputBoxPosition(defaultFontSize, id, xOffSet, yOffSet, width, he
     textScale = gameInstance.game.scale.scaleFactorInversed.x;
     widthScale = gameInstance.game.scale.scaleFactorInversed.x;
     heightScale = gameInstance.game.scale.scaleFactorInversed.y;
-    document.getElementById(id).style.fontSize = (defaultFontSize ) + "em";
+    document.getElementById(id).style.fontSize = (defaultFontSize * textScale) + "em";
     document.getElementById(id).style.width = ((width * widthScale) + "px");
     document.getElementById(id).style.height = ((height * heightScale) + "px");
     document.getElementById(id).style.left = (x + "px");

@@ -50,12 +50,14 @@ function loadAssets() {
     GameInstance.load.image('dial1', 'assets/dialogbox1.png');
     GameInstance.load.image('dial2', 'assets/dialogbox2.png');
     GameInstance.load.image('dial3', 'assets/dialogbox3.png');
+    GameInstance.load.image('dial4', 'assets/dialogbox4.png');
     GameInstance.load.image('tick0', 'assets/tick0.png');
     GameInstance.load.image('cross0','assets/cross0.png');
     GameInstance.load.image('circle','assets/circle.png');
     GameInstance.load.image('final','assets/final.png');
     GameInstance.load.image('btnradiochecked', 'assets/btnradiochecked.png');
     GameInstance.load.image('btnradiounchecked', 'assets/btnradiounchecked.png');
+ 
 };
 
 function coorindates(state) {
@@ -100,6 +102,9 @@ function home(state){
         check = 0;
         qns = 0;
         total = 0;
+        maxCheck = 0;
+        maxQns = 0;
+        demo.randomMCQ = [0,1,2];
         GameInstance.state.start("state1");
     },this)
    

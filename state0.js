@@ -23,7 +23,7 @@ demo.state0.prototype = {
         //Testing purposes for frameAPI
         GameInstance.canvas.id = "mainCanvas";
         scalingCanvasWindow(1500, 1000, this);
-        cursorUpdate(this.dots, 2, 2, this);
+        //cursorUpdate(this.dots, 2, 2, this);
         //updateInputBoxPosition(11,"mainCanvas",0,0,800,600,true,this);
     },
     preload: function(){
