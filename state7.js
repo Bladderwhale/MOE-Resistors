@@ -4,7 +4,7 @@ var maxQns = 0;
 demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 var boolNext = false;
 demo.state7 = function(){};
-demo.state7.prototype = {resistors:{r2:null}, n: 0, btnNext: null, txtNext: null,
+demo.state7.prototype = {resistors:{r2:null}, n: 0,
     preload: function(){loadAssets();},
     create: function(){
         GameInstance.stage.backgroundColor = '#DDDDDD';
@@ -26,23 +26,23 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, btnNext: null, txtNext: null
         mcq = demo.randomMCQ[0];
         demo.randomMCQ.splice(0,1);
         //Add restart and end
-        this.btnRestart = GameInstance.add.button(950+100,820,'button');
+        this.btnRestart = GameInstance.add.button(950+100,820+50,'button');
         this.btnRestart.scale.setTo(0.5,0.5);
-        this.txtRestart = GameInstance.add.text(970+110,830, 'Restart');
-        this.btnEnd = GameInstance.add.button(1100+100,820,'button');
+        this.txtRestart = GameInstance.add.text(970+110,830+50, 'Restart');
+        this.btnEnd = GameInstance.add.button(1100+100,820+50,'button');
         this.btnEnd.scale.setTo(0.5,0.5);
-        this.txtEnd = GameInstance.add.text(1120+125,830, 'End');
-        this.btnNext = GameInstance.add.button(1100+50,820, 'button');
-        this.btnNext.scale.setTo(0.7,0.55);
-        this.txtNext = GameInstance.add.text(1115+50,830,"Next Question");
+        this.txtEnd = GameInstance.add.text(1120+125,830+50, 'End');
+        btnNext1 = GameInstance.add.button(1100+50,820, 'button');
+        btnNext1.scale.setTo(0.7,0.55);
+        this.txtNext1 = GameInstance.add.text(1115+50,830,"Next Question");
         this.btnRestart.visible = false;
         this.txtRestart.visible = false;
         this.btnEnd.visible = false;
         this.txtEnd.visible = false;
-        this.btnNext.visible = false;
-        this.txtNext.visible = false;
+        btnNext1.visible = false;
+        this.txtNext1.visible = false;
         //Events next qns
-        this.btnNext.events.onInputDown.add(function(){
+        btnNext1.events.onInputDown.add(function(){
             maxCheck = 0;
             GameInstance.state.start('state7');
             maxQns++;},
@@ -240,16 +240,18 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, btnNext: null, txtNext: null
         //console.log("X: " + this.dots.x + " Y: " + this.dots.y);
         //console.log("What is value of n: " + this.n);
         //console.log(this.boolCheck)
-        //console.log("What is the value of maxCheck: " + maxCheck);
+        console.log("What is the value of maxCheck: " + maxCheck);
         console.log("What is the value of maxQns: " + maxQns);
         
         if (maxQns == 4 && maxCheck == 4) {
+            btnNext1.visible = false;
+            this.txtNext1.visible = false;
             this.btnCheck.visible = false;
             this.txtCheck.visible = false;
-            this.btnNext.visible = false;
-            this.txtNext.visible = false;
             this.btnRestart.visible = true;
             this.txtRestart.visible = true;
+            this.btnEnd.visible = true;
+            this.txtEnd.visible = true;
         }
         
         if (maxCheck == 1) {
@@ -294,8 +296,9 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, btnNext: null, txtNext: null
 
             this.btnCheck.visible = false;
             this.txtCheck.visible = false;
-            this.btnNext.visible = true;
-            this.txtNext.visible = true;
+            if (maxCheck == 4 && maxQns != 4){
+            btnNext1.visible = true;
+            this.txtNext1.visible = true}
         }
        
         if (mcq == 0 && maxCheck == 4) {
