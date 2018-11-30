@@ -128,7 +128,8 @@ demo.state5.prototype = {
             this.dial3 = GameInstance.add.sprite(GameInstance.world.centerX - 400, GameInstance.world.centerY - 90, 'dial3');
             this.tick3 = GameInstance.add.sprite(470, 0, 'tick0');
             this.cross3 = GameInstance.add.sprite(470, 0, 'cross0');
-            this.gameAnswersUpdated3 = GameInstance.add.text(55, 70, "This band represents the tolerance of the resistor. When \nresistors are made, the actual resistance value may vary \nfrom its expected value. \nThe tolerance value of 5% indicates that the resistance can \nvary by 5% and is included in the resistance value.");
+            this.dial3.scale.setTo(1,1.05);
+            this.gameAnswersUpdated3 = GameInstance.add.text(55, 50, "This band represents the tolerance of the resistor. When \nresistors are made, the actual resistance value may vary \nfrom its expected value. \n\nThe tolerance value of 5% indicates that the resistance can \nvary by 5% and is included in the resistance value.");
             this.gameAnswersUpdated3.fontWeight = 'normal';
             this.dial3.addChild(this.gameAnswersUpdated3);
             this.dial3.addChild(this.tick3);
@@ -220,7 +221,15 @@ demo.state5.prototype = {
         timer = GameInstance.time.create(false);
         timer.loop(2000,function(){total++},this);
         //timer.start();
-        this.btnPractice.events.onInputDown.add(function(){GameInstance.state.start('state7');},this);
+        this.btnPractice.events.onInputDown.add(function(){
+            check = 0;
+            qns = 0;
+            total = 0;
+            maxCheck = 0;
+            maxQns = 0;
+            boolTween = false;
+            qnsNum = 1;
+            demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];GameInstance.state.start('state7');},this);
 
         //Create the question title
         this.questionTitle = GameInstance.add.text(GameInstance.world.centerX - 300, GameInstance.world.centerY - 350, "What is the value of the 1st band?");
@@ -399,8 +408,8 @@ demo.state5.prototype = {
                 this.finalanswer.addFontWeight("bold", 14)
                 this.finalanswer.addFontWeight("normal", 25)
                 this.finalanswer1 = GameInstance.add.text(GameInstance.world.centerX - 500, GameInstance.world.centerY + 200, "1.5 k\u2126");
-                this.finalanswer2 = GameInstance.add.text(GameInstance.world.centerX - 350, GameInstance.world.centerY + 150, "-5%");
-                this.finalanswer3 = GameInstance.add.text(GameInstance.world.centerX - 350, GameInstance.world.centerY + 250, "+5%");
+                this.finalanswer2 = GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 125, "-5%");
+                this.finalanswer3 = GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 275, "+5%");
                 this.finalanswer5 = GameInstance.add.text(GameInstance.world.centerX - 100, GameInstance.world.centerY + 140, "0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
                 this.final = GameInstance.add.sprite(0, 0, "final");
                 this.final.position.setTo(0, 150);

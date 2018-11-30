@@ -4,6 +4,7 @@ var maxQns = 0;
 demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 var boolNext = false;
 var boolTween = false;
+var qnsNum = 1;
 demo.state7 = function(){};
 demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
     preload: function(){loadAssets();},
@@ -50,7 +51,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
                 maxCheck = 0;
                 maxQns = 0;
                 boolTween = false;
-                this.qnsNum = 1;
+                qnsNum = 1;
                 demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
                 GameInstance.state.start("state7");
         },this);
@@ -62,7 +63,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             maxCheck = 0;
             maxQns = 0;
             boolTween = false;
-            this.qnsNum = 1;
+            qnsNum = 1;
             demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
             GameInstance.state.start("state1");
     },this);
@@ -71,7 +72,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             maxCheck = 0;
             GameInstance.state.start('state7');
             maxQns++;
-            this.qnsNum++;
+            qnsNum++;
             boolTween = false;
             },
             this);
@@ -120,7 +121,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         this.questionTitle.anchor.setTo(0.5,0.5);
         this.questionTitle.fontSize = 40;
         drawMiniRect();
-        this.questionNum = GameInstance.add.text(GameInstance.world.centerX-540,GameInstance.world.centerY-320, "MCQ: " + this.qnsNum + "/5");
+        this.questionNum = GameInstance.add.text(GameInstance.world.centerX-540,GameInstance.world.centerY-320, "MCQ: " + qnsNum + "/5");
 
         coorindates(this);
         this.btnCheck.events.onInputDown.add(function(){
@@ -244,7 +245,10 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             btnradio1.inputEnabled = false;
             btnradio2.inputEnabled = false;
             btnradio3.inputEnabled = false;
-
+            this.input0.alpha = 1;
+            this.input1.alpha = 1;
+            this.input2.alpha = 1;
+            this.input3.alpha = 1;
             this.tween.start();
             this.tween2.start();
 
@@ -533,6 +537,12 @@ function newQuestions(state, height0, height1, height2, height3){
         font: '70px Arial',
         max:0,
     });
+    
+    state.input0.alpha = 0;
+    state.input1.alpha = 0;
+    state.input2.alpha = 0;
+    state.input3.alpha = 0;
+    
     state.input0.events.onInputOver.add(function(){
         GameInstance.canvas.style.cursor ="default"
     }, this);
@@ -566,9 +576,9 @@ function newQuestions(state, height0, height1, height2, height3){
     state.correctAnswer = GameInstance.add.text(state.dial4.x + 50, state.dial4.y + 10, "Correct Answer");
     state.correctAnswer.fontWeight = 'normal';
     ellipseGraphics = GameInstance.add.graphics(0,0);
-    ellipseGraphics.lineStyle(1,0x32CD32,1);
-    ellipseGraphics.drawEllipse(0,0,100,30);
-    ellipseGraphics.position.setTo(btnradio0.x+150,btnradio0.y+15);
+    ellipseGraphics.lineStyle(4,0x32CD32,1);
+    ellipseGraphics.drawEllipse(0,0,115,35);
+    ellipseGraphics.position.setTo(btnradio0.x+155,btnradio0.y+15);
     ellipseGraphics.endFill();
     ellipseGraphics.alpha = 0;
     state.dial4.alpha = 0;
@@ -919,22 +929,22 @@ function newQuestions(state, height0, height1, height2, height3){
 }
 
 function setText(){
-    textBundle0 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "44 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle1 = [ "10 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle2 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "33 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle3 = [ "33 \u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle4 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle5 = [ "10 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle6 = [ "33 \u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle7 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle8 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle9 = [ "15 \u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle10 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle11 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle12 = [ "15 \u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle13 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle14 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=47 \u2126 \xB15%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB15% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB15% \n=1000 \u2126 \xB15%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3300 \u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4700 \u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6800\u2126\xB15%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68k \u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=68k \u2126 \xB1 5%"]
+    textBundle0 = [ "22 \u2126 \xB1 5%",  "220 k\u2126 \xB1 5%",  "44 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle1 = [ "100 \u2126 \xB1 5%",  "110 k\u2126 \xB1 5%",  "55 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle2 = [ "220 \u2126 \xB1 5%",  "220 k\u2126 \xB1 5%",  "33 k\u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle3 = [ "330 \u2126 \xB1 5%",  "3.3k \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle4 = [ "470 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "240 k\u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle5 = [ "100 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "74 k\u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle6 = [ "3.3 k\u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 k\u2126 \xB1 5%"];
+    textBundle7 = [ "4.7 k\u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "550 k\u2126 \xB1 5%",  "55 k\u2126 \xB1 5%"];
+    textBundle8 = [ "6.8 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
+    textBundle9 = [ "15 k\u2126 \xB1 5%",  "150 k\u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 k\u2126 \xB1 5%"];
+    textBundle10 = [ "47 k\u2126 \xB1 5%",  "470 k\u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
+    textBundle11 = [ "68 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 k\u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle12 = [ "150 k\u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 k\u2126 \xB1 5%"];
+    textBundle13 = [ "220 k\u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
+    textBundle14 = [ "680 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
    
     
     return {set0:textBundle0, set1:textBundle1, set2:textBundle2,set3:textBundle3, set4:textBundle4, 
