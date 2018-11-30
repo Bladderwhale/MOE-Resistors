@@ -31,7 +31,7 @@ demo.state1.prototype = {
         this.addPracticeBtn.position.setTo(GameInstance.world.centerX+250, GameInstance.world.centerY+300);
         this.addPracticeBtn.anchor.setTo(0.5,0.5);
         coorindates(this);
-
+        this.addPracticeBtn.events.onInputDown.add(function(){GameInstance.state.start("state7");}, this);
         
         //Texts
         this.txtLearn.position.setTo(this.addLearnBtn.x, this.addLearnBtn.y);

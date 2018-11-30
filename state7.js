@@ -3,8 +3,9 @@ var maxCheck = 0 ;
 var maxQns = 0;
 demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 var boolNext = false;
+var boolTween = false;
 demo.state7 = function(){};
-demo.state7.prototype = {resistors:{r2:null}, n: 0,
+demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
     preload: function(){loadAssets();},
     create: function(){
         GameInstance.stage.backgroundColor = '#DDDDDD';
@@ -32,20 +33,47 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
         this.btnEnd = GameInstance.add.button(1100+100,820+50,'button');
         this.btnEnd.scale.setTo(0.5,0.5);
         this.txtEnd = GameInstance.add.text(1120+125,830+50, 'End');
-        btnNext1 = GameInstance.add.button(1100+50,820, 'button');
+        btnNext1 = GameInstance.add.button(1100+60,820, 'button');
         btnNext1.scale.setTo(0.7,0.55);
-        this.txtNext1 = GameInstance.add.text(1115+50,830,"Next Question");
+        this.txtNext1 = GameInstance.add.text(1115+60,830,"Next Question");
         this.btnRestart.visible = false;
         this.txtRestart.visible = false;
         this.btnEnd.visible = false;
         this.txtEnd.visible = false;
         btnNext1.visible = false;
         this.txtNext1.visible = false;
+        //
+        this.btnRestart.events.onInputDown.add(function(){
+                check = 0;
+                qns = 0;
+                total = 0;
+                maxCheck = 0;
+                maxQns = 0;
+                boolTween = false;
+                this.qnsNum = 1;
+                demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+                GameInstance.state.start("state7");
+        },this);
+        //
+        this.btnEnd.events.onInputDown.add(function(){
+            check = 0;
+            qns = 0;
+            total = 0;
+            maxCheck = 0;
+            maxQns = 0;
+            boolTween = false;
+            this.qnsNum = 1;
+            demo.randomMCQ = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+            GameInstance.state.start("state1");
+    },this);
         //Events next qns
         btnNext1.events.onInputDown.add(function(){
             maxCheck = 0;
             GameInstance.state.start('state7');
-            maxQns++;},
+            maxQns++;
+            this.qnsNum++;
+            boolTween = false;
+            },
             this);
         //Center
         if (mcq == 0 && maxQns<5) {
@@ -92,91 +120,18 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
         this.questionTitle.anchor.setTo(0.5,0.5);
         this.questionTitle.fontSize = 40;
         drawMiniRect();
+        this.questionNum = GameInstance.add.text(GameInstance.world.centerX-540,GameInstance.world.centerY-320, "MCQ: " + this.qnsNum + "/5");
 
         coorindates(this);
         this.btnCheck.events.onInputDown.add(function(){
             if (this.n == 0) 
             {
                 boolNext = true;
+                boolTween = true;
                 maxCheck = 4
                 this.tick.alpha = 1;
                 this.dial4.alpha = 1;
                 this.correctAnswer.alpha = 1;
-                if (mcq == 0) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 1) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 2) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 3) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 4) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 5) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 6) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 7) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 8) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 9) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 10) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 11) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 12) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 13) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
-                if (mcq == 14) {
-                this.input0.setText(" 4");
-                this.input1.setText(" 7");
-                this.input2.setText(" 1");
-                this.input3.setText(" 5"); }
             }
             else if (this.n == 1 && maxCheck < 4) {
                 maxCheck++;
@@ -292,7 +247,9 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
 
             this.tween.start();
             this.tween2.start();
-            this.tween3.start();
+
+            if (boolTween == false) {
+            this.tween3.start(); }
 
             this.btnCheck.visible = false;
             this.txtCheck.visible = false;
@@ -300,96 +257,112 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
             btnNext1.visible = true;
             this.txtNext1.visible = true}
         }
-       
+        //\xB1
+        //\u2126
         if (mcq == 0 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
+            this.input0.setText(" 2");
+            this.input1.setText(" 2");
             this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[0]);
         }
         if (mcq == 1 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 1");
+            this.input1.setText(" 0");
+            this.input2.setText(" 10");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[1]);
         }
         if (mcq == 2 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 2");
+            this.input1.setText(" 2");
+            this.input2.setText(" 10");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[2]);
         }
         if (mcq == 3 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 3");
+            this.input1.setText(" 3");
+            this.input2.setText(" 10");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[3]);
         }
         if (mcq == 4 && maxCheck == 4) {
             this.input0.setText(" 4");
             this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input2.setText(" 10");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[4]);
         }
         if (mcq == 5 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 1");
+            this.input1.setText(" 0");
+            this.input2.setText(" 100");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[5]);
         }
         if (mcq == 6 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 3");
+            this.input1.setText(" 3");
+            this.input2.setText(" 100");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[6]);
         }
         if (mcq == 7 && maxCheck == 4) {
             this.input0.setText(" 4");
             this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input2.setText(" 100");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[7]);
         }
         if (mcq == 8 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 6");
+            this.input1.setText(" 8");
+            this.input2.setText(" 100");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[8]);
         }
         if (mcq == 9 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 1");
+            this.input1.setText(" 5");
+            this.input2.setText(" 1k");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[9]);
         }
         if (mcq == 10 && maxCheck == 4) {
             this.input0.setText(" 4");
             this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input2.setText(" 1k");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[10]);
         }
         if (mcq == 11 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 6");
+            this.input1.setText(" 8");
+            this.input2.setText(" 1k");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[11]);
         }
         if (mcq == 12 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
+            this.input0.setText(" 1");
+            this.input1.setText(" 5");
             this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[12]);
         }
         if (mcq == 13 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 2");
+            this.input1.setText(" 2");
+            this.input2.setText(" 10k");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[13]);
         }
         if (mcq == 14 && maxCheck == 4) {
-            this.input0.setText(" 4");
-            this.input1.setText(" 7");
-            this.input2.setText(" 1");
-            this.input3.setText(" 5");
+            this.input0.setText(" 6");
+            this.input1.setText(" 8");
+            this.input2.setText(" 10k");
+            this.input3.setText(" \xB1"+"5%");
+            this.correctAnswer.setText(setText().textAnswer[14]);
         }
         switch(this.n) {
             case 0: 
@@ -445,85 +418,91 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0,
 function newQuestions(state, height0, height1, height2, height3){
     if (mcq == 0) {
     console.log("This is preset 0");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r1");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image0");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 1) {
     console.log("This is preset 1");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r2");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image1");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 2) {
     console.log("This is preset 2");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r3");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image2");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 3) {
     console.log("This is preset 3");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r4");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image3");
+    state.resistors.r.scale.setTo(0.35,0.35);
+    state.resistors.r.anchor.setTo(0.5,0.5);
+    state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
+    else if (mcq == 4) {
+    console.log("This is preset 4");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image4");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 5) {
     console.log("This is preset 5");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image5");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 6) {
     console.log("This is preset 6");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image6");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 7) {
-    console.log("This is preset 7");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 8");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image7");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 8) {
-    console.log("This is preset 8");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 9");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image8");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 9) {
-    console.log("This is preset 9");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 10");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image9");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 10) {
-    console.log("This is preset 10");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 11");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image10");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 11) {
-    console.log("This is preset 11");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 12");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image11");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 12) {
-    console.log("This is preset 12");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 13");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image12");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 13) {
-    console.log("This is preset 13");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    console.log("This is preset 14");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image13");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
     else if (mcq == 14) {
     console.log("This is preset 14");
-    state.resistors.r = GameInstance.add.sprite(0,0,"r5");
+    state.resistors.r = GameInstance.add.sprite(0,0,"image14");
     state.resistors.r.scale.setTo(0.35,0.35);
     state.resistors.r.anchor.setTo(0.5,0.5);
     state.resistors.r.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);}
@@ -549,7 +528,7 @@ function newQuestions(state, height0, height1, height2, height3){
         max:0,
     });
     state.input3 = GameInstance.add.inputField(100,-60,{
-        width:100,
+        width:140,
         height:100,
         font: '70px Arial',
         max:0,
@@ -599,11 +578,13 @@ function newQuestions(state, height0, height1, height2, height3){
     state.tween3 = GameInstance.add.tween(ellipseGraphics).to({alpha:1},1500,Phaser.Easing.Linear.None);
     //Add the ticks and cross
     state.tick = GameInstance.add.sprite(btnradio0.x - 100,btnradio0.y + 5,'tick0');
-    state.tick.anchor.setTo(-2.35,0.2);
+    state.tick.anchor.setTo(-1.65,0.2);
     state.tick.alpha = 0;
+    state.tick.scale.setTo(1.3,1.3);
     state.cross = GameInstance.add.sprite(0,0,'cross0');
-    state.cross.anchor.setTo(-2.35,0.15);
+    state.cross.anchor.setTo(-1.65,0.15);
     state.cross.alpha = 0;
+    state.cross.scale.setTo(1.3,1.3);
 
     //Add the btnCheck
     state.btnCheck = GameInstance.add.button(1100+100,820, 'button');
@@ -938,26 +919,29 @@ function newQuestions(state, height0, height1, height2, height3){
 }
 
 function setText(){
-    textBundle0 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle1 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle2 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle3 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle4 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle5 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle6 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle7 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle8 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle9 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle0 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "44 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle1 = [ "10 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle2 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "33 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle3 = [ "33 \u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle4 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle5 = [ "10 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle6 = [ "33 \u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle7 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle8 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle9 = [ "15 \u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
     textBundle10 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle11 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle12 = [ "15 \u2126 \xB1 5%",  "350 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle13 = [ "47 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle14 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle11 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textBundle12 = [ "15 \u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
+    textBundle13 = [ "22 \u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
+    textBundle14 = [ "68 \u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
+    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=47 \u2126 \xB15%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB15% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB15% \n=1000 \u2126 \xB15%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3300 \u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4700 \u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6800\u2126\xB15%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68k \u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=68k \u2126 \xB1 5%"]
    
     
     return {set0:textBundle0, set1:textBundle1, set2:textBundle2,set3:textBundle3, set4:textBundle4, 
             set5:textBundle5, set6:textBundle6, set7:textBundle7, set8:textBundle8,set9:textBundle9, 
-            set10:textBundle10, set11:textBundle11,set12:textBundle12, set13:textBundle13, set14:textBundle14, };
+            set10:textBundle10, set11:textBundle11,set12:textBundle12, set13:textBundle13, set14:textBundle14, 
+            textAnswer:textAnswer
+        };
 }
 
 

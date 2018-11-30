@@ -299,13 +299,15 @@ demo.state5.prototype = {
                 total = 0;
             }
             else if (qns == 3) {
-
+                this.t3.alpha = 1;
+                this.t3.position.setTo(GameInstance.world.centerX + 400, GameInstance.world.centerY - 100); 
                 this.dial0.alpha = 0;
                 this.dial3.alpha = 1;
                 this.cross3.alpha = 0;
                 this.tick3.alpha = 0;
                 qns = 4;
-                input4.setText("\xB1" + "5%");
+                tween33.start();
+                input4.setText("\xB1" + "");
                 input4.endFocus();
             }
         }, this);
@@ -660,6 +662,12 @@ demo.state5.prototype = {
         this.answers22.alpha = 0;
         tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:725, y:338},1500,Phaser.Easing.Linear.None);
 
+        this.answers33 = GameInstance.add.text(1087,401,'5%');
+        this.answers33.addColor("#000000",0);
+        this.answers33.fontSize = 22;
+        this.answers33.fontWeight = "normal";
+        this.answers33.alpha = 0;
+        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},750,Phaser.Easing.Linear.None).to({x:793, y:338},750,Phaser.Easing.Linear.None);
         
     },
     update: function () {
@@ -667,8 +675,8 @@ demo.state5.prototype = {
         //console.log("What is value of qns: " + qns);
         //console.log("What is the value of check: " + check)
         //console.log("What is the value of getAnswers: " + getAnswers(3,"red").hints2);
-        console.log("Update counter for timer: "+ total);
-        //console.log("X: " + this.dots.x + " Y: " + this.dots.y);
+        //console.log("Update counter for timer: "+ total);
+        console.log("X: " + this.dots.x + " Y: " + this.dots.y);
         var d = /\d/;
         if (qns == 0 && d.test(input.value)){
             btnCheck.alpha = 1;

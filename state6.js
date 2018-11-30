@@ -288,7 +288,10 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.cross3.alpha = 0;
             this.tick3.alpha = 0;
             qns = 4;
-            input4.setText("\xB1"+"5%"); 
+            this.t3.alpha = 1;
+            this.t3.position.setTo(GameInstance.world.centerX + 400, GameInstance.world.centerY - 100); 
+            tween33.start();
+            input4.setText("\xB1"+""); 
             input4.endFocus();
             }
         },this);
@@ -384,7 +387,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.finalanswer5= GameInstance.add.text(GameInstance.world.centerX-100,GameInstance.world.centerY+140,"0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
             this.final = GameInstance.add.sprite(0,0,"final");
             this.final.position.setTo(0,150);
-
+            
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
 
@@ -642,7 +645,12 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
          this.answers22.alpha = 0;
          tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:725, y:338},1500,Phaser.Easing.Linear.None);
         
-        
+         this.answers33 = GameInstance.add.text(1087,401,'5%');
+        this.answers33.addColor("#000000",0);
+        this.answers33.fontSize = 22;
+        this.answers33.fontWeight = "normal";
+        this.answers33.alpha = 0;
+        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},750,Phaser.Easing.Linear.None).to({x:793, y:338},750,Phaser.Easing.Linear.None);
     },
     update: function(){
     //console.log("What is value of input: " + input2.value);
