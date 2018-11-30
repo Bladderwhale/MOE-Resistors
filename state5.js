@@ -220,7 +220,7 @@ demo.state5.prototype = {
         timer = GameInstance.time.create(false);
         timer.loop(2000,function(){total++},this);
         //timer.start();
-
+        this.btnPractice.events.onInputDown.add(function(){GameInstance.state.start('state7');},this);
 
         //Create the question title
         this.questionTitle = GameInstance.add.text(GameInstance.world.centerX - 300, GameInstance.world.centerY - 350, "What is the value of the 1st band?");

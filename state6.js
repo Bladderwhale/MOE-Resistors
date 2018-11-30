@@ -39,6 +39,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.btnPractice.visible = false;
         this.txtPractice.visible = false;
         this.btnLearnExample.events.onInputDown.add(function(){qns = 0; check = 0; total =0;GameInstance.state.start('state' +   this.randomNumbers());},this);
+        this.btnPractice.events.onInputDown.add(function(){GameInstance.state.start('state7');},this);
         //Input
         input = GameInstance.add.inputField(655, 336,{
             width:30,
