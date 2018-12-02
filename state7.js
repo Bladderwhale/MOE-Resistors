@@ -350,7 +350,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         if (mcq == 12 && maxCheck == 4) {
             this.input0.setText(" 1");
             this.input1.setText(" 5");
-            this.input2.setText(" 1");
+            this.input2.setText(" 10k");
             this.input3.setText(" \xB1"+"5%");
             this.correctAnswer.setText(setText().textAnswer[12]);
         }
@@ -944,7 +944,7 @@ function setText(){
     textBundle12 = [ "150 k\u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 k\u2126 \xB1 5%"];
     textBundle13 = [ "220 k\u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
     textBundle14 = [ "680 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
+    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=150 k\u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
    
     
     return {set0:textBundle0, set1:textBundle1, set2:textBundle2,set3:textBundle3, set4:textBundle4, 
