@@ -204,8 +204,8 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             this.txtNext1.visible = false;
             this.btnCheck.visible = false;
             this.txtCheck.visible = false;
-            this.btnRestart.visible = true;
-            this.txtRestart.visible = true;
+            this.btnRestart.visible = false;//true
+            this.txtRestart.visible = false;//true
             this.btnEnd.visible = true;
             this.txtEnd.visible = true;
         }
