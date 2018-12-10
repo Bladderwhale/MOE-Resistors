@@ -9,7 +9,7 @@ function addKeyCallback (key, fn , args) { //Global Function (All scripts can ac
 };
 
 function addChangeStateEventListers() { //Global Function (All scripts can access to it)
-    addKeyCallback(Phaser.Keyboard.ZERO, changeState, 0); //Second step@
+  /*  addKeyCallback(Phaser.Keyboard.ZERO, changeState, 0); //Second step@
     addKeyCallback(Phaser.Keyboard.ONE, changeState, 1);
     addKeyCallback(Phaser.Keyboard.TWO, changeState, 2);
     addKeyCallback(Phaser.Keyboard.THREE, changeState, 3);
@@ -21,7 +21,7 @@ function addChangeStateEventListers() { //Global Function (All scripts can acces
     addKeyCallback(Phaser.Keyboard.NINE, changeState, 9);
     addKeyCallback(Phaser.Keyboard.NUMPAD_0, changeState, 10);
     addKeyCallback(Phaser.Keyboard.NUMPAD_1, changeState, 11);
-    addKeyCallback(Phaser.Keyboard.NUMPAD_2, changeState, 12);
+    addKeyCallback(Phaser.Keyboard.NUMPAD_2, changeState, 12); */
 };
 
 //Preload all the game assets.
