@@ -73,7 +73,7 @@ function coorindates(state) {
 function addBtn(state) {
     state.addPracticeBtn = GameInstance.add.button(0,0,'button');
     state.addLearnBtn = GameInstance.add.button(0,0,'button');
-    state.txtLearn = GameInstance.add.text(0,0, "Learn");
+    state.txtLearn = GameInstance.add.text(0,0, "Lesson");
     state.txtPractice = GameInstance.add.text(0,0, "Practice");
     state.txtLearn.anchor.setTo(0.5,0.5);;
     state.txtPractice.anchor.setTo(0.5,0.5);
