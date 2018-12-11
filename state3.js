@@ -14,7 +14,7 @@ demo.state3.prototype = {resistors:{},
         
         
         //Phaser.text
-        this.txtDesc = GameInstance.add.text(0,0,"The colour combindation of the 4 bands on a resistor tell \nus its resistance value.");
+        this.txtDesc = GameInstance.add.text(0,0,"The colour combindation of the four bands on the resistor\nindicate the resistor's value.");
         this.txtDesc.align = "left";
         this.txtDesc.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY-320);
         this.txtDesc.anchor.setTo(0.5,0.5);
@@ -22,7 +22,7 @@ demo.state3.prototype = {resistors:{},
         
         this.txtDesc.fontWeight = 'normal';
         
-        this.txtDesc = GameInstance.add.text(0,0,"In this lesson, we will learn how to determine the value \nof a resistor using the 4-band colour combination.");
+        this.txtDesc = GameInstance.add.text(0,0,"To interpret this colour combination, we will\nuse the resistor colour codes.");
         this.txtDesc.align = "left";
         this.txtDesc.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY*1.3);
         this.txtDesc.anchor.setTo(0.5,0.5);
@@ -87,6 +87,15 @@ demo.state3.prototype = {resistors:{},
         
         addBtnNext(this);
         this.addbtnNext.events.onInputDown.add(function(){GameInstance.state.start("state4");},this);
+
+        this.btnBack = GameInstance.add.button(0,0,'button');
+        this.txtBack = GameInstance.add.text(0,0, "Back");
+        this.btnBack.scale.setTo(0.5,0.5);
+        this.btnBack.anchor.setTo(0.5,0.5);
+        this.btnBack.position.setTo(GameInstance.world.centerX-550,GameInstance.world.centerY*1.75);
+        this.txtBack.position.setTo(GameInstance.world.centerX-580,GameInstance.world.centerY*1.72);
+
+        this.btnBack.events.onInputDown.add(function(){GameInstance.state.start("state2");},this);
         
        
     },

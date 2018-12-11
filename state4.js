@@ -14,8 +14,8 @@ demo.state4.prototype = {
         home(this);
         
         //Arrow
-        GameInstance.add.sprite(360,642,'arrow2');
-        this.txt= GameInstance.add.text(130,600,"Each band \nhas a value \nbased on the \nresistor colour \ncodes.");
+        //GameInstance.add.sprite(360,642,'arrow2');
+        this.txt= GameInstance.add.text(220,600,"Each band \nhas a value \nbased on the \nresistor colour \ncodes.");
         this.txt.fontWeight = 'normal';
         
       
@@ -163,57 +163,57 @@ demo.state4.prototype = {
         //end
         
         //Grouping for the 2nd table
-        this.t1 = GameInstance.add.sprite(0,0,'t1'); //Add table sprite
+        this.t1 = GameInstance.add.sprite(0,0,'t0'); //Add table sprite
         this.t1.position.setTo(GameInstance.world.centerX-25, GameInstance.world.centerY+200); //Setting the position according the world
         this.t1.anchor.setTo(0.5,0.5); //Make it center.
         
         //Phaser.text(Table texts)
-        this.secondTable.black = GameInstance.add.text(-80,-150,"1 black");
+        this.secondTable.black = GameInstance.add.text(-80,-150,"0 black");
         this.secondTable.black.addColor('#ffffff', 0);
         this.secondTable.black.fontSize = 20;
         this.secondTable.black.fontWeight = 'normal';
         
-        this.secondTable.brown = GameInstance.add.text(-80,-120,"10 brown");
+        this.secondTable.brown = GameInstance.add.text(-80,-120,"1 brown");
         this.secondTable.brown.addColor('#ffffff', 0);
         this.secondTable.brown.fontSize = 20;
         this.secondTable.brown.fontWeight = 'normal';
         
-        this.secondTable.red = GameInstance.add.text(-80,-90,"100 red");
+        this.secondTable.red = GameInstance.add.text(-80,-90,"2 red");
         this.secondTable.red.addColor('#ffffff', 0);
         this.secondTable.red.fontSize = 20;
         this.secondTable.red.fontWeight = 'normal';
         
-        this.secondTable.orange = GameInstance.add.text(-80,-60,"1k orange");
+        this.secondTable.orange = GameInstance.add.text(-80,-60,"3 orange");
         this.secondTable.orange.addColor('#ffffff', 0);
         this.secondTable.orange.fontSize = 20;
         this.secondTable.orange.fontWeight = 'normal';
         
-        this.secondTable.yellow = GameInstance.add.text(-80,-30,"10k yellow");
-        this.secondTable.yellow.addColor('#ffffff', 0);
+        this.secondTable.yellow = GameInstance.add.text(-80,-30,"4 yellow");
+        this.secondTable.yellow.addColor('#000000', 0);
         this.secondTable.yellow.fontSize = 20;
         this.secondTable.yellow.fontWeight = 'normal';
         
-        this.secondTable.green = GameInstance.add.text(-80,0,"100k green");
+        this.secondTable.green = GameInstance.add.text(-80,0,"5 green");
         this.secondTable.green.addColor('#ffffff', 0);
         this.secondTable.green.fontSize = 20;
         this.secondTable.green.fontWeight = 'normal';
         
-        this.secondTable.blue = GameInstance.add.text(-80,30,"1M blue");
+        this.secondTable.blue = GameInstance.add.text(-80,30,"6 blue");
         this.secondTable.blue.addColor('#ffffff', 0);
         this.secondTable.blue.fontSize = 20;
         this.secondTable.blue.fontWeight = 'normal';
         
-        this.secondTable.purple = GameInstance.add.text(-80,60,"10M purple");
+        this.secondTable.purple = GameInstance.add.text(-80,60,"7 purple");
         this.secondTable.purple.addColor('#ffffff', 0);
         this.secondTable.purple.fontSize = 20;
         this.secondTable.purple.fontWeight = 'normal';
         
-        this.secondTable.grey = GameInstance.add.text(-80,90,"0.01 silver");
+        this.secondTable.grey = GameInstance.add.text(-80,90,"8 grey");
         this.secondTable.grey.addColor('#000000', 0);
         this.secondTable.grey.fontSize = 20;
         this.secondTable.grey.fontWeight = 'normal';
         
-        this.secondTable.white = GameInstance.add.text(-80,125,"0.1 gold");
+        this.secondTable.white = GameInstance.add.text(-80,125,"9 white");
         this.secondTable.white.addColor('#000000', 0);
         this.secondTable.white.fontSize = 20;
         this.secondTable.white.fontWeight = 'normal';
@@ -257,7 +257,7 @@ demo.state4.prototype = {
         this.thirdTable.orange.fontWeight = 'normal';
         
         this.thirdTable.yellow = GameInstance.add.text(-80,-30,"10k yellow");
-        this.thirdTable.yellow.addColor('#ffffff', 0);
+        this.thirdTable.yellow.addColor('#000000', 0);
         this.thirdTable.yellow.fontSize = 20;
         this.thirdTable.yellow.fontWeight = 'normal';
         

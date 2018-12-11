@@ -15,7 +15,7 @@ demo.state2.prototype = {
         //Coordinates
         coorindates(this);
         //Phaser.text
-        this.txtDesc = GameInstance.add.text(0,0,"They are resistors.\nHow similar and different are they?");
+        this.txtDesc = GameInstance.add.text(0,0,"Look at these resistors.");
         this.txtDesc.align = "center";
         this.txtDesc.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY-350);
         this.txtDesc.anchor.setTo(0.5,0.5);
@@ -40,9 +40,9 @@ demo.state2.prototype = {
         this.txtDesc2.fontSize = 30;
         this.txtDesc3.fontSize = 30;*/
 
-        this.newDesc = GameInstance.add.text(480, 520, "They look similar but the value of each\nresistor is different.");
+        this.newDesc = GameInstance.add.text(480, 510, "They look similar but the value of each\nresistor is different.");
         this.newDesc.fontWeight = 'normal';
-        this.newDesc.fontSize = 35;
+        this.newDesc.fontSize = 30;
         //Home
         home(this);
         
