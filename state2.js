@@ -23,9 +23,9 @@ demo.state2.prototype = {
         this.txtDesc.fontWeight = 'normal';
         
         //Phaser.sprite 
-        this.table = GameInstance.add.sprite(50,25, 'table');
+        //this.table = GameInstance.add.sprite(50,25, 'table');
         //Phaser.text
-        this.txtHeading = GameInstance.add.text(455,525,'Similar');
+        /*this.txtHeading = GameInstance.add.text(455,525,'Similar');
         this.txtHeading1 = GameInstance.add.text(910,525,'Difference');
         this.txtDesc1 = GameInstance.add.text(268,600,"	\u2022 All resistors have the same\n   shape and size."); 
         this.txtDesc2 = GameInstance.add.text(268, 700,"\u2022 All resistors have 4\n  colored bands");
@@ -38,7 +38,11 @@ demo.state2.prototype = {
         this.txtDesc3.align = 'left';
         this.txtDesc1.fontSize = 30;
         this.txtDesc2.fontSize = 30;
-        this.txtDesc3.fontSize = 30;
+        this.txtDesc3.fontSize = 30;*/
+
+        this.newDesc = GameInstance.add.text(480, 520, "They look similar but the value of each\nresistor is different.");
+        this.newDesc.fontWeight = 'normal';
+        this.newDesc.fontSize = 35;
         //Home
         home(this);
         
@@ -76,7 +80,16 @@ demo.state2.prototype = {
         //Adding buttons
         //Using Phaser.buttons
         addBtnNext(this);
-        this.addbtnNext.events.onInputDown.add(function(){GameInstance.state.start("state3");},this)
+        this.addbtnNext.events.onInputDown.add(function(){GameInstance.state.start("state3");},this);
+
+        this.btnBack = GameInstance.add.button(0,0,'button');
+        this.txtBack = GameInstance.add.text(0,0, "Back");
+        this.btnBack.scale.setTo(0.5,0.5);
+        this.btnBack.anchor.setTo(0.5,0.5);
+        this.btnBack.position.setTo(GameInstance.world.centerX-550,GameInstance.world.centerY*1.75);
+        this.txtBack.position.setTo(GameInstance.world.centerX-580,GameInstance.world.centerY*1.72);
+
+        this.btnBack.events.onInputDown.add(function(){GameInstance.state.start("state1");},this);
         
         
       

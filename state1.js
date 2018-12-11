@@ -12,11 +12,11 @@ demo.state1.prototype = {
         background(this);
         //Front page 
         //Using Phaser.text
-        this.title = GameInstance.add.text(0,0,"Determine \nResistance Value\n using \nResistor Color Codes "); 
+        this.title = GameInstance.add.text(0,0,"Determine the\nValue of a Resistor\nusing the\nResistor Colour Codes "); 
         this.title.addFontWeight('normal', 0);
-        this.title.addFontWeight('bold', 9);
-        this.title.addFontWeight('normal', 26);
-        this.title.addFontWeight('bold',32);
+        this.title.addFontWeight('bold', 13);
+        this.title.addFontWeight('normal', 33);
+        this.title.addFontWeight('bold',43);
         this.title.align = "center";
         this.title.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY-150);
         this.title.anchor.setTo(0.5,0.5);
