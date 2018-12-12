@@ -47,6 +47,7 @@ function loadAssets() {
     GameInstance.load.image('t2','assets/table2.png');
     GameInstance.load.image('box0','assets/box0.png');
     GameInstance.load.image('dial0', 'assets/dialogbox0.png');
+    GameInstance.load.image('dial00', 'assets/dialogbox00.png');
     GameInstance.load.image('dial1', 'assets/dialogbox1.png');
     GameInstance.load.image('dial2', 'assets/dialogbox2.png');
     GameInstance.load.image('dial3', 'assets/dialogbox3.png');

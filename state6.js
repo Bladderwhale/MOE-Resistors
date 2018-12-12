@@ -743,15 +743,15 @@ function getAnswers(bandNum, bandColor)
 {
     var colors = ["black", "brown", "red", "orange", "yellow", "green", "blue", "purple", "grey", "white"];
     var answer = "This is the "+ bandNum +" digit of the \nresistance value.";
-    var hints = colors.map(function(x, index){ return "Color code for " + index + " is " + x + ". \nThis band is " + bandColor}); //x takes in items, index take in number.
+    var hints = colors.map(function(x, index){ return "This is incorrect! Color code \nfor " + index + " is " + x + ".This band is " + bandColor}); //x takes in items, index take in number.
     
     var colors2 = ["black", "brown", "red", "orange", "yellow", "green", "blue", "purple", "silver", "gold"];
     var colorsNum2 = ["1", "10", "100", "1k", "10k", "100k", "1M", "10M", "0.01", "0.1"];
-    var hints2 = colors2.map(function(x, index){ return "Color code for " + colorsNum2[index] +" is " + x + ". \nThis band is " + bandColor + "\n"}); 
+    var hints2 = colors2.map(function(x, index){ return "This is incorrect! Color code \nfor " + colorsNum2[index] +" is " + x + ".This band is " + bandColor + "\n"}); 
     
     var colors3 = ["red","gold"];
     var colorsNum3 = ["2%", "5%"];
-    var hints3 = colors3.map(function(x, index){ return "Color code for " + colorsNum3[index] +" is " + x + ". \nThis band is " + bandColor + "\n"}); 
+    var hints3 = colors3.map(function(x, index){ return "This is incorrect! Color code \nfor " + colorsNum3[index] +" is " + x + ".This band is " + bandColor + "\n"}); 
     
     return {hints1: hints, answer: answer, hints2: hints2, hints3: hints3};
     

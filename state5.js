@@ -56,6 +56,7 @@ demo.state5.prototype = {
             height: 30,
             font: '23px Arial',
             max: '9',
+            textAlign: 'center',
             type: PhaserInput.InputType.number
         });
         
@@ -64,6 +65,7 @@ demo.state5.prototype = {
             height: 30,
             font: '23px Arial',
             max: '9',
+            textAlign: 'center',
             type: PhaserInput.InputType.number
         });
         input2.visible = false;
@@ -72,6 +74,7 @@ demo.state5.prototype = {
             width: 40,
             height: 30,
             font: '23px Arial',
+            textAlign: 'center',
             max: '4'
         });
         input3.visible = false;
@@ -81,6 +84,7 @@ demo.state5.prototype = {
             width: 50,
             height: 30,
             font: '23px Arial',
+            textAlign: 'center',
             max: '2',
 
 
@@ -95,12 +99,12 @@ demo.state5.prototype = {
         this.word2.alpha = 0;
 
 
-        this.txtAnswers = ["This is the " + this.bandNum + " digit of the \nresistance value.", "qwe", "Colour code for '2' is red. \nThis band is " + this.bandColor, "Colour code for '3' is orange. \nThis band is " + this.bandColor, "Colour code for '4' is yellow. \nThis band is " + this.bandColor, "Colour code for '5' is green. \nThis band is " + this.bandColor, "Colour code for '6' is blue.\n This band is " + this.bandColor, "Colour code for '7' is purple.\n This band is " + this.bandColor, "Colour code for '8' is grey.\n This band is " + this.bandColor, "Colour code for '9' is white.\n This band is " + this.bandColor, "Colour code for '0' is black.\n This band is " + this.bandColor];
+        this.txtAnswers = ["Correct! This is the " + this.bandNum + " digit of the \nresistance value.", "qwe", "This is incorrect! Colour code \nfor '2' is red. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '3' is orange. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '4' is yellow. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '5' is green. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '6' is blue. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '7' is purple. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '8' is grey. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '9' is white. This band is " + this.bandColor, "This is incorrect! Colour code \nfor '0' is black. This band is " + this.bandColor];
 
 
         //btnCheck
-        btnCheck = GameInstance.add.button(GameInstance.world.centerX + 100, GameInstance.world.centerY, 'box0');
-        txtCheck = GameInstance.add.text(GameInstance.world.centerX + 110, GameInstance.world.centerY + 5, "Check");
+        btnCheck = GameInstance.add.button(GameInstance.world.centerX + 100+40, GameInstance.world.centerY, 'box0');
+        txtCheck = GameInstance.add.text(GameInstance.world.centerX + 110+40, GameInstance.world.centerY + 5, "Check");
         btnCheck.alpha = 0.5;
         txtCheck.alpha = 0.5
 
@@ -136,20 +140,20 @@ demo.state5.prototype = {
             this.dial3.addChild(this.cross3);
             this.dial3.alpha = 0;
             //First two color bands
-            this.dial0 = GameInstance.add.sprite(0, 0, 'dial0');
+            this.dial0 = GameInstance.add.sprite(0, 0, 'dial00');
             this.dial0.anchor.setTo(0.5, 0.5);
             this.dial0.position.setTo(GameInstance.world.centerX - 50, GameInstance.world.centerY - 30);
             this.dial0.alpha = 0;
 
             this.gameAnswers = [];
             for (var i = 0; i < this.txtAnswers.length; i++) {
-                this.gameAnswers[i] = GameInstance.add.text(-115, -10, this.txtAnswers[i]);
+                this.gameAnswers[i] = GameInstance.add.text(-155, -10, this.txtAnswers[i]);
                 this.gameAnswers[i].fontSize = 20;
                 this.gameAnswers[i].fontWeight = 'normal'
                 if (i == 0) {
                     this.gameAnswers[i].addFontWeight('normal', 0);
-                    this.gameAnswers[i].addFontWeight('bold', 11);
-                    this.gameAnswers[i].addFontWeight('normal', 21);
+                    this.gameAnswers[i].addFontWeight('bold', 21);
+                    this.gameAnswers[i].addFontWeight('normal', 31);
                 }
                 //  this.dial0.addChild(this.gameAnswers[i]);
                 this.dial0.addChild(this.gameAnswers[i]);
@@ -210,9 +214,9 @@ demo.state5.prototype = {
         }, this);
 
         //Create the btnShowAnswer
-        btnShowAnswer = GameInstance.add.button(GameInstance.world.centerX + 100, GameInstance.world.centerY, 'box0');
+        btnShowAnswer = GameInstance.add.button(GameInstance.world.centerX + 100+40, GameInstance.world.centerY, 'box0');
         btnShowAnswer.scale.setTo(1.9, 1)
-        txtShowAnswer = GameInstance.add.text(GameInstance.world.centerX + 110, GameInstance.world.centerY + 5, "Show Answer");
+        txtShowAnswer = GameInstance.add.text(GameInstance.world.centerX + 110+40, GameInstance.world.centerY + 5, "Show Answer");
         btnShowAnswer.visible = false;
         txtShowAnswer.visible = false;
 
@@ -316,7 +320,7 @@ demo.state5.prototype = {
                 this.tick3.alpha = 0;
                 qns = 4;
                 tween33.start();
-                input4.setText("\xB1" + "");
+                input4.setText("" + "");
                 input4.endFocus();
             }
         }, this);
@@ -425,9 +429,9 @@ demo.state5.prototype = {
 
         }, this);
         //Create the btnTryAgain and set visible to false
-        btnTryAgain = GameInstance.add.button(GameInstance.world.centerX + 100, GameInstance.world.centerY, 'box0');
+        btnTryAgain = GameInstance.add.button(GameInstance.world.centerX + 100+40, GameInstance.world.centerY, 'box0');
         btnTryAgain.scale.setTo(1.4, 1)
-        txtTryAgain = GameInstance.add.text(GameInstance.world.centerX + 110, GameInstance.world.centerY + 5, "Try Again");
+        txtTryAgain = GameInstance.add.text(GameInstance.world.centerX + 110+40, GameInstance.world.centerY + 5, "Try Again");
         btnTryAgain.visible = false;
         txtTryAgain.visible = false;
         //Destroy btnTryAgain
@@ -655,28 +659,28 @@ demo.state5.prototype = {
         this.answers00.fontSize = 22;
         this.answers00.fontWeight = "normal";
         this.answers00.alpha = 0;
-        tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:665, y:338},1500,Phaser.Easing.Linear.None);
+        tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:665, y:336},1500,Phaser.Easing.Linear.None);
 
         this.answers11 = GameInstance.add.text(600,699,'5');
         this.answers11.addColor("#000000",0);
         this.answers11.fontSize = 22;
         this.answers11.fontWeight = "normal";
         this.answers11.alpha = 0;
-        tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:698, y:338},1500,Phaser.Easing.Linear.None);
+        tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:698, y:336},1500,Phaser.Easing.Linear.None);
 
         this.answers22 = GameInstance.add.text(851,528,'100');
         this.answers22.addColor("#000000",0);
         this.answers22.fontSize = 22;
         this.answers22.fontWeight = "normal";
         this.answers22.alpha = 0;
-        tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},1500,Phaser.Easing.Linear.None).to({x:725, y:338},1500,Phaser.Easing.Linear.None);
+        tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:725, y:336},1500,Phaser.Easing.Linear.None);
 
-        this.answers33 = GameInstance.add.text(1087,401,'5%');
+        this.answers33 = GameInstance.add.text(1087,401,'\xB15%');
         this.answers33.addColor("#000000",0);
         this.answers33.fontSize = 22;
         this.answers33.fontWeight = "normal";
         this.answers33.alpha = 0;
-        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},750,Phaser.Easing.Linear.None).to({x:793, y:338},750,Phaser.Easing.Linear.None);
+        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:786, y:336},750,Phaser.Easing.Linear.None);
         
     },
     update: function () {
@@ -855,7 +859,7 @@ demo.state5.answers = function (n, tick0, cross0, dial0, gameAnswers, txtAnswers
                 this.gameAnswers[i].alpha = 0;
             }
             var answer = getAnswers(bandNum, bandColor).answer;
-            this.gameAnswers[0].setText(answer);
+            this.gameAnswers[0].setText("Correct! This is the 2nd digit of the \nresistance value");
             this.gameAnswers[0].alpha = 1;
             this.t0.alpha = 0;
             this.addbtnNext.visible = true;

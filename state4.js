@@ -1,6 +1,6 @@
 demo.state4 = function(){};
 demo.state4.prototype = {
-    resistors:{}, firstTable:{}, secondTable:{}, thirdTable:{}, forthTable:{},
+    resistors:{}, firstTable:{}, secondTable:{}, thirdTable:{}, forthTable:{}, a:0,
     preload: function(){loadAssets();},
     create: function(){
         GameInstance.stage.backgroundColor = '#DDDDDD';
@@ -338,9 +338,7 @@ demo.state4.prototype = {
         this.t3.addChild(this.forthTable.gold);
         
         
-        //Next button
-        addBtnNext(this);
-        this.addbtnNext.events.onInputDown.add(function(){GameInstance.state.start('state5')},this);
+        
 
         this.btnBack = GameInstance.add.button(0,0,'button');
         this.txtBack = GameInstance.add.text(0,0, "Back");
@@ -354,22 +352,79 @@ demo.state4.prototype = {
         //Coordinates
         coorindates(this);
 
+        //Next button
+        addBtnNext(this);
+        this.addbtnNext.events.onInputDown.add(function(){
+            if (this.a == 0) {
+            this.tweenTxt.start();
+            this.tweenTxt.onComplete.add(function(){this.tween1.start();},this);
+            this.tween1.onComplete.add(function(){this.tween0.start();},this);
+            this.tween0.onComplete.add(function(){this.tween2.start();},this);
+            this.tween2.onComplete.add(function(){this.tween4.start();},this);
+            this.tween4.onComplete.add(function(){this.tween3.start();},this);
+            this.tween3.onComplete.add(function(){this.tween5.start();},this);
+            this.tween5.onComplete.add(function(){this.tween7.start();},this);
+            this.tween7.onComplete.add(function(){this.tween6.start();},this);
+            this.tween6.onComplete.add(function(){this.tween8.start();},this);
+            this.tween8.onComplete.add(function(){this.tween10.start();},this);
+            this.tween10.onComplete.add(function(){this.tween9.start();},this);
+            this.tween9.onComplete.add(function(){this.tween11.start();},this);
+            this.tween11.onComplete.add(function(){this.a = 2;},this);
+            }
+            else if (this.a == 2) {
+            this.tween12.start();
+            this.tween13.start();
+            this.tween13.onComplete.add(function(){this.a = 3;},this);
+            }
+            else if (this.a == 3) {
+            GameInstance.state.start('state5');
+                }
+        },this);
+       
+
         //Alpha
         this.txt.alpha = 0;
-        graphics1.alpha = 0;
+        
+        this.tweenTxt = GameInstance.add.tween(this.txt).to({alpha:1},1000,Phaser.Easing.Linear.None);
+
         this.a1.alpha = 0;
         this.t0.alpha = 0;
-        graphics2.alpha = 0;
+        graphics1.alpha = 0;
+
         this.a2.alpha = 0;
         this.t1.alpha = 0;
-        graphics3.alpha = 0;
+        graphics2.alpha = 0;
+
         this.a3.alpha = 0;
         this.t2.alpha = 0;
-        graphics4.alpha = 0;
+        graphics3.alpha = 0;
+
         this.a4.alpha = 0;
         this.t3.alpha = 0;
+        graphics4.alpha = 0;
+
+        this.tween0 = GameInstance.add.tween(this.a1).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween1 = GameInstance.add.tween(this.t0).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween2 = GameInstance.add.tween(graphics1).to({alpha:1},1000,Phaser.Easing.Linear.None);
+
+        this.tween3 = GameInstance.add.tween(this.a2).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween4 = GameInstance.add.tween(this.t1).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween5 = GameInstance.add.tween(graphics2).to({alpha:1},1000,Phaser.Easing.Linear.None);
+
+        this.tween6 = GameInstance.add.tween(this.a3).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween7 = GameInstance.add.tween(this.t2).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween8 = GameInstance.add.tween(graphics3).to({alpha:1},1000,Phaser.Easing.Linear.None);
+
+        
+        this.tween9 = GameInstance.add.tween(this.a4).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween10 = GameInstance.add.tween(this.t3).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween11 = GameInstance.add.tween(graphics4).to({alpha:1},1000,Phaser.Easing.Linear.None);
+
         this.arrow0.alpha = 0;
         this.txtA0.alpha = 0;
+
+        this.tween12 = GameInstance.add.tween(this.arrow0).to({alpha:1},1000,Phaser.Easing.Linear.None);
+        this.tween13 = GameInstance.add.tween(this.txtA0).to({alpha:1},1000,Phaser.Easing.Linear.None);
         
     },
     update: function(){

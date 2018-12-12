@@ -15,8 +15,8 @@ demo.state1.prototype = {
         this.title = GameInstance.add.text(0,0,"Determine the\nValue of a Resistor\nusing the\nResistor Colour Codes "); 
         this.title.addFontWeight('normal', 0);
         this.title.addFontWeight('bold', 13);
-        this.title.addFontWeight('normal', 33);
-        this.title.addFontWeight('bold',43);
+        this.title.addFontWeight('normal', 32);
+        this.title.addFontWeight('bold',41);
         this.title.align = "center";
         this.title.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY-150);
         this.title.anchor.setTo(0.5,0.5);
