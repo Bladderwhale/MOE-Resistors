@@ -15,13 +15,13 @@ demo.state4.prototype = {
         
         //Arrow
         //GameInstance.add.sprite(360,642,'arrow2');
-        this.txt= GameInstance.add.text(220,600,"Each band \nhas a value \nbased on the \nresistor colour \ncodes.");
+        this.txt= GameInstance.add.text(150,600,"Each band \nhas a value \nbased on the \nresistor colour \ncodes.");
         this.txt.fontWeight = 'normal';
         
       
         
         //Phaser.Text
-        this.txtDesc = GameInstance.add.text(0,0,"Let's look at this resistor. \nThe coloured bands are numbered from left to right.");
+        this.txtDesc = GameInstance.add.text(0,0,"Let us look at this resistor. \nThe coloured bands are numbered from left to right.");
         this.txtDesc.align = "left";
         this.txtDesc.position.setTo(GameInstance.world.centerX, GameInstance.world.centerY-320);
         this.txtDesc.anchor.setTo(0.5,0.5);
@@ -37,15 +37,15 @@ demo.state4.prototype = {
         this.resistors.r2.position.setTo(GameInstance.world.centerX,GameInstance.world.centerY/1.4);
         
          //Arrow
-        this.arrow0 = GameInstance.add.sprite(this.resistors.r2.position.x,this.resistors.r2.position.y-30,'arrow0');
+        this.arrow0 = GameInstance.add.sprite(this.resistors.r2.position.x+20,this.resistors.r2.position.y-30,'arrow0');
         this.arrow0.scale.setTo(1,0.8)
         
-        this.txtA0 = GameInstance.add.text(this.resistors.r2.x+220,GameInstance.world.centerY-110,"There is a bigger spacing between \n3rd and 4th band.");
-        this.txtA0.scale.setTo(0.7,0.7)
+        this.txtA0 = GameInstance.add.text(this.resistors.r2.x+240,GameInstance.world.centerY-110,"There is a bigger spacing between \n3rd and 4th band.");
+        this.txtA0.scale.setTo(0.88,0.88)
         this.txtA0.fontWeight = "normal";
         
 
-        this.a1 = GameInstance.add.text(this.resistors.r2.x-225,GameInstance.world.centerY-10,"1st \nBand");
+        this.a1 = GameInstance.add.text(this.resistors.r2.x-245-70,GameInstance.world.centerY-10,"1st \nBand");
         this.a1.align = "center";
         this.a1.scale.setTo(0.7,0.7);
         
@@ -53,50 +53,65 @@ demo.state4.prototype = {
         graphics = GameInstance.add.graphics(0,0);
         graphics.lineStyle(3,0x000000,1);
         graphics.moveTo(this.a1.position.x+25,this.a1.position.y);
-        graphics.lineTo(660,420);
-        
-        this.arrowhead1 = GameInstance.add.sprite(660,403,'arrow1');
-        this.arrowhead1.angle = 50;
+        graphics.lineTo(this.a1.position.x+25,this.a1.position.y-40);
+        graphics.moveTo(this.a1.position.x+25,this.a1.position.y-40);
+        graphics.lineTo(this.a1.position.x+245,this.a1.position.y-40);
+        graphics.moveTo(this.a1.position.x+245,this.a1.position.y-40);
+        graphics.lineTo(this.a1.position.x+245,this.a1.position.y-80);
+        /*this.arrowhead1 = GameInstance.add.sprite(660,403,'arrow1');
+        this.arrowhead1.angle = 50;*/
     
-        this.a2 = GameInstance.add.text(this.resistors.r2.x-35,GameInstance.world.centerY-10,"2nd \nBand");
+        this.a2 = GameInstance.add.text(this.resistors.r2.x-35-110,GameInstance.world.centerY-10,"2nd \nBand");
         this.a2.align = "center";
         this.a2.scale.setTo(0.7,0.7);
         
-         //linegraphics for the first text (2st Band)
+        //linegraphics for the first text (2st Band)
         graphics.lineStyle(3,0x000000,1);
         graphics.moveTo(this.a2.position.x+25,this.a2.position.y);
-        graphics.lineTo(724,420);
+        graphics.lineTo(this.a2.position.x+25,this.a2.position.y-30);
+        graphics.moveTo(this.a2.position.x+25,this.a2.position.y-30);
+        graphics.lineTo(this.a2.position.x+110,this.a2.position.y-30);
+        graphics.moveTo(this.a2.position.x+110,this.a2.position.y-30);
+        graphics.lineTo(this.a2.position.x+110,this.a2.position.y-80);
         
-        this.arrowhead2 = GameInstance.add.sprite(709,409,'arrow1');
-        this.arrowhead2.angle = -10;
+        /*this.arrowhead2 = GameInstance.add.sprite(709,409,'arrow1');
+        this.arrowhead2.angle = -10;*/
         //3rd band
-        this.a3 = GameInstance.add.text(this.resistors.r2.x+120,GameInstance.world.centerY-10,"3rd \nBand");
+        this.a3 = GameInstance.add.text(this.resistors.r2.x+120-90,GameInstance.world.centerY-10,"3rd \nBand");
         this.a3.align = "center";
         this.a3.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (3rd Band)
         graphics.lineStyle(3,0x000000,1);
         graphics.moveTo(this.a3.position.x+25,this.a3.position.y);
-        graphics.lineTo(765,414);
+        graphics.lineTo(this.a3.position.x+25,this.a3.position.y-30);
+        graphics.moveTo(this.a3.position.x+25,this.a3.position.y-30);
+        graphics.lineTo(this.a3.position.x-35,this.a3.position.y-30);
+        graphics.moveTo(this.a3.position.x-35,this.a3.position.y-30);
+        graphics.lineTo(this.a3.position.x-35,this.a3.position.y-80);
         
-        this.arrowhead3 = GameInstance.add.sprite(757,420,'arrow1');
-        this.arrowhead3.angle = -50;
+        /*this.arrowhead3 = GameInstance.add.sprite(757,420,'arrow1');
+        this.arrowhead3.angle = -50;*/
       
-        this.a4 = GameInstance.add.text(this.resistors.r2.x+300,GameInstance.world.centerY-10,"4th \nBand");
+        this.a4 = GameInstance.add.text(this.resistors.r2.x+300-90,GameInstance.world.centerY-10,"4th \nBand");
         this.a4.align = "center";
         this.a4.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (3st Band)
         graphics.lineStyle(3,0x000000,1);
-        graphics.moveTo(this.a4.position.x-25,this.a4.position.y+10);
-        graphics.lineTo(823,418);
+        graphics.moveTo(this.a4.position.x+25,this.a4.position.y);
+        graphics.lineTo(this.a4.position.x+25,this.a4.position.y-30);
+        graphics.moveTo(this.a4.position.x+25,this.a4.position.y-30);
+        graphics.lineTo(this.a4.position.x-145,this.a4.position.y-30);
+        graphics.moveTo(this.a4.position.x-145,this.a4.position.y-30);
+        graphics.lineTo(this.a4.position.x-145,this.a4.position.y-80);
         
-        this.arrowhead4 = GameInstance.add.sprite(812,420,'arrow1');
-        this.arrowhead4.angle = -50;
+        /*this.arrowhead4 = GameInstance.add.sprite(812,420,'arrow1');
+        this.arrowhead4.angle = -50;*/
         
         //Grouping (Addchild)
         this.t0 = GameInstance.add.sprite(0,0,'t0'); //Add table sprite
-        this.t0.position.setTo(GameInstance.world.centerX-200, GameInstance.world.centerY+200); //Setting the position according the world
+        this.t0.position.setTo(GameInstance.world.centerX-200-80, GameInstance.world.centerY+200); //Setting the position according the world
         this.t0.anchor.setTo(0.5,0.5); //Make it center.
         
         //Phaser.text(Table texts)
@@ -164,7 +179,7 @@ demo.state4.prototype = {
         
         //Grouping for the 2nd table
         this.t1 = GameInstance.add.sprite(0,0,'t0'); //Add table sprite
-        this.t1.position.setTo(GameInstance.world.centerX-25, GameInstance.world.centerY+200); //Setting the position according the world
+        this.t1.position.setTo(GameInstance.world.centerX-25-80, GameInstance.world.centerY+200); //Setting the position according the world
         this.t1.anchor.setTo(0.5,0.5); //Make it center.
         
         //Phaser.text(Table texts)
@@ -232,7 +247,7 @@ demo.state4.prototype = {
         
         //Grouping for the 3rd table
         this.t2 = GameInstance.add.sprite(0,0,'t1'); //Add table sprite
-        this.t2.position.setTo(GameInstance.world.centerX+150, GameInstance.world.centerY+200); //Setting the position according the world
+        this.t2.position.setTo(GameInstance.world.centerX+150-80, GameInstance.world.centerY+200); //Setting the position according the world
         this.t2.anchor.setTo(0.5,0.5); //Make it center.
         
         //Phaser.text(Table texts)
@@ -299,7 +314,7 @@ demo.state4.prototype = {
         //end
         //Grouping for the 4rd table
         this.t3 = GameInstance.add.sprite(0,0,'t2'); //Add table sprite
-        this.t3.position.setTo(GameInstance.world.centerX+360, GameInstance.world.centerY+75); //Setting the position according the world
+        this.t3.position.setTo(GameInstance.world.centerX+360-110, GameInstance.world.centerY+75); //Setting the position according the world
         this.t3.anchor.setTo(0.5,0.5); //Make it center.
         
         this.forthTable.red = GameInstance.add.text(-80,-25,"\xB1 2% red");
