@@ -107,9 +107,12 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         btnCheck.events.onInputDown.add(function(){
             console.log(input);
             console.log("btnCheck event triggered.");
-            linegraphics.alpha = 0;
-            linegraphics1.alpha = 0;
-            linegraphics2.alpha = 0;
+            if (input.value != 0) {
+                linegraphics.alpha = 0; }
+                if (input2.value != 0) {
+                linegraphics1.alpha = 0; }
+                if (input3.value != 0) {
+                linegraphics2.alpha = 0; }
             this.tick0 = GameInstance.add.sprite(-25,-60,'tick0');
             this.cross0 = GameInstance.add.sprite(-25,-60,'cross0');
             this.tick1 = GameInstance.add.sprite(160,-80,'tick0');
@@ -407,6 +410,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.finalanswer5.addFontWeight("bold", 33);
             this.final = GameInstance.add.sprite(0,0,"final");
             this.final.position.setTo(0,150);
+
+            this.t3.alpha = 0;
             
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
@@ -660,17 +665,17 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
  
          this.answers22 = GameInstance.add.text(851,528,'1k');
          this.answers22.addColor("#000000",0);
-         this.answers22.fontSize = 22;
+         this.answers22.fontSize = 22.8;
          this.answers22.fontWeight = "normal";
          this.answers22.alpha = 0;
-         tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:725, y:336},1500,Phaser.Easing.Linear.None);
+         tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:731, y:336},1500,Phaser.Easing.Linear.None);
         
          this.answers33 = GameInstance.add.text(1087,401,'\xB15%');
         this.answers33.addColor("#000000",0);
         this.answers33.fontSize = 22.8;
         this.answers33.fontWeight = "normal";
         this.answers33.alpha = 0;
-        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:786, y:336},750,Phaser.Easing.Linear.None);
+        tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},200,Phaser.Easing.Linear.None).to({x:786, y:336},600,Phaser.Easing.Linear.None);
     },
     update: function(){
     //console.log("What is value of input: " + input2.value);

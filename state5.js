@@ -112,9 +112,12 @@ demo.state5.prototype = {
             console.log(input);
             console.log("btnCheck event triggered.");
             this.tempbool = false;
-            linegraphics.alpha = 0;
-            linegraphics1.alpha = 0;
-            linegraphics2.alpha = 0;
+            if (input.value != 0) {
+            linegraphics.alpha = 0; }
+            if (input2.value != 0) {
+            linegraphics1.alpha = 0; }
+            if (input3.value != 0) {
+            linegraphics2.alpha = 0; }
             this.tick0 = GameInstance.add.sprite(-25, -60, 'tick0');
             this.cross0 = GameInstance.add.sprite(-25, -60, 'cross0');
             this.tick1 = GameInstance.add.sprite(160, -80, 'tick0');
@@ -423,6 +426,8 @@ demo.state5.prototype = {
 
                 this.final = GameInstance.add.sprite(0, 0, "final");
                 this.final.position.setTo(0, 150);
+
+                this.t3.alpha = 0;
 
                 this.addbtnNext.visible = false;
                 this.addbtnNext2.visible = false;
