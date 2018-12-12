@@ -92,9 +92,9 @@ demo.state5.prototype = {
         input4.visible = false;
         input4.setText("\xB1");
         //Answers for the third color code onwards
-        this.word1 = GameInstance.add.text(GameInstance.world.centerX + 100, GameInstance.world.centerY - 50, "The resistance of this \nresistor is:");
+        this.word1 = GameInstance.add.text(GameInstance.world.centerX + 100-440, GameInstance.world.centerY - 50 + 140, "The value of this resistor is: ");
         this.word1.fontWeight = 'normal';
-        this.word2 = GameInstance.add.text(GameInstance.world.centerX + 100, GameInstance.world.centerY + 50, "15 x 100 \n\n= 1500 \u2126 \n= 1.5 k\u2126");
+        this.word2 = GameInstance.add.text(GameInstance.world.centerX + 100-440, GameInstance.world.centerY + 50 + 140, "15 x 100 \n\n= 1500 \u2126 \n\n= 1.5 k\u2126");
         this.word1.alpha = 0;
         this.word2.alpha = 0;
 
@@ -405,16 +405,22 @@ demo.state5.prototype = {
             }
             else if (qns == 4) {
                 ellipsegraphics.alpha = 0;
-                this.questionTitle.setText("What is the resistance of this resistor?");
+                this.questionTitle.setText("Including its tolerance, the\nvalue of this resistor is 1.5 kΩ ± 5%");
                 this.dial3.alpha = 0;
-                this.finalanswer = GameInstance.add.text(GameInstance.world.centerX - 260, GameInstance.world.centerY - 50, "Resistance is 1.5k \xB1 \u2126 5% \n\nThis means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.")
-                this.finalanswer.addFontWeight("normal", 0)
-                this.finalanswer.addFontWeight("bold", 14)
-                this.finalanswer.addFontWeight("normal", 25)
+                this.finalanswer = GameInstance.add.text(GameInstance.world.centerX - 260, GameInstance.world.centerY - 50, 
+                    "This means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.");
+                this.finalanswer.addFontWeight("normal", 0);
                 this.finalanswer1 = GameInstance.add.text(GameInstance.world.centerX - 500, GameInstance.world.centerY + 200, "1.5 k\u2126");
                 this.finalanswer2 = GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 125, "-5%");
                 this.finalanswer3 = GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 275, "+5%");
                 this.finalanswer5 = GameInstance.add.text(GameInstance.world.centerX - 100, GameInstance.world.centerY + 140, "0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
+                this.finalanswer2.addFontWeight("normal", 0);
+                this.finalanswer3.addFontWeight("normal", 0);
+                this.finalanswer5.addFontWeight("normal", 0);
+                this.finalanswer5.addFontWeight("bold", 13);
+                this.finalanswer5.addFontWeight("normal", 20);
+                this.finalanswer5.addFontWeight("bold", 33);
+
                 this.final = GameInstance.add.sprite(0, 0, "final");
                 this.final.position.setTo(0, 150);
 
@@ -656,28 +662,28 @@ demo.state5.prototype = {
         //Adding the numbers for tweening
         this.answers00 = GameInstance.add.text(470,579,'1');
         this.answers00.addColor("#000000",0);
-        this.answers00.fontSize = 22;
+        this.answers00.fontSize = 22.8;
         this.answers00.fontWeight = "normal";
         this.answers00.alpha = 0;
         tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:665, y:336},1500,Phaser.Easing.Linear.None);
 
         this.answers11 = GameInstance.add.text(600,699,'5');
         this.answers11.addColor("#000000",0);
-        this.answers11.fontSize = 22;
+        this.answers11.fontSize = 22.8;
         this.answers11.fontWeight = "normal";
         this.answers11.alpha = 0;
         tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:698, y:336},1500,Phaser.Easing.Linear.None);
 
         this.answers22 = GameInstance.add.text(851,528,'100');
         this.answers22.addColor("#000000",0);
-        this.answers22.fontSize = 22;
+        this.answers22.fontSize = 22.8;
         this.answers22.fontWeight = "normal";
         this.answers22.alpha = 0;
         tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:725, y:336},1500,Phaser.Easing.Linear.None);
 
         this.answers33 = GameInstance.add.text(1087,401,'\xB15%');
         this.answers33.addColor("#000000",0);
-        this.answers33.fontSize = 22;
+        this.answers33.fontSize = 22.8;
         this.answers33.fontWeight = "normal";
         this.answers33.alpha = 0;
         tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:786, y:336},750,Phaser.Easing.Linear.None);
