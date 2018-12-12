@@ -50,14 +50,15 @@ demo.state4.prototype = {
         this.a1.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (1st Band)
-        graphics = GameInstance.add.graphics(0,0);
-        graphics.lineStyle(3,0x000000,1);
-        graphics.moveTo(this.a1.position.x+25,this.a1.position.y);
-        graphics.lineTo(this.a1.position.x+25,this.a1.position.y-40);
-        graphics.moveTo(this.a1.position.x+25,this.a1.position.y-40);
-        graphics.lineTo(this.a1.position.x+245,this.a1.position.y-40);
-        graphics.moveTo(this.a1.position.x+245,this.a1.position.y-40);
-        graphics.lineTo(this.a1.position.x+245,this.a1.position.y-80);
+        graphics1 = GameInstance.add.graphics(0,0);
+        graphics1.lineStyle(3,0x000000,1);
+        graphics1.moveTo(this.a1.position.x+25,this.a1.position.y);
+        graphics1.lineTo(this.a1.position.x+25,this.a1.position.y-40);
+        graphics1.moveTo(this.a1.position.x+25,this.a1.position.y-40);
+        graphics1.lineTo(this.a1.position.x+245,this.a1.position.y-40);
+        graphics1.moveTo(this.a1.position.x+245,this.a1.position.y-40);
+        graphics1.lineTo(this.a1.position.x+245,this.a1.position.y-80);
+        graphics1.endFill();
         /*this.arrowhead1 = GameInstance.add.sprite(660,403,'arrow1');
         this.arrowhead1.angle = 50;*/
     
@@ -66,13 +67,15 @@ demo.state4.prototype = {
         this.a2.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (2st Band)
-        graphics.lineStyle(3,0x000000,1);
-        graphics.moveTo(this.a2.position.x+25,this.a2.position.y);
-        graphics.lineTo(this.a2.position.x+25,this.a2.position.y-30);
-        graphics.moveTo(this.a2.position.x+25,this.a2.position.y-30);
-        graphics.lineTo(this.a2.position.x+110,this.a2.position.y-30);
-        graphics.moveTo(this.a2.position.x+110,this.a2.position.y-30);
-        graphics.lineTo(this.a2.position.x+110,this.a2.position.y-80);
+        graphics2 = GameInstance.add.graphics(0,0);
+        graphics2.lineStyle(3,0x000000,1);
+        graphics2.moveTo(this.a2.position.x+25,this.a2.position.y);
+        graphics2.lineTo(this.a2.position.x+25,this.a2.position.y-30);
+        graphics2.moveTo(this.a2.position.x+25,this.a2.position.y-30);
+        graphics2.lineTo(this.a2.position.x+110,this.a2.position.y-30);
+        graphics2.moveTo(this.a2.position.x+110,this.a2.position.y-30);
+        graphics2.lineTo(this.a2.position.x+110,this.a2.position.y-80);
+        graphics2.endFill();
         
         /*this.arrowhead2 = GameInstance.add.sprite(709,409,'arrow1');
         this.arrowhead2.angle = -10;*/
@@ -82,13 +85,15 @@ demo.state4.prototype = {
         this.a3.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (3rd Band)
-        graphics.lineStyle(3,0x000000,1);
-        graphics.moveTo(this.a3.position.x+25,this.a3.position.y);
-        graphics.lineTo(this.a3.position.x+25,this.a3.position.y-30);
-        graphics.moveTo(this.a3.position.x+25,this.a3.position.y-30);
-        graphics.lineTo(this.a3.position.x-35,this.a3.position.y-30);
-        graphics.moveTo(this.a3.position.x-35,this.a3.position.y-30);
-        graphics.lineTo(this.a3.position.x-35,this.a3.position.y-80);
+        graphics3 = GameInstance.add.graphics(0,0);
+        graphics3.lineStyle(3,0x000000,1);
+        graphics3.moveTo(this.a3.position.x+25,this.a3.position.y);
+        graphics3.lineTo(this.a3.position.x+25,this.a3.position.y-30);
+        graphics3.moveTo(this.a3.position.x+25,this.a3.position.y-30);
+        graphics3.lineTo(this.a3.position.x-35,this.a3.position.y-30);
+        graphics3.moveTo(this.a3.position.x-35,this.a3.position.y-30);
+        graphics3.lineTo(this.a3.position.x-35,this.a3.position.y-80);
+        graphics3.endFill();
         
         /*this.arrowhead3 = GameInstance.add.sprite(757,420,'arrow1');
         this.arrowhead3.angle = -50;*/
@@ -98,13 +103,15 @@ demo.state4.prototype = {
         this.a4.scale.setTo(0.7,0.7);
         
         //linegraphics for the first text (3st Band)
-        graphics.lineStyle(3,0x000000,1);
-        graphics.moveTo(this.a4.position.x+25,this.a4.position.y);
-        graphics.lineTo(this.a4.position.x+25,this.a4.position.y-30);
-        graphics.moveTo(this.a4.position.x+25,this.a4.position.y-30);
-        graphics.lineTo(this.a4.position.x-145,this.a4.position.y-30);
-        graphics.moveTo(this.a4.position.x-145,this.a4.position.y-30);
-        graphics.lineTo(this.a4.position.x-145,this.a4.position.y-80);
+        graphics4 = GameInstance.add.graphics(0,0);
+        graphics4.lineStyle(3,0x000000,1);
+        graphics4.moveTo(this.a4.position.x+25,this.a4.position.y);
+        graphics4.lineTo(this.a4.position.x+25,this.a4.position.y-30);
+        graphics4.moveTo(this.a4.position.x+25,this.a4.position.y-30);
+        graphics4.lineTo(this.a4.position.x-145,this.a4.position.y-30);
+        graphics4.moveTo(this.a4.position.x-145,this.a4.position.y-30);
+        graphics4.lineTo(this.a4.position.x-145,this.a4.position.y-80);
+        graphics4.endFill();
         
         /*this.arrowhead4 = GameInstance.add.sprite(812,420,'arrow1');
         this.arrowhead4.angle = -50;*/
@@ -335,8 +342,34 @@ demo.state4.prototype = {
         addBtnNext(this);
         this.addbtnNext.events.onInputDown.add(function(){GameInstance.state.start('state5')},this);
 
+        this.btnBack = GameInstance.add.button(0,0,'button');
+        this.txtBack = GameInstance.add.text(0,0, "Back");
+        this.btnBack.scale.setTo(0.5,0.5);
+        this.btnBack.anchor.setTo(0.5,0.5);
+        this.btnBack.position.setTo(GameInstance.world.centerX-550,GameInstance.world.centerY*1.75);
+        this.txtBack.position.setTo(GameInstance.world.centerX-580,GameInstance.world.centerY*1.72);
+
+        this.btnBack.events.onInputDown.add(function(){GameInstance.state.start("state3");},this);
+
         //Coordinates
         coorindates(this);
+
+        //Alpha
+        this.txt.alpha = 0;
+        graphics1.alpha = 0;
+        this.a1.alpha = 0;
+        this.t0.alpha = 0;
+        graphics2.alpha = 0;
+        this.a2.alpha = 0;
+        this.t1.alpha = 0;
+        graphics3.alpha = 0;
+        this.a3.alpha = 0;
+        this.t2.alpha = 0;
+        graphics4.alpha = 0;
+        this.a4.alpha = 0;
+        this.t3.alpha = 0;
+        this.arrow0.alpha = 0;
+        this.txtA0.alpha = 0;
         
     },
     update: function(){
