@@ -453,17 +453,21 @@ demo.state5.prototype = {
             if (qns == 0) {
                 linegraphics.alpha = 1;
                 this.t0.alpha = 1;
+                input.setText("");
             }
             else if (qns == 1) {
                 linegraphics1.alpha = 1;
                 this.t0.alpha = 1;
+                input2.setText("");
             }
             else if (qns == 2) {
                 this.t1.alpha = 1;
+               input3.setText("");
             }
             else if (qns == 3) {
                 this.t3.alpha = 1;
                 linegraphics3.alpha = 1;
+                input4.setText("");
             }
         }
 

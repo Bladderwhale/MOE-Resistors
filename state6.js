@@ -435,17 +435,21 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             txtTryAgain.visible = false; 
             this.dial0.alpha = 0;
             if (qns == 0) {
+            input.setText("");
             linegraphics.alpha =1;
             this.t0.alpha = 1;
             }
             else if (qns == 1){
+            input2.setText("");
             linegraphics1.alpha =1;
             this.t0.alpha = 1;    
             }
             else if (qns == 2) {
+            input3.setText("");    
             this.t1.alpha = 1;
             }
             else if (qns == 3){
+            input4.setText("");
             this.t3.alpha = 1;
             linegraphics3.alpha = 1;
             }

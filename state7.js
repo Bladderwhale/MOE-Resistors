@@ -18,11 +18,11 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         home(this);
 
         //MCQ
-        mcq =0;
+        mcq = 12;
         this.n = 4;
         //Array of height (Randomized)
         this.randomHeight = [500,580,660,740]; //Shuffling of elements in an array.
-        this.shuffleArray(this.randomHeight);
+        //this.shuffleArray(this.randomHeight);
 
         this.shuffleArray(demo.randomMCQ);
         mcq = demo.randomMCQ[0];
@@ -76,7 +76,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             boolTween = false;
             },
             this);
-        //Center
+        //Center 500,580,660,740
         if (mcq == 0 && maxQns<5) {
         new newQuestions(this, this.randomHeight[0], this.randomHeight[1], this.randomHeight[2], this.randomHeight[3]);} 
         else if (mcq == 1 && maxQns<5) {
@@ -121,7 +121,8 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         this.questionTitle.anchor.setTo(0.5,0.5);
         this.questionTitle.fontSize = 40;
         drawMiniRect();
-        this.questionNum = GameInstance.add.text(GameInstance.world.centerX-540,GameInstance.world.centerY-320, "MCQ: " + qnsNum + "/5");
+        this.questionNum = GameInstance.add.text(GameInstance.world.centerX-540,GameInstance.world.centerY-335, "Question:\n" + qnsNum + " of 5");
+        this.questionNum.align = 'center';
 
         coorindates(this);
         this.btnCheck.events.onInputDown.add(function(){
@@ -162,13 +163,13 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
 
         },this);
         
-
+        
         //
         btnradio0.events.onInputDown.add(function()
         { 
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
-            this.n = 0;
+            this.n = 0; 
         },this);
         btnradio1.events.onInputDown.add(function()
         {
@@ -182,23 +183,33 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
             this.cross.position.setTo(btnradio2.x - 80,btnradio2.y+ 5);
-            this.n = 2;
+            this.n = 2; 
         },this);
         btnradio3.events.onInputDown.add(function()
         {
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
             this.cross.position.setTo(btnradio3.x - 80,btnradio3.y+ 5);
-            this.n = 3;
+            this.n = 3; 
         },this);
     },
     update: function(){
         //console.log("X: " + this.dots.x + " Y: " + this.dots.y);
         //console.log("What is value of n: " + this.n);
         //console.log(this.boolCheck)
-        console.log("What is the value of maxCheck: " + maxCheck);
-        console.log("What is the value of maxQns: " + maxQns);
-        
+        //console.log("What is the value of maxCheck: " + maxCheck);
+        //console.log("What is the value of maxQns: " + maxQns);
+        console.log("What is the MCQ: " + mcq);
+       
+        this.text0.fontSize = 35;
+        this.text0.position.setTo(607+50,580-90);
+        this.text1.fontSize = 35;
+        this.text1.position.setTo(607+50,575);
+        this.text2.fontSize = 35;
+        this.text2.position.setTo(607+50,580+75);
+        this.text3.fontSize = 35;
+        this.text3.position.setTo(607+50,580+90+65);
+       
         if (maxQns == 4 && maxCheck == 4) {
             btnNext1.visible = false;
             this.txtNext1.visible = false;
@@ -574,11 +585,11 @@ function newQuestions(state, height0, height1, height2, height3){
 
     state.dial4 = GameInstance.add.sprite(btnradio0.x+260, btnradio0.y-20,'dial4');
     state.correctAnswer = GameInstance.add.text(state.dial4.x + 50, state.dial4.y + 10, "Correct Answer");
+    state.dial4.scale.setTo(1.1,1);
     state.correctAnswer.fontWeight = 'normal';
     ellipseGraphics = GameInstance.add.graphics(0,0);
     ellipseGraphics.lineStyle(4,0x32CD32,1);
-    ellipseGraphics.drawEllipse(0,0,115,35);
-    ellipseGraphics.position.setTo(btnradio0.x+155,btnradio0.y+15);
+    ellipseGraphics.drawEllipse(0,0,35,35);
     ellipseGraphics.endFill();
     ellipseGraphics.alpha = 0;
     state.dial4.alpha = 0;
@@ -609,342 +620,350 @@ function newQuestions(state, height0, height1, height2, height3){
     state.txtCheck.alpha = 0;
     
     if (mcq == 0) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo( btnradio1.x,btnradio1.y);
+    btnradio1.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80);
+    state.dial4.position.setTo(this.tempX+100,this.tempY+60);
+    state.correctAnswer.position.setTo(this.tempX+150,this.tempY+70);
+    ellipseGraphics.position.setTo(this.tempX+70,this.tempY+90);
+ 
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set0[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
 
     state.text1 = GameInstance.add.text(200,-20, setText().set0[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
 
     state.text2 = GameInstance.add.text(200,-20, setText().set0[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
 
     state.text3 = GameInstance.add.text(200,-20, setText().set0[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 
     else if (mcq == 1) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo( btnradio1.x,btnradio1.y);
+    btnradio1.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+60);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90);
+
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set1[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
 
     state.text1 = GameInstance.add.text(200,-20, setText().set1[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
 
     state.text2 = GameInstance.add.text(200,-20, setText().set1[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
 
     state.text3 = GameInstance.add.text(200,-20, setText().set1[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 
     else if (mcq == 2) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set2[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set2[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set2[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set2[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 
      else if (mcq == 3) {
+    this.tempX = btnradio0.position.x;
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo( btnradio0.x,btnradio0.y);
+    btnradio1.position.setTo(btnradio1.x,btnradio1.y);
+    state.tick.y= (this.tempY);
+    state.dial4.position.setTo(this.tempX+110,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+10);
+
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set3[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set3[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set3[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set3[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
-     else if (mcq == 4) {
+    
+    else if (mcq == 4) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+
+
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set4[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set4[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set4[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set4[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
-     else if (mcq == 5) {
+    else if (mcq == 5) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo( btnradio1.x,btnradio1.y);
+    btnradio1.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80);
+    state.dial4.position.setTo(this.tempX+100,this.tempY+60);
+    state.correctAnswer.position.setTo(this.tempX+150,this.tempY+70);
+    ellipseGraphics.position.setTo(this.tempX+70,this.tempY+90);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set5[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set5[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set5[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set5[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
-     else if (mcq == 6) {
+    else if (mcq == 6) {
+     this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set6[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set6[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set6[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set6[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
-     else if (mcq == 7) {
+
+    else if (mcq == 7) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio3.x,btnradio3.y);
+    btnradio3.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50+80);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set7[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set7[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set7[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set7[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 8) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set8[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set8[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set8[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set8[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 9) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set9[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set9[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set9[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set9[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 10) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set10[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set10[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set10[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set10[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 11) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio3.x,btnradio3.y);
+    btnradio3.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50+80);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set11[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set11[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set11[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set11[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 12) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio2.x,btnradio2.y);
+    btnradio2.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set12[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set12[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set12[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set12[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 13) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio3.x,btnradio3.y);
+    btnradio3.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50+80);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set13[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set13[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set13[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set13[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
      else if (mcq == 14) {
+    this.tempX = btnradio0.position.x
+    this.tempY = btnradio0.position.y
+    btnradio0.position.setTo(btnradio3.x,btnradio3.y);
+    btnradio3.position.setTo(this.tempX,this.tempY);
+    state.tick.y= (this.tempY+80+30+50+80);
+    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
+    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
+    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set14[0]);
-    btnradio0.addChild(state.text0);
-    state.text0.fontSize = 100;
     state.text0.fontWeight = 'normal';
     
     state.text1 = GameInstance.add.text(200,-20, setText().set14[1]);
-    btnradio1.addChild(state.text1);
-    state.text1.fontSize = 100;
     state.text1.fontWeight = 'normal';
     
     state.text2 = GameInstance.add.text(200,-20, setText().set14[2]);
-    btnradio2.addChild(state.text2);
-    state.text2.fontSize = 100;
     state.text2.fontWeight = 'normal';
     
     state.text3 = GameInstance.add.text(200,-20, setText().set14[3]);
-    btnradio3.addChild(state.text3);
-    state.text3.fontSize = 100;
     state.text3.fontWeight = 'normal'; }
 }
 
 function setText(){
-    textBundle0 = [ "22 \u2126 \xB1 5%",  "220 k\u2126 \xB1 5%",  "44 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle1 = [ "100 \u2126 \xB1 5%",  "110 k\u2126 \xB1 5%",  "55 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle2 = [ "220 \u2126 \xB1 5%",  "220 k\u2126 \xB1 5%",  "33 k\u2126 \xB1 5%",  "55 \u2126 \xB1 5%"];
-    textBundle3 = [ "330 \u2126 \xB1 5%",  "3.3k \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle4 = [ "470 \u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "240 k\u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle5 = [ "100 \u2126 \xB1 5%",  "110 \u2126 \xB1 5%",  "74 k\u2126 \xB1 5%",  "740 \u2126 \xB1 5%"];
-    textBundle6 = [ "3.3 k\u2126 \xB1 5%",  "330 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 k\u2126 \xB1 5%"];
-    textBundle7 = [ "4.7 k\u2126 \xB1 5%",  "470 \u2126 \xB1 5%",  "550 k\u2126 \xB1 5%",  "55 k\u2126 \xB1 5%"];
-    textBundle8 = [ "6.8 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
-    textBundle9 = [ "15 k\u2126 \xB1 5%",  "150 k\u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 k\u2126 \xB1 5%"];
-    textBundle10 = [ "47 k\u2126 \xB1 5%",  "470 k\u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
-    textBundle11 = [ "68 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 k\u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textBundle12 = [ "150 k\u2126 \xB1 5%",  "150 \u2126 \xB1 5%",  "550 \u2126 \xB1 5%",  "55 k\u2126 \xB1 5%"];
-    textBundle13 = [ "220 k\u2126 \xB1 5%",  "220 \u2126 \xB1 5%",  "74 \u2126 \xB1 5%",  "740 k\u2126 \xB1 5%"];
-    textBundle14 = [ "680 k\u2126 \xB1 5%",  "680 \u2126 \xB1 5%",  "240 \u2126 \xB1 5%",  "24 \u2126 \xB1 5%"];
-    textAnswer = ["Resistance Value: \n(22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Resistance Value: \n(10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Resistance Value: \n(22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Resistance Value: \n(33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Resistance Value: \n(47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Resistance Value: \n(10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Resistance Value: \n(33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Resistance Value: \n(47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Resistance Value: \n(68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Resistance Value: \n(15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Resistance Value: \n(47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Resistance Value: \n(15 x 10k) \u2126 \xB1 5% \n=150 k\u2126 \xB1 5%","Resistance Value: \n(22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Resistance Value: \n(68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
+    textBundle0 = [ "20",  "22",  "33",  "220"];
+    textBundle1 = [ "10",  "100",  "101",  "200"];
+    textBundle2 = [ "110",  "111",  "220",  "221"];
+    textBundle3 = [ "330",  "3.3k",  "440",  "4.4k"];
+    textBundle4 = [ "46","47","470","4.6k"];
+    textBundle5 = [ "10","1k","10k","1M"];
+    textBundle6 = [ "3.3k","4.4k","33k","44k"];
+    textBundle7 = [ "470","4.7k","46k","47k"];
+    textBundle8 = [ "68","78","6.8k","7.8k"];
+    textBundle9 = [ "5k","1.5k","15k","150k"];
+    textBundle10 = [ "37","4.7k","47k","470k"];
+    textBundle11 = ["68","78","6.7k","68k"];
+    textBundle12 = [ "26","1.5k","150k","250k"];
+    textBundle13 = [ "22","3.3k","33k","220k"];
+    textBundle14 = [ "670","58k","68k","680k"];
+    textAnswer = ["Value of this resistor\n= (22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Value of this resistor \n= (10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Value of this resistor \n= (22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Value of this resistor \n= (33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Value of this resistor \n= (47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Value of this resistor \n= (10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Value of this resistor \n= (33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Value of this resistor \n= (47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Value of this resistor \n= (68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Value of this resistor \n= (15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Value of this resistor \n= (47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Value of this resistor \n = (68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Value of this resistor \n= (15 x 10k) \u2126 \xB1 5% \n=150 k\u2126 \xB1 5%","Value of this resistor \n= (22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Value of this resistor \n= (68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
    
     
     return {set0:textBundle0, set1:textBundle1, set2:textBundle2,set3:textBundle3, set4:textBundle4, 
