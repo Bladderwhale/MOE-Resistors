@@ -250,8 +250,10 @@ demo.state5.prototype = {
             console.log("Did anyone wanted to showanswer?");
             btnShowAnswer.visible = false;
             txtShowAnswer.visible = false;
-            this.addbtnNext.visible = true;
-            this.addbtnNext2.visible = true;
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
+
+            
             for (var i = 0; i < this.txtAnswers.length; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
@@ -284,6 +286,7 @@ demo.state5.prototype = {
                 this.dial2.position.setTo(GameInstance.world.centerX - 50, GameInstance.world.centerY - 100);
                 this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
                 this.dial2.alpha = 1;
+                linegraphics1.alpha = 1;
                 ellipsegraphics.lineStyle(5, 0x32CD32);
                 ellipsegraphics.drawEllipse(100,100,100,20);
                 ellipsegraphics.position.setTo(560,610);
@@ -311,6 +314,7 @@ demo.state5.prototype = {
                 ellipsegraphics.drawEllipse(100,100,100,20);
                 ellipsegraphics.position.setTo(820,440);
                 //ellipsegraphics.alpha = 1;
+                linegraphics22.alpha = 1;
                 input3.setText("");
                 input3.endFocus();
                 tweenScale2.start();
@@ -320,18 +324,27 @@ demo.state5.prototype = {
                 total = 0;
             }
             else if (qns == 3) {
+              
                 this.t3.alpha = 1;
                 this.t3.position.setTo(GameInstance.world.centerX + 400, GameInstance.world.centerY - 100); 
                 this.dial0.alpha = 0;
                 this.dial3.alpha = 1;
                 this.cross3.alpha = 0;
                 this.tick3.alpha = 0;
+                linegraphics3.alpha = 0;
                 qns = 4;
                 ellipsegraphics.lineStyle(5, 0xDAA520);
                 ellipsegraphics.drawEllipse(100,100,100,20);
                 ellipsegraphics.position.setTo(1050,320);
+           
                 tweenScale3.start();
                 input4.setText("" + "");
+                linegraphics33.alpha = 1;
+
+                tween33.onComplete.add(function(){
+                    this.addbtnNext.visible = true;
+                    this.addbtnNext2.visible = true;
+                },this)
           
             }
         }, this);
@@ -345,7 +358,9 @@ demo.state5.prototype = {
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function () {
             console.log(this);
-            
+            linegraphics1.alpha = 0;
+            linegraphics22.alpha = 0;
+            linegraphics33.alpha = 0;
             if (qns == 0 && boolTimer == true) {
                 ellipsegraphics.alpha = 0;
                 qns = 1;
@@ -387,7 +402,9 @@ demo.state5.prototype = {
                 btnCheck.visible = true;
                 txtCheck.visible = true;
                 check = 0;
-                linegraphics2.alpha = 1;
+                linegraphics2.alpha = 0;
+               
+       
             }
             else if (qns == 3) {
                 if (boolEllipse2 == true) {
@@ -470,6 +487,7 @@ demo.state5.prototype = {
             }
             else if (qns == 2) {
                 this.t1.alpha = 1;
+                linegraphics2.alpha = 1;
                input3.setText("");
             }
             else if (qns == 3) {
@@ -658,6 +676,13 @@ demo.state5.prototype = {
         linegraphics2.endFill();
         linegraphics2.alpha = 0;
 
+        linegraphics22 = GameInstance.add.graphics(0, 0);
+        linegraphics22.lineStyle(1, 0x000000, 1);
+        linegraphics22.moveTo(899, 460);
+        linegraphics22.lineTo(750, 405);
+        linegraphics22.endFill();
+        linegraphics22.alpha = 0;
+
         //linegraphics for the forth band.
         linegraphics3 = GameInstance.add.graphics(0, 0);
         linegraphics3.lineStyle(1, 0x000000, 1);
@@ -665,6 +690,13 @@ demo.state5.prototype = {
         linegraphics3.lineTo(810, 410);
         linegraphics3.endFill();
         linegraphics3.alpha = 0;
+
+        linegraphics33 = GameInstance.add.graphics(0, 0);
+        linegraphics33.lineStyle(1, 0x000000, 1);
+        linegraphics33.moveTo(1030, 420);
+        linegraphics33.lineTo(820, 380);
+        linegraphics33.endFill();
+        linegraphics33.alpha = 0;
         
         //ellipsegraphics
         ellipsegraphics = GameInstance.add.graphics(0,0);
@@ -780,6 +812,7 @@ demo.state5.prototype = {
             this.addbtnNext2.visible = true;
             qns = 3;
         }
+        
 
        
         

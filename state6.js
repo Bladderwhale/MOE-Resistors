@@ -191,8 +191,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.nn = new answers2(this.value,this.tick0,this.cross0,this.dial0,this.gameAnswers, this.txtAnswers.length,this.t0,this.addbtnNext,this.addbtnNext2, this.dial1,this.gameAnswersUpdated, this.t1,this.word1,this.word2,this.dial2,this.t3,this.dial3,this.cross3,this.tick3); 
             
             //btnCheck
-            if (check == 1) 
-            {
+            //btnCheck
+            if (qns == 0 && check == 1 && input.value != 0 || qns == 1 && check == 1 && input2.value != 0 || qns == 2 && check == 1 && input3.value != 0 ||  qns ==3 && check == 1 && input4.value != 0 ) {//new
                 btnTryAgain.visible = true;
                 txtTryAgain.visible = true;
                 this.t0.alpha = 0;
@@ -223,7 +223,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         //Creating timer for tweening
         boolTimer = false;        
         timer = GameInstance.time.create(false);
-        timer.loop(2000,function(){total++},this);
+        timer.loop(2300,function(){total++},this);
         //timer.start();
         
         //Create the question title
@@ -234,8 +234,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             console.log("Did anyone wanted to showanswer?");
             btnShowAnswer.visible = false;
             txtShowAnswer.visible = false;
-            this.addbtnNext.visible = true;
-            this.addbtnNext2.visible = true;
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
             for (var i = 0; i<this.txtAnswers.length ; i++) {
                 this.gameAnswers[i].alpha = 0;
             }
@@ -247,10 +247,10 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             linegraphics.alpha = 1;
             input.setText("");
             //Start the timing and tweening
-            tween00.start();
+            tweenScale.start();
             timer.start();
             //
-            ellipsegraphics.alpha = 1;
+            //ellipsegraphics.alpha = 1;
             total = 0;
             input.endFocus();
             }
@@ -266,16 +266,17 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
             this.dial2.alpha = 1;
                  ellipsegraphics.lineStyle(5, asd);
-                ellipsegraphics.drawEllipse(100,100,100,30);
-                ellipsegraphics.position.setTo(580,520);
-                ellipsegraphics.alpha = 1;
+                ellipsegraphics.drawEllipse(100,100,100,20);
+                ellipsegraphics.position.setTo(560,520);
+                //ellipsegraphics.alpha = 1;
             input2.setText(" ");
             input2.endFocus();
-            tween11.start();
+            tweenScale1.start();
             timer.start();
             timer.resume();
             total = 0;
             //qns = 2;
+            linegraphics1.alpha = 1;
             }
             else if (qns == 2) {
             this.dial0.alpha = 0;
@@ -287,17 +288,18 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.word1.alpha = 1;
             this.word2.alpha = 1;
             ellipsegraphics.lineStyle(5, 0XFF4500);
-            ellipsegraphics.drawEllipse(100,100,100,30);
-            ellipsegraphics.position.setTo(830,470);
-            ellipsegraphics.alpha = 1;
+            ellipsegraphics.drawEllipse(100,100,100,20);
+            ellipsegraphics.position.setTo(820,470);
+            //ellipsegraphics.alpha = 1;
             input3.setText(" 1k");
             input3.endFocus();
-            tween22.start();
+            tweenScale2.start();
             input3.width = 1;
             timer.start();
             timer.resume();
             total = 0;
             qns = 3;
+            linegraphics22.alpha = 1;
             }
             else if (qns == 3) {
         
@@ -308,9 +310,19 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             qns = 4;
             this.t3.alpha = 1;
             this.t3.position.setTo(GameInstance.world.centerX + 400, GameInstance.world.centerY - 100); 
-            tween33.start();
+            ellipsegraphics.lineStyle(5, 0xDAA520);
+            ellipsegraphics.drawEllipse(100,100,100,20);
+            ellipsegraphics.position.setTo(1050,320);
+            tweenScale3.start();
             input4.setText(""+""); 
             input4.endFocus();
+            linegraphics33.alpha = 1;
+
+            
+            tween33.onComplete.add(function(){
+                this.addbtnNext.visible = true;
+                this.addbtnNext2.visible = true;
+            },this);
             }
         },this);
         
@@ -322,6 +334,8 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.addbtnNext.visible = false;
         this.addbtnNext2.visible = false;
         this.addbtnNext.events.onInputDown.add(function(){
+            linegraphics22.alpha = 0;
+            linegraphics33.alpha = 0;
              
             if (qns == 0 && boolTimer == true) {
             ellipsegraphics.alpha = 0;
@@ -337,18 +351,20 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             //input.setText (" 2");
             boolTimer = false;
             input.endFocus();
+            linegraphics1.alpha = 1;
             }
             if (qns == 1) {
                 if (boolEllipse1 == true) {
                     ellipsegraphics.alpha = 0;}
                 this.questionTitle.setText("What is the value of the 2nd band?");
                 this.t0.position.setTo(GameInstance.world.centerX-70, GameInstance.world.centerY+200); 
-                linegraphics1.alpha = 1;
+                linegraphics.alpha = 0;
                 input2.visible = true;
                 check = 0;
                 
             }
             else if (qns == 2) {
+                console.log("akjsdasjndisaondsaoind");
                 ellipsegraphics.alpha = 0;
                 //input2.setText (" 2");
                 input2.endFocus()
@@ -364,6 +380,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 btnCheck.visible = true;
                 txtCheck.visible = true;
                 check = 0;
+                linegraphics1.alpha = 0;
                 linegraphics2.alpha = 1;
             }
             else if (qns == 3) {
@@ -388,6 +405,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 this.addbtnNext.visible = false;
                 this.addbtnNext2.visible = false;
                 this.t3.alpha =1;
+                linegraphics2.alpha = 0;
                 linegraphics3.alpha = 1;
                
             }
@@ -447,6 +465,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             else if (qns == 2) {
             input3.setText("");    
             this.t1.alpha = 1;
+            linegraphics2.alpha = 1;
             }
             else if (qns == 3){
             input4.setText("");
@@ -634,6 +653,13 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         linegraphics2.lineTo(750,410);
         linegraphics2.endFill();
         linegraphics2.alpha = 0;
+
+        linegraphics22 = GameInstance.add.graphics(0, 0);
+        linegraphics22.lineStyle(1, 0x000000, 1);
+        linegraphics22.moveTo(899, 460);
+        linegraphics22.lineTo(750, 405);
+        linegraphics22.endFill();
+        linegraphics22.alpha = 0;
         
         //linegraphics for the forth band.
         linegraphics3 = GameInstance.add.graphics(0,0);
@@ -642,15 +668,30 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         linegraphics3.lineTo(810,410);
         linegraphics3.endFill();
         linegraphics3.alpha = 0;
+
+        linegraphics33 = GameInstance.add.graphics(0, 0);
+        linegraphics33.lineStyle(1, 0x000000, 1);
+        linegraphics33.moveTo(1030, 420);
+        linegraphics33.lineTo(820, 380);
+        linegraphics33.endFill();
+        linegraphics33.alpha = 0;
+        
         
         asd = 0xFF0000;
         //ellipsegraphics
         ellipsegraphics = GameInstance.add.graphics(0,0);
         ellipsegraphics.lineStyle(5, asd);
-        ellipsegraphics.drawEllipse(100,100,100,30);
+        ellipsegraphics.drawEllipse(100,100,100,20);
         ellipsegraphics.endFill();
         ellipsegraphics.position.setTo(450,520);
         ellipsegraphics.alpha = 0;
+
+                //ellipsegraphics.scale.setTo(0,0);
+                tweenScale = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
+                //tweenScale = GameInstance.add.tween(ellipsegraphics.scale).to({x:1,y:1},1000,Phaser.Easing.Back.Out);
+                tweenScale1 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
+                tweenScale2 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
+                tweenScale3 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
 
          //Adding the numbers for tweening
          this.answers00 = GameInstance.add.text(470,610,'2');
@@ -659,6 +700,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
          this.answers00.fontWeight = "normal";
          this.answers00.alpha = 0;
          tween00 = GameInstance.add.tween(this.answers00).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:665, y:336},1500,Phaser.Easing.Linear.None);
+         tweenScale.chain(tween00);
  
          this.answers11 = GameInstance.add.text(600,610,'2');
          this.answers11.addColor("#000000",0);
@@ -666,6 +708,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
          this.answers11.fontWeight = "normal";
          this.answers11.alpha = 0;
          tween11 = GameInstance.add.tween(this.answers11).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:698, y:336},1500,Phaser.Easing.Linear.None);
+         tweenScale1.chain(tween11);
  
          this.answers22 = GameInstance.add.text(851,528,'1k');
          this.answers22.addColor("#000000",0);
@@ -673,6 +716,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
          this.answers22.fontWeight = "normal";
          this.answers22.alpha = 0;
          tween22 = GameInstance.add.tween(this.answers22).to({alpha: 1},400,Phaser.Easing.Linear.None).to({x:731, y:336},1500,Phaser.Easing.Linear.None);
+         tweenScale2.chain(tween22);
         
          this.answers33 = GameInstance.add.text(1087,401,'\xB15%');
         this.answers33.addColor("#000000",0);
@@ -680,6 +724,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.answers33.fontWeight = "normal";
         this.answers33.alpha = 0;
         tween33 = GameInstance.add.tween(this.answers33).to({alpha: 1},200,Phaser.Easing.Linear.None).to({x:786, y:336},600,Phaser.Easing.Linear.None);
+        tweenScale3.chain(tween33);
     },
     update: function(){
     //console.log("What is value of input: " + input2.value);
@@ -718,30 +763,30 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
                 timer.pause();
             }
          }
-         if (qns == 0 && tween00._hasStarted == true && total < 2) {
+         if (qns == 0 && tweenScale._hasStarted == true && total < 2) {
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
          }
-         else if (qns == 0 && tween00._hasStarted == true && total >= 2){
+         else if (qns == 0 && tweenScale._hasStarted == true && total >= 2){
             this.addbtnNext.visible = true;
             this.addbtnNext2.visible = true;
          }
-         if (qns == 1 &&  tween11._hasStarted == true && total < 2){
-            this.addbtnNext.visible = false;
-            this.addbtnNext2.visible = false;
+         if (qns == 1 &&  tweenScale1._hasStarted == true && total >= 2){
+             boolEllipse1 = true;
+             qns = 2;
+             this.addbtnNext.visible = true;
+             this.addbtnNext2.visible = true;
          }   
-         else if (qns == 1 &&  tween11._hasStarted == true && total >= 2){
-            boolEllipse1 = true;
-            qns = 2;
-            this.addbtnNext.visible = true;
-            this.addbtnNext2.visible = true;
+         else if (qns == 1 &&  tweenScale1._hasStarted == true && total < 2){
+            this.addbtnNext.visible = false;
+            this.addbtnNext2.visible = false;
          }
-         if (qns == 3 &&  tween22._hasStarted == true && total < 2){
+         if (qns == 2 &&  tweenScale2._hasStarted == true && total < 2){
             
             this.addbtnNext.visible = false;
             this.addbtnNext2.visible = false;
         }    
-        else if (qns == 3 &&  tween22._hasStarted == true && total >= 2){
+        else if (qns == 2 &&  tweenScale2._hasStarted == true && total >= 2){
             boolEllipse2 = true;
             this.addbtnNext.visible = true;
             this.addbtnNext2.visible = true;
