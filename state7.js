@@ -909,8 +909,8 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio0.position.setTo(btnradio3.x,btnradio3.y);
     btnradio3.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY+80+30+50+80);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
+    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30+80);
+    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80+80);
     ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set13[0]);
