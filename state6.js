@@ -300,6 +300,11 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             total = 0;
             qns = 3;
             linegraphics22.alpha = 1;
+
+            tween22.onComplete.add(function(){
+                this.addbtnNext.visible = true;
+                this.addbtnNext2.visible = true;
+            },this);
             }
             else if (qns == 3) {
         
