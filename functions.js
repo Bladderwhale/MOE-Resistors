@@ -88,7 +88,7 @@ function addBtnNext(state) {
     state.addbtnNext.scale.setTo(0.5,0.5);
     state.addbtnNext.anchor.setTo(0.5,0.5);
     state.addbtnNext.position.setTo(GameInstance.world.centerX*1.75,GameInstance.world.centerY*1.75);
-    state.addbtnNext2.position.setTo(GameInstance.world.centerX*1.71,GameInstance.world.centerY*1.72)
+    state.addbtnNext2.position.setTo(GameInstance.world.centerX*1.71,GameInstance.world.centerY*1.72);
 
 }
 

@@ -265,10 +265,10 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.dial2.position.setTo(GameInstance.world.centerX-50,GameInstance.world.centerY-100);
             this.gameAnswersUpdated2.setText("This is the 2nd digit of the \nresistance value");
             this.dial2.alpha = 1;
-                 ellipsegraphics.lineStyle(5, asd);
-                ellipsegraphics.drawEllipse(100,100,100,20);
-                ellipsegraphics.position.setTo(560,520);
-                //ellipsegraphics.alpha = 1;
+            ellipsegraphics.lineStyle(5, asd);
+            ellipsegraphics.drawEllipse(100,100,100,20);
+            ellipsegraphics.position.setTo(560,520);
+            //ellipsegraphics.alpha = 1;
             input2.setText(" ");
             input2.endFocus();
             tweenScale1.start();
@@ -360,7 +360,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             }
             if (qns == 1) {
                 if (boolEllipse1 == true) {
-                    ellipsegraphics.alpha = 0;}
+                ellipsegraphics.alpha = 0;}
                 this.questionTitle.setText("What is the value of the 2nd band?");
                 this.t0.position.setTo(GameInstance.world.centerX-70, GameInstance.world.centerY+200); 
                 linegraphics.alpha = 0;
@@ -807,7 +807,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
     
 };
 
-function getAnswers(bandNum, bandColor)
+function getAnswers(bandNum = 5, bandColor)
 {
     var colors = ["black", "brown", "red", "orange", "yellow", "green", "blue", "purple", "grey", "white"];
     var answer = "This is the "+ bandNum +" digit of the \nresistance value.";

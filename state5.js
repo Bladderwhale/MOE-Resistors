@@ -402,7 +402,7 @@ demo.state5.prototype = {
                 btnCheck.visible = true;
                 txtCheck.visible = true;
                 check = 0;
-                linegraphics2.alpha = 0;
+                linegraphics2.alpha = 1;
                
        
             }
