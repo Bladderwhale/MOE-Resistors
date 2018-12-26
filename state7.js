@@ -6,7 +6,7 @@ var boolNext = false;
 var boolTween = false;
 var qnsNum = 1;
 demo.state7 = function(){};
-demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
+demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],firstTable:{},secondTable:{},thirdTable:{},forthTable:{},
     preload: function(){loadAssets();},
     create: function(){
         GameInstance.stage.backgroundColor = '#DDDDDD';
@@ -16,9 +16,9 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         background(this);
         //Home
         home(this);
-
+        listOfTable(this);
         //MCQ
-        mcq = 12;
+        mcq = 0;
         this.n = 4;
         //Array of height (Randomized)
         this.randomHeight = [500,580,660,740]; //Shuffling of elements in an array.
@@ -26,7 +26,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
 
         this.shuffleArray(demo.randomMCQ);
         mcq = demo.randomMCQ[0];
-        demo.randomMCQ.splice(0,1);
+        demo.randomMCQ.splice(0,1); 
         //Add restart and end
         this.btnRestart = GameInstance.add.button(950+100,820+50,'button');
         this.btnRestart.scale.setTo(0.5,0.5);
@@ -134,6 +134,27 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
                 this.tick.alpha = 1;
                 this.dial4.alpha = 1;
                 this.correctAnswer.alpha = 1;
+                btnradio1.alpha = 0;
+                btnradio2.alpha = 0;
+                btnradio3.alpha = 0;
+
+                if (mcq == 0 ||mcq == 1 || mcq == 5) {
+                this.text0.alpha = 0;
+                this.text2.alpha = 0;
+                this.text3.alpha = 0;
+                
+                }
+                else if (mcq == 2 || mcq == 4 || mcq == 6  || mcq == 8 || mcq ==9 || mcq == 10 || mcq ==12){
+                this.text0.alpha = 0;
+                this.text1.alpha = 0;
+                this.text3.alpha = 0;    
+                }
+                else if (mcq == 7 || mcq == 11 || mcq == 13 || mcq == 14){
+                this.text0.alpha = 0;
+                this.text1.alpha = 0;
+                this.text2.alpha = 0;
+              
+                }
             }
             else if (this.n == 1 && maxCheck < 4) {
                 maxCheck++;
@@ -202,13 +223,13 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
         console.log("What is the MCQ: " + mcq);
        
         this.text0.fontSize = 35;
-        this.text0.position.setTo(607+50,580-90);
+        this.text0.position.setTo(200,580-87);
         this.text1.fontSize = 35;
-        this.text1.position.setTo(607+50,575);
+        this.text1.position.setTo(500,580-87);
         this.text2.fontSize = 35;
-        this.text2.position.setTo(607+50,580+75);
+        this.text2.position.setTo(800,580-87);
         this.text3.fontSize = 35;
-        this.text3.position.setTo(607+50,580+90+65);
+        this.text3.position.setTo(1100,580-87);
        
         if (maxQns == 4 && maxCheck == 4) {
             btnNext1.visible = false;
@@ -262,7 +283,33 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],
             this.input3.alpha = 1;
             this.tween.start();
             this.tween2.start();
-
+            btnradio1.alpha = 0;
+            btnradio2.alpha = 0;
+            btnradio3.alpha = 0;
+            this.cross.alpha = 0;
+            
+            if (mcq == 0 ||mcq == 1 || mcq == 5) {
+                this.text0.alpha = 0;
+                this.text2.alpha = 0;
+                this.text3.alpha = 0;
+                
+                }
+                else if (mcq == 3) {
+                    this.text1.alpha = 0;
+                    this.text2.alpha = 0;
+                    this.text3.alpha = 0;    
+                }
+                else if (mcq == 2 || mcq == 4 || mcq == 6  || mcq == 8 || mcq ==9 || mcq == 10 || mcq ==12){
+                this.text0.alpha = 0;
+                this.text1.alpha = 0;
+                this.text3.alpha = 0;    
+                }
+                else if (mcq == 7 || mcq == 11 || mcq == 13 || mcq == 14){
+                this.text0.alpha = 0;
+                this.text1.alpha = 0;
+                this.text2.alpha = 0;
+              
+                }
             if (boolTween == false) {
             this.tween3.start(); }
 
@@ -573,10 +620,10 @@ function newQuestions(state, height0, height1, height2, height3){
     state.resistors.r.addChild(state.input3);
     
     //Add the radiobuttons
-    btnradio0 = GameInstance.add.button(607,height0,'btnradiounchecked'); //500
-    btnradio1 = GameInstance.add.button(607,height1,'btnradiounchecked'); //580
-    btnradio2 = GameInstance.add.button(607,height2,'btnradiounchecked'); //660
-    btnradio3 = GameInstance.add.button(607,height3,'btnradiounchecked'); //740
+    btnradio0 = GameInstance.add.button(150,height0,'btnradiounchecked'); //500
+    btnradio1 = GameInstance.add.button(450,height0,'btnradiounchecked'); //580
+    btnradio2 = GameInstance.add.button(750,height0,'btnradiounchecked'); //660
+    btnradio3 = GameInstance.add.button(1050,height0,'btnradiounchecked'); //740
     btnradio0.scale.setTo(0.35,0.35);
     btnradio1.scale.setTo(0.35,0.35);
     btnradio2.scale.setTo(0.35,0.35);
@@ -624,10 +671,12 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo( btnradio1.x,btnradio1.y);
     btnradio1.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80);
-    state.dial4.position.setTo(this.tempX+100,this.tempY+60);
-    state.correctAnswer.position.setTo(this.tempX+150,this.tempY+70);
-    ellipseGraphics.position.setTo(this.tempX+70,this.tempY+90);
+    state.tick.y= (this.tempY+5);
+    state.tick.x= this.tempX+150
+    state.dial4.position.setTo(this.tempX+100+310,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+460,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370,this.tempY+10);
+ 
  
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set0[0]);
@@ -647,11 +696,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo( btnradio1.x,btnradio1.y);
     btnradio1.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+60);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90);
-
+    state.tick.y= (this.tempY+5);
+    state.tick.x= this.tempX+150
+    state.dial4.position.setTo(this.tempX+100+310,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+460,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set1[0]);
     state.text0.fontWeight = 'normal';
@@ -670,10 +719,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
 
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set2[0]);
@@ -694,6 +744,7 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio0.position.setTo( btnradio0.x,btnradio0.y);
     btnradio1.position.setTo(btnradio1.x,btnradio1.y);
     state.tick.y= (this.tempY);
+    state.tick.x = (this.tempX-140)
     state.dial4.position.setTo(this.tempX+110,this.tempY-20);
     state.correctAnswer.position.setTo(this.tempX+160,this.tempY-10);
     ellipseGraphics.position.setTo(this.tempX+80,this.tempY+10);
@@ -716,10 +767,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
 
 
     //Add the texts
@@ -739,7 +791,8 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo( btnradio1.x,btnradio1.y);
     btnradio1.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80);
+    state.tick.y= (this.tempY+5);
+    state.tick.x= this.tempX+150;
     state.dial4.position.setTo(this.tempX+100,this.tempY+60);
     state.correctAnswer.position.setTo(this.tempX+150,this.tempY+70);
     ellipseGraphics.position.setTo(this.tempX+70,this.tempY+90);
@@ -756,14 +809,15 @@ function newQuestions(state, height0, height1, height2, height3){
     state.text3 = GameInstance.add.text(200,-20, setText().set5[3]);
     state.text3.fontWeight = 'normal'; }
     else if (mcq == 6) {
-     this.tempX = btnradio0.position.x
+    this.tempX = btnradio0.position.x
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set6[0]);
     state.text0.fontWeight = 'normal';
@@ -782,10 +836,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio3.x,btnradio3.y);
     btnradio3.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50+80);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+600
+    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set7[0]);
     state.text0.fontWeight = 'normal';
@@ -803,10 +858,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set8[0]);
     state.text0.fontWeight = 'normal';
@@ -824,10 +880,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set9[0]);
     state.text0.fontWeight = 'normal';
@@ -845,10 +902,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set10[0]);
     state.text0.fontWeight = 'normal';
@@ -866,10 +924,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio3.x,btnradio3.y);
     btnradio3.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50+80);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+600
+    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set11[0]);
     state.text0.fontWeight = 'normal';
@@ -887,10 +946,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio2.x,btnradio2.y);
     btnradio2.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+300
+    state.dial4.position.setTo(this.tempX+100+630,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+790,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+690,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set12[0]);
     state.text0.fontWeight = 'normal';
@@ -908,10 +968,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio3.x,btnradio3.y);
     btnradio3.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50+80);
-    state.dial4.position.setTo(this.tempX+110+10,this.tempY+110+30+80);
-    state.correctAnswer.position.setTo(this.tempX+160+10,this.tempY+70+80+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+600
+    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set13[0]);
     state.text0.fontWeight = 'normal';
@@ -929,10 +990,11 @@ function newQuestions(state, height0, height1, height2, height3){
     this.tempY = btnradio0.position.y
     btnradio0.position.setTo(btnradio3.x,btnradio3.y);
     btnradio3.position.setTo(this.tempX,this.tempY);
-    state.tick.y= (this.tempY+80+30+50+80);
-    state.dial4.position.setTo(this.tempX+110,this.tempY+110+30+80);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY+70+80+80);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+90+85+80);
+    state.tick.y= (this.tempY);
+    state.tick.x= this.tempX+150+600
+    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set14[0]);
     state.text0.fontWeight = 'normal';

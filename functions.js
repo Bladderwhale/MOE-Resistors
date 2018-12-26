@@ -9,7 +9,7 @@ function addKeyCallback (key, fn , args) { //Global Function (All scripts can ac
 };
 
 function addChangeStateEventListers() { //Global Function (All scripts can access to it)
-    addKeyCallback(Phaser.Keyboard.ZERO, changeState, 0); //Second step@
+  /*  addKeyCallback(Phaser.Keyboard.ZERO, changeState, 0); //Second step@
     addKeyCallback(Phaser.Keyboard.ONE, changeState, 1);
     addKeyCallback(Phaser.Keyboard.TWO, changeState, 2);
     addKeyCallback(Phaser.Keyboard.THREE, changeState, 3);
@@ -21,7 +21,7 @@ function addChangeStateEventListers() { //Global Function (All scripts can acces
     addKeyCallback(Phaser.Keyboard.NINE, changeState, 9);
     addKeyCallback(Phaser.Keyboard.NUMPAD_0, changeState, 10);
     addKeyCallback(Phaser.Keyboard.NUMPAD_1, changeState, 11);
-    addKeyCallback(Phaser.Keyboard.NUMPAD_2, changeState, 12);
+    addKeyCallback(Phaser.Keyboard.NUMPAD_2, changeState, 12);*/
 }
 
 //Preload all the game assets.
@@ -121,4 +121,228 @@ function drawMiniRect() {
     miniRect.lineStyle(1, 0x614126, 1); 
     miniRect.beginFill(0xffffff,0.9);
     miniRect.drawRect(150,150,240,90);
+};
+
+function listOfTable(state) {
+      //state.firstTable ={};
+      //Grouping (Addchild)
+      state.t0 = GameInstance.add.sprite(0,0,'t0'); //Add table sprite
+      state.t0.position.setTo(GameInstance.world.centerX-200-80, GameInstance.world.centerY+300); //Setting the position according the world
+      state.t0.anchor.setTo(0.5,0.5); //Make it center.
+      
+      //Phaser.text(Table texts)
+      state.firstTable.black = GameInstance.add.text(-80,-150,"0 black");
+      state.firstTable.black.addColor('#ffffff', 0);
+      state.firstTable.black.fontSize = 20;
+      state.firstTable.black.fontWeight = 'normal';
+      
+      state.firstTable.brown = GameInstance.add.text(-80,-120,"1 brown");
+      state.firstTable.brown.addColor('#ffffff', 0);
+      state.firstTable.brown.fontSize = 20;
+      state.firstTable.brown.fontWeight = 'normal';
+      
+      state.firstTable.red = GameInstance.add.text(-80,-90,"2 red");
+      state.firstTable.red.addColor('#ffffff', 0);
+      state.firstTable.red.fontSize = 20;
+      state.firstTable.red.fontWeight = 'normal';
+      
+      state.firstTable.orange = GameInstance.add.text(-80,-60,"3 orange");
+      state.firstTable.orange.addColor('#ffffff', 0);
+      state.firstTable.orange.fontSize = 20;
+      state.firstTable.orange.fontWeight = 'normal';
+      
+      state.firstTable.yellow = GameInstance.add.text(-80,-30,"4 yellow");
+      state.firstTable.yellow.addColor('#000000', 0);
+      state.firstTable.yellow.fontSize = 20;
+      state.firstTable.yellow.fontWeight = 'normal';
+      
+      state.firstTable.green = GameInstance.add.text(-80,0,"5 green");
+      state.firstTable.green.addColor('#ffffff', 0);
+      state.firstTable.green.fontSize = 20;
+      state.firstTable.green.fontWeight = 'normal';
+      
+      state.firstTable.blue = GameInstance.add.text(-80,30,"6 blue");
+      state.firstTable.blue.addColor('#ffffff', 0);
+      state.firstTable.blue.fontSize = 20;
+      state.firstTable.blue.fontWeight = 'normal';
+      
+      state.firstTable.purple = GameInstance.add.text(-80,60,"7 purple");
+      state.firstTable.purple.addColor('#ffffff', 0);
+      state.firstTable.purple.fontSize = 20;
+      state.firstTable.purple.fontWeight = 'normal';
+      
+      state.firstTable.grey = GameInstance.add.text(-80,90,"8 grey");
+      state.firstTable.grey.addColor('#000000', 0);
+      state.firstTable.grey.fontSize = 20;
+      state.firstTable.grey.fontWeight = 'normal';
+      
+      state.firstTable.white = GameInstance.add.text(-80,125,"9 white");
+      state.firstTable.white.addColor('#000000', 0);
+      state.firstTable.white.fontSize = 20;
+      state.firstTable.white.fontWeight = 'normal';
+      
+      state.t0.addChild(state.firstTable.black);
+      state.t0.addChild(state.firstTable.brown);
+      state.t0.addChild(state.firstTable.red);
+      state.t0.addChild(state.firstTable.orange);
+      state.t0.addChild(state.firstTable.yellow);
+      state.t0.addChild(state.firstTable.green);
+      state.t0.addChild(state.firstTable.blue);
+      state.t0.addChild(state.firstTable.purple);
+      state.t0.addChild(state.firstTable.grey);
+      state.t0.addChild(state.firstTable.white);
+      //end
+      
+      //Grouping for the 2nd table
+      state.t1 = GameInstance.add.sprite(0,0,'t0'); //Add table sprite
+      state.t1.position.setTo(GameInstance.world.centerX-25-80, GameInstance.world.centerY+300); //Setting the position according the world
+      state.t1.anchor.setTo(0.5,0.5); //Make it center.
+      
+      //Phaser.text(Table texts)
+      state.secondTable.black = GameInstance.add.text(-80,-150,"0 black");
+      state.secondTable.black.addColor('#ffffff', 0);
+      state.secondTable.black.fontSize = 20;
+      state.secondTable.black.fontWeight = 'normal';
+      
+      state.secondTable.brown = GameInstance.add.text(-80,-120,"1 brown");
+      state.secondTable.brown.addColor('#ffffff', 0);
+      state.secondTable.brown.fontSize = 20;
+      state.secondTable.brown.fontWeight = 'normal';
+      
+      state.secondTable.red = GameInstance.add.text(-80,-90,"2 red");
+      state.secondTable.red.addColor('#ffffff', 0);
+      state.secondTable.red.fontSize = 20;
+      state.secondTable.red.fontWeight = 'normal';
+      
+      state.secondTable.orange = GameInstance.add.text(-80,-60,"3 orange");
+      state.secondTable.orange.addColor('#ffffff', 0);
+      state.secondTable.orange.fontSize = 20;
+      state.secondTable.orange.fontWeight = 'normal';
+      
+      state.secondTable.yellow = GameInstance.add.text(-80,-30,"4 yellow");
+      state.secondTable.yellow.addColor('#000000', 0);
+      state.secondTable.yellow.fontSize = 20;
+      state.secondTable.yellow.fontWeight = 'normal';
+      
+      state.secondTable.green = GameInstance.add.text(-80,0,"5 green");
+      state.secondTable.green.addColor('#ffffff', 0);
+      state.secondTable.green.fontSize = 20;
+      state.secondTable.green.fontWeight = 'normal';
+      
+      state.secondTable.blue = GameInstance.add.text(-80,30,"6 blue");
+      state.secondTable.blue.addColor('#ffffff', 0);
+      state.secondTable.blue.fontSize = 20;
+      state.secondTable.blue.fontWeight = 'normal';
+      
+      state.secondTable.purple = GameInstance.add.text(-80,60,"7 purple");
+      state.secondTable.purple.addColor('#ffffff', 0);
+      state.secondTable.purple.fontSize = 20;
+      state.secondTable.purple.fontWeight = 'normal';
+      
+      state.secondTable.grey = GameInstance.add.text(-80,90,"8 grey");
+      state.secondTable.grey.addColor('#000000', 0);
+      state.secondTable.grey.fontSize = 20;
+      state.secondTable.grey.fontWeight = 'normal';
+      
+      state.secondTable.white = GameInstance.add.text(-80,125,"9 white");
+      state.secondTable.white.addColor('#000000', 0);
+      state.secondTable.white.fontSize = 20;
+      state.secondTable.white.fontWeight = 'normal';
+      
+      state.t1.addChild(state.secondTable.black);
+      state.t1.addChild(state.secondTable.brown);
+      state.t1.addChild(state.secondTable.red);
+      state.t1.addChild(state.secondTable.orange);
+      state.t1.addChild(state.secondTable.yellow);
+      state.t1.addChild(state.secondTable.green);
+      state.t1.addChild(state.secondTable.blue);
+      state.t1.addChild(state.secondTable.purple);
+      state.t1.addChild(state.secondTable.grey);
+      state.t1.addChild(state.secondTable.white);
+      //end
+      
+      //Grouping for the 3rd table
+      state.t2 = GameInstance.add.sprite(0,0,'t1'); //Add table sprite
+      state.t2.position.setTo(GameInstance.world.centerX+150-80, GameInstance.world.centerY+300); //Setting the position according the world
+      state.t2.anchor.setTo(0.5,0.5); //Make it center.
+      
+      //Phaser.text(Table texts)
+      state.thirdTable.black = GameInstance.add.text(-80,-150,"1 black");
+      state.thirdTable.black.addColor('#ffffff', 0);
+      state.thirdTable.black.fontSize = 20;
+      state.thirdTable.black.fontWeight = 'normal';
+      
+      state.thirdTable.brown = GameInstance.add.text(-80,-120,"10 brown");
+      state.thirdTable.brown.addColor('#ffffff', 0);
+      state.thirdTable.brown.fontSize = 20;
+      state.thirdTable.brown.fontWeight = 'normal';
+      
+      state.thirdTable.red = GameInstance.add.text(-80,-90,"100 red");
+      state.thirdTable.red.addColor('#ffffff', 0);
+      state.thirdTable.red.fontSize = 20;
+      state.thirdTable.red.fontWeight = 'normal';
+      
+      state.thirdTable.orange = GameInstance.add.text(-80,-60,"1k orange");
+      state.thirdTable.orange.addColor('#ffffff', 0);
+      state.thirdTable.orange.fontSize = 20;
+      state.thirdTable.orange.fontWeight = 'normal';
+      
+      state.thirdTable.yellow = GameInstance.add.text(-80,-30,"10k yellow");
+      state.thirdTable.yellow.addColor('#000000', 0);
+      state.thirdTable.yellow.fontSize = 20;
+      state.thirdTable.yellow.fontWeight = 'normal';
+      
+      state.thirdTable.green = GameInstance.add.text(-80,0,"100k green");
+      state.thirdTable.green.addColor('#ffffff', 0);
+      state.thirdTable.green.fontSize = 20;
+      state.thirdTable.green.fontWeight = 'normal';
+      
+      state.thirdTable.blue = GameInstance.add.text(-80,30,"1M blue");
+      state.thirdTable.blue.addColor('#ffffff', 0);
+      state.thirdTable.blue.fontSize = 20;
+      state.thirdTable.blue.fontWeight = 'normal';
+      
+      state.thirdTable.purple = GameInstance.add.text(-80,60,"10M purple");
+      state.thirdTable.purple.addColor('#ffffff', 0);
+      state.thirdTable.purple.fontSize = 20;
+      state.thirdTable.purple.fontWeight = 'normal';
+      
+      state.thirdTable.grey = GameInstance.add.text(-80,90,"0.01 silver");
+      state.thirdTable.grey.addColor('#000000', 0);
+      state.thirdTable.grey.fontSize = 20;
+      state.thirdTable.grey.fontWeight = 'normal';
+      
+      state.thirdTable.white = GameInstance.add.text(-80,125,"0.1 gold");
+      state.thirdTable.white.addColor('#000000', 0);
+      state.thirdTable.white.fontSize = 20;
+      state.thirdTable.white.fontWeight = 'normal';
+      
+      state.t2.addChild(state.thirdTable.black);
+      state.t2.addChild(state.thirdTable.brown);
+      state.t2.addChild(state.thirdTable.red);
+      state.t2.addChild(state.thirdTable.orange);
+      state.t2.addChild(state.thirdTable.yellow);
+      state.t2.addChild(state.thirdTable.green);
+      state.t2.addChild(state.thirdTable.blue);
+      state.t2.addChild(state.thirdTable.purple);
+      state.t2.addChild(state.thirdTable.grey);
+      state.t2.addChild(state.thirdTable.white);
+      //end
+      //Grouping for the 4rd table
+      state.t3 = GameInstance.add.sprite(0,0,'t2'); //Add table sprite
+      state.t3.position.setTo(GameInstance.world.centerX+360-110, GameInstance.world.centerY+175); //Setting the position according the world
+      state.t3.anchor.setTo(0.5,0.5); //Make it center.
+      
+      state.forthTable.red = GameInstance.add.text(-80,-25,"\xB1 2% red");
+      state.forthTable.red.addColor('#ffffff', 0);
+      state.forthTable.red.fontSize = 20;
+      state.forthTable.red.fontWeight = 'normal';
+      
+      state.forthTable.gold = GameInstance.add.text(-80,5,"\xB1 5% gold");
+      state.forthTable.gold.addColor('#000000', 0);
+      state.forthTable.gold.fontSize = 20;
+      state.forthTable.gold.fontWeight = 'normal';
+      
+      state.t3.addChild(state.forthTable.red);
+      state.t3.addChild(state.forthTable.gold);
 }
