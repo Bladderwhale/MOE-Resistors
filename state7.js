@@ -18,7 +18,7 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],firstTable:{},sec
         home(this);
         listOfTable(this);
         //MCQ
-        mcq = 0;
+        mcq = 5;
         this.n = 4;
         //Array of height (Randomized)
         this.randomHeight = [500,580,660,740]; //Shuffling of elements in an array.
@@ -636,7 +636,7 @@ function newQuestions(state, height0, height1, height2, height3){
     state.correctAnswer.fontWeight = 'normal';
     ellipseGraphics = GameInstance.add.graphics(0,0);
     ellipseGraphics.lineStyle(4,0x32CD32,1);
-    ellipseGraphics.drawEllipse(0,0,35,35);
+    ellipseGraphics.drawEllipse(0,0,60,35);
     ellipseGraphics.endFill();
     ellipseGraphics.alpha = 0;
     state.dial4.alpha = 0;
@@ -673,9 +673,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio1.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY+5);
     state.tick.x= this.tempX+150
-    state.dial4.position.setTo(this.tempX+100+310,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+460,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+370,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+330,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+480,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370+15,this.tempY+10);
  
  
     //Add the texts
@@ -698,9 +698,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio1.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY+5);
     state.tick.x= this.tempX+150
-    state.dial4.position.setTo(this.tempX+100+310,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+460,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+370,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+330,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+480,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set1[0]);
     state.text0.fontWeight = 'normal';
@@ -721,9 +721,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+640,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
 
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set2[0]);
@@ -745,9 +745,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio1.position.setTo(btnradio1.x,btnradio1.y);
     state.tick.y= (this.tempY);
     state.tick.x = (this.tempX-140)
-    state.dial4.position.setTo(this.tempX+110,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+160,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+80,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+130,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+180,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+80+15,this.tempY+10);
 
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set3[0]);
@@ -769,9 +769,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+640,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
 
 
     //Add the texts
@@ -792,10 +792,10 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio0.position.setTo( btnradio1.x,btnradio1.y);
     btnradio1.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY+5);
-    state.tick.x= this.tempX+150;
-    state.dial4.position.setTo(this.tempX+100,this.tempY+60);
-    state.correctAnswer.position.setTo(this.tempX+150,this.tempY+70);
-    ellipseGraphics.position.setTo(this.tempX+70,this.tempY+90);
+    state.tick.x= this.tempX+150
+    state.dial4.position.setTo(this.tempX+100+330,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+480,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set5[0]);
     state.text0.fontWeight = 'normal';
@@ -815,9 +815,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+650,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set6[0]);
     state.text0.fontWeight = 'normal';
@@ -838,9 +838,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio3.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+600
-    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
+    state.dial4.position.setTo(this.tempX+100+930,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1080,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980+15,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set7[0]);
     state.text0.fontWeight = 'normal';
@@ -860,9 +860,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+640,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set8[0]);
     state.text0.fontWeight = 'normal';
@@ -882,9 +882,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+640,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set9[0]);
     state.text0.fontWeight = 'normal';
@@ -904,9 +904,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+620,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+780,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+680,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+640,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+800,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+680+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set10[0]);
     state.text0.fontWeight = 'normal';
@@ -926,9 +926,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio3.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+600
-    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
+    state.dial4.position.setTo(this.tempX+100+930,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1080,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980+15,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set11[0]);
     state.text0.fontWeight = 'normal';
@@ -948,9 +948,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio2.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+300
-    state.dial4.position.setTo(this.tempX+100+630,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+790,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+690,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+650,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+810,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+690+15,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set12[0]);
     state.text0.fontWeight = 'normal';
@@ -970,9 +970,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio3.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+600
-    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
+    state.dial4.position.setTo(this.tempX+100+930,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1080,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980+15,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set13[0]);
     state.text0.fontWeight = 'normal';
@@ -992,9 +992,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio3.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY);
     state.tick.x= this.tempX+150+600
-    state.dial4.position.setTo(this.tempX+100+910,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+1060,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+980,this.tempY+10)
+    state.dial4.position.setTo(this.tempX+100+930,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+1080,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+980+15,this.tempY+10)
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set14[0]);
     state.text0.fontWeight = 'normal';
@@ -1010,21 +1010,21 @@ function newQuestions(state, height0, height1, height2, height3){
 }
 
 function setText(){
-    textBundle0 = [ "20",  "22",  "33",  "220"];
-    textBundle1 = [ "10",  "100",  "101",  "200"];
-    textBundle2 = [ "110",  "111",  "220",  "221"];
-    textBundle3 = [ "330",  "3.3k",  "440",  "4.4k"];
-    textBundle4 = [ "46","47","470","4.6k"];
-    textBundle5 = [ "10","1k","10k","1M"];
-    textBundle6 = [ "3.3k","4.4k","33k","44k"];
-    textBundle7 = [ "470","4.7k","46k","47k"];
-    textBundle8 = [ "68","78","6.8k","7.8k"];
-    textBundle9 = [ "5k","1.5k","15k","150k"];
-    textBundle10 = [ "37","4.7k","47k","470k"];
-    textBundle11 = ["68","78","6.7k","68k"];
-    textBundle12 = [ "26","1.5k","150k","250k"];
-    textBundle13 = [ "22","3.3k","33k","220k"];
-    textBundle14 = [ "670","58k","68k","680k"];
+    textBundle0 = [ "20 Ω",  "22 Ω",  "33 Ω",  "220 Ω"];
+    textBundle1 = [ "10 Ω",  "100 Ω",  "101 Ω",  "200 Ω"];
+    textBundle2 = [ "110 Ω",  "111 Ω",  "220 Ω",  "221 Ω"];
+    textBundle3 = [ "330 Ω",  "3.3 kΩ",  "440 Ω",  "4.4 kΩ"];
+    textBundle4 = [ "46 Ω","47 Ω","470 Ω","4.6 kΩ"];
+    textBundle5 = [ "10 Ω","1 kΩ","10 kΩ","1 MΩ"];
+    textBundle6 = [ "3.3 kΩ","4.4 kΩ","33 kΩ","44 kΩ"];
+    textBundle7 = [ "470 Ω","4.7 kΩ","46 kΩ","47 kΩ"];
+    textBundle8 = [ "68 Ω","78 Ω","6.8 kΩ","7.8 kΩ"];
+    textBundle9 = [ "5 kΩ","1.5 kΩ","15 kΩ","150 kΩ"];
+    textBundle10 = [ "37 Ω","4.7 kΩ","47 kΩ","470 kΩ"];
+    textBundle11 = ["68 Ω","78 Ω","6.7 kΩ","68 kΩ"];
+    textBundle12 = [ "26 Ω","1.5 kΩ","150 kΩ","250 kΩ"];
+    textBundle13 = [ "22 Ω","3.3 kΩ","33 kΩ","220 kΩ"];
+    textBundle14 = [ "670 Ω","58 kΩ","68 kΩ","680 kΩ"];
     textAnswer = ["Value of this resistor\n= (22 x 1) \u2126 \xB1 5% \n=22 \u2126 \xB1 5%","Value of this resistor \n= (10 x 10) \u2126 \xB15% \n=100 \u2126 \xB1 5%","Value of this resistor \n= (22 x 10) \u2126 \xB1 5% \n=220 \u2126 \xB1 5%","Value of this resistor \n= (33 x 10) \u2126 \xB1 5% \n=330 \u2126 \xB1 5%","Value of this resistor \n= (47 x 10) \u2126 \xB1 5% \n=470 \u2126 \xB1 5%","Value of this resistor \n= (10 x 100) \u2126 \xB1 5% \n=1 k\u2126 \xB1 5%","Value of this resistor \n= (33 x 100) \u2126 \xB1 5% \n=3.3 k\u2126 \xB1 5%","Value of this resistor \n= (47 x 100) \u2126 \xB1 5% \n=4.7 k\u2126 \xB1 5%","Value of this resistor \n= (68 x 100)\u2126\xB15%\n=6.8 k\u2126\xB1 5%","Value of this resistor \n= (15 x 1k) \u2126 \xB1 5% \n=15k \u2126 \xB1 5%","Value of this resistor \n= (47 x 1k) \u2126 \xB1 5% \n=47 k\u2126 \xB1 5%","Value of this resistor \n = (68 x 1k) \u2126 \xB1 5%\n=68 k\u2126 \xB1 5%","Value of this resistor \n= (15 x 10k) \u2126 \xB1 5% \n=150 k\u2126 \xB1 5%","Value of this resistor \n= (22 x 10k) \u2126 \xB1 5% \n=22k \u2126 \xB1 5%","Value of this resistor \n= (68 x 1k) \u2126 \xB1 5% \n=680 k\u2126 \xB1 5%"]
    
     
