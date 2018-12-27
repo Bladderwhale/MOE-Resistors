@@ -18,15 +18,15 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],firstTable:{},sec
         home(this);
         listOfTable(this);
         //MCQ
-        mcq = 5;
+        mcq = 1;
         this.n = 4;
         //Array of height (Randomized)
         this.randomHeight = [500,580,660,740]; //Shuffling of elements in an array.
         //this.shuffleArray(this.randomHeight);
 
         this.shuffleArray(demo.randomMCQ);
-        mcq = demo.randomMCQ[0];
-        demo.randomMCQ.splice(0,1); 
+        /*mcq = demo.randomMCQ[0];
+        demo.randomMCQ.splice(0,1);*/ 
         //Add restart and end
         this.btnRestart = GameInstance.add.button(950+100,820+50,'button');
         this.btnRestart.scale.setTo(0.5,0.5);
@@ -196,21 +196,21 @@ demo.state7.prototype = {resistors:{r2:null}, n: 0, qnsNum:[1],firstTable:{},sec
         {
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
-            this.cross.position.setTo(btnradio1.x - 80,btnradio1.y+ 5);
+            this.cross.position.setTo(btnradio1.x - 120,btnradio1.y);
             this.n = 1;
         },this);
         btnradio2.events.onInputDown.add(function()
         {
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
-            this.cross.position.setTo(btnradio2.x - 80,btnradio2.y+ 5);
+            this.cross.position.setTo(btnradio2.x - 120,btnradio2.y);
             this.n = 2; 
         },this);
         btnradio3.events.onInputDown.add(function()
         {
             this.btnCheck.alpha = 1;
             this.txtCheck.alpha = 1;
-            this.cross.position.setTo(btnradio3.x - 80,btnradio3.y+ 5);
+            this.cross.position.setTo(btnradio3.x - 120,btnradio3.y);
             this.n = 3; 
         },this);
     },
@@ -698,9 +698,9 @@ function newQuestions(state, height0, height1, height2, height3){
     btnradio1.position.setTo(this.tempX,this.tempY);
     state.tick.y= (this.tempY+5);
     state.tick.x= this.tempX+150
-    state.dial4.position.setTo(this.tempX+100+330,this.tempY-20);
-    state.correctAnswer.position.setTo(this.tempX+480,this.tempY-10);
-    ellipseGraphics.position.setTo(this.tempX+370+15,this.tempY+10);
+    state.dial4.position.setTo(this.tempX+100+340,this.tempY-20);
+    state.correctAnswer.position.setTo(this.tempX+490,this.tempY-10);
+    ellipseGraphics.position.setTo(this.tempX+370+24,this.tempY+10);
     //Add the texts
     state.text0 = GameInstance.add.text(200,-20, setText().set1[0]);
     state.text0.fontWeight = 'normal';
