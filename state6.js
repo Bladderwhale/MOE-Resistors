@@ -421,10 +421,10 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             this.finalanswer = GameInstance.add.text(GameInstance.world.centerX - 260, GameInstance.world.centerY - 50, 
                 "This means that the actual value of the resistor \ncould be between 1.43 k\u2126 and 1.56 k\u2126.");
             this.finalanswer.addFontWeight("normal", 0);
-            this.finalanswer1= GameInstance.add.text(GameInstance.world.centerX-500,GameInstance.world.centerY+200,"2.2 k\u2126");
-            this.finalanswer2= GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 125, "-5%");
-            this.finalanswer3 = GameInstance.add.text(GameInstance.world.centerX - 230, GameInstance.world.centerY + 275, "+5%");
-            this.finalanswer5 = GameInstance.add.text(GameInstance.world.centerX - 100, GameInstance.world.centerY + 140, "0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
+            this.finalanswer1= GameInstance.add.text(GameInstance.world.centerX-500+50,GameInstance.world.centerY+200,"2.2 k\u2126");
+            this.finalanswer2= GameInstance.add.text(GameInstance.world.centerX - 230+50, GameInstance.world.centerY + 125, "-5%");
+            this.finalanswer3 = GameInstance.add.text(GameInstance.world.centerX - 230+50, GameInstance.world.centerY + 275, "+5%");
+            this.finalanswer5 = GameInstance.add.text(GameInstance.world.centerX - 100+50, GameInstance.world.centerY + 140, "0.95 x 1.5 = 1.43 k\u2126 \n\n\n1.05 x 1.5 = 1.56 k\u2126");
             this.finalanswer2.addFontWeight("normal", 0);
             this.finalanswer3.addFontWeight("normal", 0);
             this.finalanswer5.addFontWeight("normal", 0);
