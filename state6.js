@@ -248,6 +248,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             input.setText("");
             //Start the timing and tweening
             tweenScale.start();
+            this.circleanim2.animations.play('drawnCircle2',10,false);
             timer.start();
             //
             //ellipsegraphics.alpha = 1;
@@ -272,6 +273,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             input2.setText(" ");
             input2.endFocus();
             tweenScale1.start();
+            this.circleanim3.animations.play('drawnCircle3',10,false);
             timer.start();
             timer.resume();
             total = 0;
@@ -294,6 +296,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             input3.setText(" 1k");
             input3.endFocus();
             tweenScale2.start();
+            this.circleanim4.animations.play('drawnCircle4',10,false);
             input3.width = 1;
             timer.start();
             timer.resume();
@@ -319,6 +322,7 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
             ellipsegraphics.drawEllipse(100,100,100,20);
             ellipsegraphics.position.setTo(1050,320);
             tweenScale3.start();
+            this.circleanim5.animations.play('drawnCircle5',10,false);
             input4.setText(""+""); 
             input4.endFocus();
             linegraphics33.alpha = 1;
@@ -341,7 +345,10 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         this.addbtnNext.events.onInputDown.add(function(){
             linegraphics22.alpha = 0;
             linegraphics33.alpha = 0;
-             
+            this.circleanim2.frame = 0;
+            this.circleanim3.frame = 0;
+            this.circleanim4.frame = 0;
+            this.circleanim5.frame = 0;
             if (qns == 0 && boolTimer == true) {
             ellipsegraphics.alpha = 0;
             qns = 1;
@@ -692,11 +699,30 @@ demo.state6.prototype = {resistors:{}, firstTable:{}, secondTable:{}, thirdTable
         ellipsegraphics.alpha = 0;
 
                 //ellipsegraphics.scale.setTo(0,0);
-                tweenScale = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
+                tweenScale = GameInstance.add.tween(ellipsegraphics).to({alpha:0},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:0},500, Phaser.Easing.Linear.None);
                 //tweenScale = GameInstance.add.tween(ellipsegraphics.scale).to({x:1,y:1},1000,Phaser.Easing.Back.Out);
-                tweenScale1 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
-                tweenScale2 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
-                tweenScale3 = GameInstance.add.tween(ellipsegraphics).to({alpha:1},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:1},500, Phaser.Easing.Linear.None);
+                tweenScale1 = GameInstance.add.tween(ellipsegraphics).to({alpha:0},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:0},500, Phaser.Easing.Linear.None);
+                tweenScale2 = GameInstance.add.tween(ellipsegraphics).to({alpha:0},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:0},500, Phaser.Easing.Linear.None);
+                tweenScale3 = GameInstance.add.tween(ellipsegraphics).to({alpha:0},500, Phaser.Easing.Linear.None).to({alpha:0},500,Phaser.Easing.Linear.None).to({alpha:0},500, Phaser.Easing.Linear.None);
+
+                  //Circle animation
+        
+
+        this.circleanim2 = GameInstance.add.sprite(430,580,'circleanim2'); 
+        this.circleanim2.scale.setTo(0.35,0.15);
+        this.drawnCircle2 = this.circleanim2.animations.add('drawnCircle2');
+
+        this.circleanim3 = GameInstance.add.sprite(560,580,'circleanim2'); 
+        this.circleanim3.scale.setTo(0.35,0.15);
+        this.drawnCircle3 = this.circleanim3.animations.add('drawnCircle3');
+
+        this.circleanim4 = GameInstance.add.sprite(810,530,'circleanim3'); 
+        this.circleanim4.scale.setTo(0.35,0.15);
+        this.drawnCircle4 = this.circleanim4.animations.add('drawnCircle3');
+
+        this.circleanim5 = GameInstance.add.sprite(1050,370,'circleanim3'); 
+        this.circleanim5.scale.setTo(0.35,0.15);
+        this.drawnCircle5 = this.circleanim5.animations.add('drawnCircle5');
 
          //Adding the numbers for tweening
          this.answers00 = GameInstance.add.text(470,610,'2');
